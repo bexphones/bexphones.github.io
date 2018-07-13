@@ -15,7 +15,7 @@ var boot = {
 		//red color to see the background of the game itself
 		// you must change the background in the index.html to have the same color in the background game 
 		// > change the yellow in red it's only to see how the game is scalling
-		this.game.stage.backgroundColor = '#36302d';
+		this.game.stage.backgroundColor = '#ffe063';
 		this.game.scale.refresh();
 		this.game.state.start('preloader');
 	}
@@ -74,7 +74,8 @@ var preloader = {
 
 var game_first_screen = {
 	create: function () {
-		this.game.time.events.add(100, function () { this.game.state.start("game_main"); }, this);
+		game.add.sprite(0,0,"background_start")
+		this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
 	},
 };
 var game_main = {

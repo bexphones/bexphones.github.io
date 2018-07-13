@@ -257,6 +257,7 @@ var create_main = () => {
 	//o.group_points_0 = game.add.group()
 	//o.group_points_0.add(o.points[0])
 	//o.group_points_0.add(o.points[0].fill)
+
 	o.background_top_p = {
 		image: "background_top",
 		x: 0,
@@ -267,7 +268,8 @@ var create_main = () => {
 		flag: true,
 		g: game
 	}
-	o.background_top = new _obj(o.background_top_p)
+	// à rétablir
+	//	o.background_top = new _obj(o.background_top_p)
 	o.flash_p0 = {
 		image: "flash",
 		x: w2 * .5,
@@ -661,6 +663,7 @@ var create_main = () => {
 		o.particle[i]=new _obj(o.particle_p);
 	}
 
+
 	localStorage.setItem("score", interface.points[1].text)
 	localStorage.getItem("name")
 	//interface[1].text = nn
@@ -686,6 +689,8 @@ var create_main = () => {
 		d:500,
 		dx:-w,
 	}
+	// À RÉTABLIR
+	o.background_top = new _obj(o.background_top_p)
 	//game.add.tween(o.background_start).to({ y: -4000 }, 900, Phaser.Easing.Linear.None, true, 500);
 
 	//_tr(o.transition_background_start_right,4)
