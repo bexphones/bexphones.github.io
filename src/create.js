@@ -259,11 +259,13 @@ var create_main = () => {
 	//o.group_points_0.add(o.points[0].fill)
 	o.background_top_p = {
 		image: "background_top",
-		x: w2,
-		y: h2,
+		x: 0,
+		y: 0,
 		a: 1,
+		anchorx : 0,
+		anchory : 0,
 		flag: true,
-		g: game,
+		g: game
 	}
 	o.background_top = new _obj(o.background_top_p)
 	o.flash_p0 = {
