@@ -42,48 +42,46 @@ f.start_game = () => {
 
 	//animation pour faire apparaitre le nom de l'enemi
 	f.start_cloud = () => {
+		for (var i = 0; i < o.searching_opponent.length; i++){
+			o.searching_opponent[i].visible = false
+
+		}
 		//o.circle_search_opponent.alpha = 0
-		o.searching_opponent.alpha = 0
 		for (let i = 0; i < o.cloud_length; i++) {
 			wait(() => { o.cloud[i].visible = true }, o.cloud_tw[0].d)
 			_tr(o.cloud_tw[i])
 		}
-		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
-		wait(() => { interface.roll[0].visible = true }, o.cloud_tw[0].d)
-		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
-		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
-		wait(() => { interface.puissance[0].visible = true }, o.cloud_tw[0].d)
-		//wait(start_timer, o.cloud_tw[0].d + 1000)
+		//À RÉTABLIR
+		//		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
+		//		wait(() => { interface.roll[0].visible = true }, o.cloud_tw[0].d)
+		//		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
+		//		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
+		//		wait(() => { interface.puissance[0].visible = true }, o.cloud_tw[0].d)
 	}
 
 	// compte à rebours pour lancer le jeu
 	f.start_timer = ()=>{
 		interface.decount.visible=true
-
-		var decount=()=>{
-			interface.decount.count = interface.decount.count -1	
-			interface.decount.text = interface.decount.count 
-		}
-
 		var ready = ()=>{
 			interface.decount.text = "ready"
 			o.ready_tw = {
 				o: interface.decount, //object
-				t: 350, //time
+				t: 900, //time
 				d: 100, //delay
-				a: 0, //alpha
-				e: Phaser.Easing.Bounce.In, //Easing
+				//a: 1, //alpha
+				e: Phaser.Easing.Exponential.Out, //Easing
 				r: 0, //rotation
-				sx: 2.5,
-				sy: 2.5,
-				y:true,
+				//dx: 2.5,
+				dx: w2,
+				dy: h2*.5,
+				y: true,
 			}
 			_tr(o.ready_tw)
 		}
 		//wait(decount,700)
 		//wait(decount,1400)
 		wait(ready,100)
-		wait(()=>{interface.decount.visible=false},800)
+		//wait(()=>{interface.decount.visible=false},800)
 	}
 
 

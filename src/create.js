@@ -269,7 +269,7 @@ var create_main = () => {
 		g: game
 	}
 	// à rétablir
-	//	o.background_top = new _obj(o.background_top_p)
+	o.background_top = new _obj(o.background_top_p)
 	o.flash_p0 = {
 		image: "flash",
 		x: w2 * .5,
@@ -403,7 +403,31 @@ var create_main = () => {
 	}
 
 
-	o.searching_opponent = new _obj(o.searching_opponent_p)
+	o.searching_opponent =[] 
+	for (var i = 0; i < 8; i++){
+		o.searching_opponent[i]=game.add.sprite(w2*.5,h2*.75,"timer");
+		o.searching_opponent[i].anchor.x = .5  
+		o.searching_opponent[i].anchor.y = 0  
+		o.searching_opponent[i].angle = i*45  
+	}
+	o.searching_opponent_tw=[]
+	let ts=200
+	let ds=200
+	let rs=90
+	f.start_timer_search_opponent=()=>{
+		for (var i = 0; i < o.searching_opponent.length; i++){
+			o.searching_opponent_tw[i]={
+				o:o.searching_opponent[i],
+				t:ts,
+				d:ds+i*rs,	
+				a:.2,	
+				y:true,
+			}
+			_transition(o.searching_opponent_tw[i])
+		}
+	}
+	loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
+
 	//o.circle_search_opponent = new _obj(o.circle_search_opponent_p)
 	//game.add.tween(o.circle_search_opponent).to({ angle: 359 }, 800, Phaser.Easing.Linear.None,true,0,-1,true);
 	o.searching_opponent.alpha = 0
@@ -473,6 +497,7 @@ var create_main = () => {
 		message: "dev - l4",
 		taille: 100,
 		police: 'police_yellow',
+		v:false,
 	}
 
 	interface.player_roll_p = {
@@ -482,6 +507,7 @@ var create_main = () => {
 		a: 1,
 		flag: true,
 		g: game,
+		v:false,
 	}
 
 	interface.player_points_p = {
@@ -491,6 +517,7 @@ var create_main = () => {
 		message: "50",
 		taille: 50,
 		police: 'police_red',
+		v:false,
 	}
 	let random_name = random(0,name_opponent.length-1)
 	interface.enemy_p = {
@@ -500,6 +527,7 @@ var create_main = () => {
 		message: name_opponent[random_name],
 		taille: 100,
 		police: 'police_yellow',
+		v:false,
 	}
 
 	interface.enemy_roll_p = {
@@ -509,6 +537,7 @@ var create_main = () => {
 		a: 1,
 		flag: true,
 		g: game,
+		v:false,
 	}
 
 	interface.enemy_points_p = {
@@ -518,16 +547,17 @@ var create_main = () => {
 		message: random(50,90000),
 		taille: 50,
 		police: 'police_red',
+		v:false,
 	}
 
 	interface.decount_p = {
 		g: game,
 		x: w2,
-		y: 1015,
+		y: -200,
 		message: "ready",
 		taille: 250,
 		police: 'police',
-		v: false,
+		v: true,
 	}
 
 	interface.puissance_p0 = {
@@ -543,6 +573,7 @@ var create_main = () => {
 		image:"puissance",
 		x: w-100,
 		y: 100,
+		v:false,
 	}
 
 
@@ -690,7 +721,6 @@ var create_main = () => {
 		dx:-w,
 	}
 	// À RÉTABLIR
-	o.background_top = new _obj(o.background_top_p)
 	//game.add.tween(o.background_start).to({ y: -4000 }, 900, Phaser.Easing.Linear.None, true, 500);
 
 	//_tr(o.transition_background_start_right,4)

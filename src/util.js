@@ -9,6 +9,12 @@ var wait = function (callback, duration) {
 	setTimeout(callback, duration);
 }
 
+var loop = function (callback, duration,number) {
+	for (var i = 0; i < number; i++){
+		wait(callback,i*duration)
+	}
+}
+
 return_delay = (tbegin, tend) => {
 	let tdelay = tend - tbegin
 	return tdelay

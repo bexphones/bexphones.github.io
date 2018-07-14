@@ -55,12 +55,11 @@ var preloader = {
 		this.game.load.image("cloud", "assets/cloud.png");
 		this.game.load.image("particle", "assets/particle.png");
 		this.game.load.image("circle_search_opponent", "assets/circle_search_opponent.png");
+		this.game.load.image("timer", "assets/timer.png");
 		this.game.load.image("restart", "assets/restart.png");
 		//spritesheet
 		this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
-		this.game.load.bitmapFont('police_red', 'fonts/font_red.png', 'fonts/font.fnt');
-		this.game.load.bitmapFont('police_yellow', 'fonts/font_yellow.png', 'fonts/font.fnt');
 		this.game.load.bitmapFont('police', 'fonts/font.png', 'fonts/font.fnt');
 	},
 	create: function () {
@@ -75,7 +74,7 @@ var preloader = {
 var game_first_screen = {
 	create: function () {
 		game.add.sprite(0,0,"background_start")
-		this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
+		this.game.time.events.add(20, function () { this.game.state.start("game_main"); }, this);
 	},
 };
 var game_main = {
@@ -87,7 +86,6 @@ var game_main = {
 		//o.background_main.scale.x = o.background_main.scale.y *.65 
 		o.background_top.scale.y = game.height/2270 
 		o.background_top.scale.y = game.height/2270 
-		o.searching_opponent.scale.y = game.height/2270 
 		o.filter_gray.scale.y = game.height/2270 
 		o.looser[0].scale.y = game.height/2270 
 		o.looser[1].scale.y = game.height/2270 
