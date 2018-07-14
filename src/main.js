@@ -60,6 +60,8 @@ var preloader = {
 		//spritesheet
 		this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
+		this.game.load.bitmapFont('police_red', 'fonts/font_red.png', 'fonts/font.fnt');
+		this.game.load.bitmapFont('police_yellow', 'fonts/font_yellow.png', 'fonts/font.fnt');
 		this.game.load.bitmapFont('police', 'fonts/font.png', 'fonts/font.fnt');
 	},
 	create: function () {
