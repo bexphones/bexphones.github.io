@@ -533,7 +533,7 @@ var create_main = () => {
 	interface.enemy_roll_p = {
 		image: "roll",
 		x: w2 * .145,
-		y: h*.10,
+		y: h*.105,
 		a: 1,
 		flag: true,
 		g: game,
@@ -543,7 +543,7 @@ var create_main = () => {
 	interface.enemy_points_p = {
 		g: game,
 		x: w2 * .145,
-		y: h*.08,
+		y: h*.085,
 		message: random(50,90000),
 		taille: 40,
 		police: 'police',
@@ -564,7 +564,7 @@ var create_main = () => {
 		g: game,
 		image:"level",
 		x: w2*.85,
-		y: h*.1,
+		y: h*.10,
 		v:false,
 	}
 
