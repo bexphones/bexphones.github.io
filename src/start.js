@@ -48,15 +48,63 @@ f.start_game = () => {
 		}
 		//o.circle_search_opponent.alpha = 0
 		for (let i = 0; i < o.cloud_length; i++) {
-			wait(() => { o.cloud[i].visible = true }, o.cloud_tw[0].d)
-			_tr(o.cloud_tw[i])
+			//wait(() => { o.cloud[i].visible = true }, o.cloud_tw[0].d)
+			//_tr(o.cloud_tw[i])
+		}
+		let tw_appears_enemy={
+			o:interface[0],
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
+		}
+		let tw_appears_progress={
+			o:interface.progress[0],
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
+		}
+		let tw_appears_roll={
+			o:interface.roll[0],
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
+		}
+		let tw_appears_puissance={
+			o:interface.puissance[0],
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
+		}
+		let tw_appears_points={
+			o:interface.points[0],
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
 		}
 		//À RÉTABLIR
 		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { _tr(tw_appears_enemy) }, o.cloud_tw[0].d)
+
 		wait(() => { interface.roll[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { _tr(tw_appears_roll) }, o.cloud_tw[0].d)
 		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
-		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { _tr(tw_appears_points) }, o.cloud_tw[0].d)
+
 		wait(() => { interface.puissance[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { _tr(tw_appears_puissance) }, o.cloud_tw[0].d)
+
+		wait(() => { interface.progress[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { _tr(tw_appears_progress) }, o.cloud_tw[0].d)
 	}
 
 	// compte à rebours pour lancer le jeu

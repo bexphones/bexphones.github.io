@@ -37,32 +37,33 @@ var create_main = () => {
 		g: game
 	}
 	o.background_main = new _obj(o.background_main_p)
-	o.mask = [];
-	o.mask = {
-		0: new Phaser.Rectangle(0, 0, 760, 150),
-		1: new Phaser.Rectangle(0, 0, 760, 150),
+	o.distance_0={
+		image: "distance_0",
+		x: (w2*.5)-20,
+		y: 1340,
+		a: 1,
+		anchorx : 0.5,
+		anchory : 1,
+		flag: true,
+		g: game,
+		v:false,
+	}
+	o.distance_1={
+		image: "distance_1",
+		x: (w2*1.5)-20,
+		y: 1340,
+		a: 1,
+		anchorx : 0.5,
+		anchory : 1,
+		flag: true,
+		g: game,
+		v:false,
 	}
 
-	o.mask[0].width = 0;
-	o.mask[1].width = 1;
-	//o.mask.centerX = 400
-	o.arrow = [];
-	o.arrow = {
-		0: game.add.image(0, 0, 'arrow0'),
-		1: game.add.image(w2 + 380, 0, 'arrow1'),
+	o.distance={
+		0:new _obj(o.distance_0),
+		1:new _obj(o.distance_1),
 	}
-	o.arrow[0].anchor.x = 0;
-	o.arrow[0].anchor.y = .5;
-	o.arrow[0].alpha = .2;
-	o.arrow[0].visible = false;
-	o.arrow[0].cropEnabled = true;
-	o.arrow[0].crop(o.mask[0]);
-	o.arrow[1].anchor.x = 0.5;
-	o.arrow[1].anchor.y = .5;
-	o.arrow[1].scale.x = 0;
-	o.arrow[1].alpha = 0;
-	o.arrow[1].visible = true;
-
 	o.shadow_p0 = {
 		g: game,
 		image:"shadow",
@@ -526,13 +527,22 @@ var create_main = () => {
 		y: h*.064,
 		message: name_opponent[random_name],
 		taille: 100,
-		police: 'police',
+		police: 'police_yellow',
 		v:true,
 	}
 
 	interface.enemy_roll_p = {
 		image: "roll",
 		x: w2 * .145,
+		y: h*.105,
+		a: 1,
+		flag: true,
+		g: game,
+		v:false,
+	}
+	interface.enemy_progress_p = {
+		image: "progress",
+		x: w2 * .5,
 		y: h*.105,
 		a: 1,
 		flag: true,
@@ -546,7 +556,7 @@ var create_main = () => {
 		y: h*.085,
 		message: random(50,90000),
 		taille: 40,
-		police: 'police',
+		police: 'police_yellow',
 		v:true,
 	}
 
@@ -594,6 +604,9 @@ var create_main = () => {
 			1:new _obj(interface.puissance_p1),
 		},
 		decount : new _text(interface.decount_p),
+		progress:{
+			0:new _obj(interface.enemy_progress_p),
+		},
 
 
 
@@ -604,9 +617,11 @@ var create_main = () => {
 		//	puissance_0 : new _obj(interface.puissance_p0),
 		//	puissance_1 : new _obj(interface.puissance_p1),
 	}
-	interface[0].visible = false
-	interface.roll[0].visible = false
-	interface.points[0].visible = false
+	interface[0].scale.y = 0
+	interface.roll[0].scale.y = 0
+	interface.points[0].scale.y = 0
+	interface.progress[0].scale.y = 0
+
 	interface.decount.count = 3
 	//on définit la puissance de l'enemy
 	if (interface.points[0].text > 0 && interface.points[0].text < 1000) {

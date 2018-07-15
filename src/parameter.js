@@ -21,6 +21,10 @@ var b = {
 var e = {//effects
 
 }
+//sounds
+var s = {
+
+}
 
 var interface = {
 

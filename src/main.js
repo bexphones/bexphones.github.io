@@ -33,6 +33,7 @@ var preloader = {
 		this.game.load.image("background_start", "assets/background_start.png");
 		this.game.load.image("background_main", "assets/background_main.png");
 		this.game.load.image("background_top", "assets/background_top.png");
+		this.game.load.image("progress", "assets/progress.png");
 		this.game.load.image("roll", "assets/roll.png");
 		this.game.load.image("gray_filter", "assets/gray_filter.png");
 		this.game.load.image("paper_pink", "assets/paper_pink.png");
@@ -45,8 +46,8 @@ var preloader = {
 		this.game.load.image("line", "assets/line.png");
 		this.game.load.image("flash", "assets/flash.png");
 		this.game.load.image("yellow", "assets/yellow.png");
-		this.game.load.image("arrow0", "assets/arrow0.png");
-		this.game.load.image("arrow1", "assets/arrow1.png");
+		this.game.load.image("distance_0", "assets/distance_0.png");
+		this.game.load.image("distance_1", "assets/distance_1.png");
 		this.game.load.image("searching_opponent", "assets/searching_opponent.png");
 		this.game.load.image("looser0", "assets/looser0.png");
 		this.game.load.image("looser1", "assets/looser1.png");
@@ -62,6 +63,8 @@ var preloader = {
 		this.game.load.bitmapFont('police_red', 'fonts/font_red.png', 'fonts/font.fnt');
 		this.game.load.bitmapFont('police_yellow', 'fonts/font_yellow.png', 'fonts/font.fnt');
 		this.game.load.bitmapFont('police', 'fonts/font.png', 'fonts/font.fnt');
+		//audio
+		this.game.load.audio("pop", "sounds/pop.ogg");
 	},
 	create: function () {
 		//this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
@@ -93,6 +96,8 @@ var game_main = {
 		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
 		wait(() => { e.arrow(game) }, 3000)
 		//game.input.onDown.add(() => { game.camera.shake(0.003, 100) }, this);
+		var pop=game.add.audio('pop');
+		wait(()=>{pop.play},4000)
 
 	},
 
@@ -103,6 +108,24 @@ var game_main = {
 		if(flag.start_game){
 			if (o.paper[0].flag) { o.paper[0].body.moves = true }
 			//f.collide(o.paper[0], o.sensor_opponent[0])
+			if ( o.paper[1].y > 1700 ) {
+				o.distance[1].visible =true
+				o.distance[1].scale.y =o.distance[1].scale.y -0.05
+				if (o.distance[1].scale.y < 0){
+					o.distance[1].visible =false
+				}
+			}
+			if ( o.paper[0].y > 1700 ) {
+				o.distance[0].visible =true
+				o.distance[0].scale.y =o.distance[0].scale.y -0.05
+				if (o.distance[0].scale.y < 0){
+					o.distance[0].visible =false
+				}
+			}
+
+
+
+
 
 			f.collide(o.paper[0], o.paper[0].fil, f.decision)
 			f.collide(o.paper[1], o.paper[1].fil, f.decision)
@@ -121,8 +144,6 @@ var game_main = {
 			}
 			f.anim_scale_pointer()
 			f.follow_text()
-			e.arrow_update(o.arrow[0])
-			e.arrow_update(o.arrow[1])
 			f.shadow_follow(o.paper[0],o.shadow_0)
 			f.shadow_follow(o.paper[1],o.shadow_1)
 		}
