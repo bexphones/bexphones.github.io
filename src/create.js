@@ -523,17 +523,17 @@ var create_main = () => {
 	interface.enemy_p = {
 		g: game,
 		x: w2 * .5,
-		y: 165,
+		y: h*.064,
 		message: name_opponent[random_name],
 		taille: 100,
-		police: 'police_yellow',
-		v:false,
+		police: 'police',
+		v:true,
 	}
 
 	interface.enemy_roll_p = {
 		image: "roll",
-		x: w2 * .5,
-		y: 45,
+		x: w2 * .145,
+		y: h*.10,
 		a: 1,
 		flag: true,
 		g: game,
@@ -542,12 +542,12 @@ var create_main = () => {
 
 	interface.enemy_points_p = {
 		g: game,
-		x: w2 * .5,
-		y: 100,
+		x: w2 * .145,
+		y: h*.08,
 		message: random(50,90000),
-		taille: 50,
-		police: 'police_red',
-		v:false,
+		taille: 40,
+		police: 'police',
+		v:true,
 	}
 
 	interface.decount_p = {
@@ -562,15 +562,15 @@ var create_main = () => {
 
 	interface.puissance_p0 = {
 		g: game,
-		image:"puissance",
-		x: w2-100,
-		y: 100,
+		image:"level",
+		x: w2*.85,
+		y: h*.1,
 		v:false,
 	}
 
 	interface.puissance_p1 = {
 		g: game,
-		image:"puissance",
+		image:"level",
 		x: w-100,
 		y: 100,
 		v:false,
@@ -610,11 +610,13 @@ var create_main = () => {
 	interface.decount.count = 3
 	//on définit la puissance de l'enemy
 	if (interface.points[0].text > 0 && interface.points[0].text < 1000) {
-		interface.puissance[0].frame=0
+		//À RÉTABLIR
+		//interface.puissance[0].frame=0
 	}	
 
 	if (interface.points[0].text >= 1000 && interface.points[0].text < 50000) {
-		interface.puissance[0].frame=1
+		//À RÉTABLIR
+		//interface.puissance[0].frame=1
 	}	
 	if (interface.points[0].text >= 50000 && interface.points[0].text < 100000) {
 		interface.puissance[0].frame=2
@@ -720,13 +722,4 @@ var create_main = () => {
 		d:500,
 		dx:-w,
 	}
-	// À RÉTABLIR
-	//game.add.tween(o.background_start).to({ y: -4000 }, 900, Phaser.Easing.Linear.None, true, 500);
-
-	//_tr(o.transition_background_start_right,4)
-	//_tr(o.transition_background_start_left,5)
-
-
-	//o.shadow_1 = game.add.sprite(100,100,"cursor_palpitant") 
-
 }

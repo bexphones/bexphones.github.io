@@ -52,11 +52,11 @@ f.start_game = () => {
 			_tr(o.cloud_tw[i])
 		}
 		//À RÉTABLIR
-		//		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
-		//		wait(() => { interface.roll[0].visible = true }, o.cloud_tw[0].d)
-		//		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
-		//		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
-		//		wait(() => { interface.puissance[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { interface.roll[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { interface.points[0].visible = true }, o.cloud_tw[0].d)
+		wait(() => { interface.puissance[0].visible = true }, o.cloud_tw[0].d)
 	}
 
 	// compte à rebours pour lancer le jeu

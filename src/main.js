@@ -31,8 +31,6 @@ var preloader = {
 		//this.load.setPreloadSprite(loadingBar);
 		//tuto
 		this.game.load.image("background_start", "assets/background_start.png");
-		this.game.load.image("background_start_left", "assets/background_start_left.png");
-		this.game.load.image("background_start_right", "assets/background_start_right.png");
 		this.game.load.image("background_main", "assets/background_main.png");
 		this.game.load.image("background_top", "assets/background_top.png");
 		this.game.load.image("roll", "assets/roll.png");
@@ -53,12 +51,13 @@ var preloader = {
 		this.game.load.image("looser0", "assets/looser0.png");
 		this.game.load.image("looser1", "assets/looser1.png");
 		this.game.load.image("cloud", "assets/cloud.png");
+		this.game.load.image("level", "assets/level.png");
 		this.game.load.image("particle", "assets/particle.png");
 		this.game.load.image("circle_search_opponent", "assets/circle_search_opponent.png");
 		this.game.load.image("timer", "assets/timer.png");
 		this.game.load.image("restart", "assets/restart.png");
 		//spritesheet
-		this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
+		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
 		this.game.load.bitmapFont('police_red', 'fonts/font_red.png', 'fonts/font.fnt');
 		this.game.load.bitmapFont('police_yellow', 'fonts/font_yellow.png', 'fonts/font.fnt');
