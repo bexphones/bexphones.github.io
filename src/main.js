@@ -96,7 +96,6 @@ var game_main = {
 		o.looser[1].scale.y = game.height/2270 
 		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
 		wait(() => { e.arrow(game) }, 3000)
-		//game.input.onDown.add(() => { game.camera.shake(0.003, 100) }, this);
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
 		wait(()=>{pop.play()},o.cloud_tw[0].d+500)
