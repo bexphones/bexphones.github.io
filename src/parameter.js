@@ -1,5 +1,6 @@
 // si true montre la grille snap des enemis et render debug
-
+var pop;
+var clic;
 var flag = {
 	start_game: false,
 	heart:false,//pour éviter de lancer 2 x cette animation

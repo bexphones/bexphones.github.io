@@ -621,6 +621,7 @@ var create_main = () => {
 	interface.roll[0].scale.y = 0
 	interface.points[0].scale.y = 0
 	interface.progress[0].scale.y = 0
+	interface.puissance[0].scale.y = 0
 
 	interface.decount.count = 3
 	//on définit la puissance de l'enemy

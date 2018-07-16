@@ -64,6 +64,7 @@ var preloader = {
 		this.game.load.bitmapFont('police_yellow', 'fonts/font_yellow.png', 'fonts/font.fnt');
 		this.game.load.bitmapFont('police', 'fonts/font.png', 'fonts/font.fnt');
 		//audio
+		this.game.load.audio("clic", "sounds/clic.ogg");
 		this.game.load.audio("pop", "sounds/pop.ogg");
 	},
 	create: function () {
@@ -96,8 +97,9 @@ var game_main = {
 		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
 		wait(() => { e.arrow(game) }, 3000)
 		//game.input.onDown.add(() => { game.camera.shake(0.003, 100) }, this);
-		var pop=game.add.audio('pop');
-		wait(()=>{pop.play},4000)
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		wait(()=>{pop.play()},o.cloud_tw[0].d+500)
 
 	},
 

@@ -291,6 +291,7 @@ f.debug = (obj) => {
 
 //animation flash lorsqu'on clic
 f.show_flash = (p) => {
+	clic.play()
 	tw.flash = _tr(p)
 }
 
