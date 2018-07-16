@@ -98,7 +98,6 @@ var game_main = {
 		wait(() => { e.arrow(game) }, 3000)
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
-		wait(()=>{pop.play()},o.cloud_tw[0].d+500)
 
 	},
 

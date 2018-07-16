@@ -92,6 +92,7 @@ f.start_game = () => {
 			sx:1,
 		}
 		//À RÉTABLIR
+		wait(()=>{pop.play()},o.cloud_tw[0].d)
 		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
 		wait(() => { _tr(tw_appears_enemy) }, o.cloud_tw[0].d)
 
