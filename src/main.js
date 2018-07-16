@@ -79,7 +79,7 @@ var preloader = {
 var game_first_screen = {
 	create: function () {
 		game.add.sprite(0,0,"background_start")
-		this.game.time.events.add(20, function () { this.game.state.start("game_main"); }, this);
+		this.game.time.events.add(4000, function () { this.game.state.start("game_main"); }, this);
 	},
 };
 var game_main = {
