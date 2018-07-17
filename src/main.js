@@ -87,7 +87,7 @@ var game_first_screen = {
 var rank_screen = {
 	create: function () {
 		game.add.sprite(0,0,"rank")
-		this.game.time.events.add(4000, function () { this.game.state.start("game_main"); }, this);
+		this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
 	},
 };
 
