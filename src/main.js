@@ -54,6 +54,8 @@ var preloader = {
 		this.game.load.image("cloud", "assets/cloud.png");
 		this.game.load.image("level", "assets/level.png");
 		this.game.load.image("particle", "assets/particle.png");
+		this.game.load.image("roll_bondissant", "assets/roll_bondissant.png");
+		this.game.load.image("shadow_roll_bondissant", "assets/shadow_roll_bondissant.png");
 		this.game.load.image("timer", "assets/timer.png");
 		this.game.load.image("restart", "assets/restart.png");
 		//spritesheet
@@ -67,11 +69,8 @@ var preloader = {
 		this.game.load.audio("pop", "sounds/pop.ogg");
 	},
 	create: function () {
-		//this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
+		this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
 		this.game.time.events.add(1000, function () { this.game.state.start("game_first_screen"); }, this);
-
-
-
 	}
 };
 
@@ -79,6 +78,38 @@ var game_first_screen = {
 	create: function () {
 		game.add.sprite(0,0,"background_start")
 		this.game.time.events.add(4000, function () { this.game.state.start("rank_screen"); }, this);
+		f.create_game_first_screen();
+		o.progress_bg = game.add.graphics(0,0);
+		o.progress_bg.lineStyle(2, '0x000000');
+		o.progress_bg.beginFill('0x000000',1)
+		o.progress_bg.drawRoundedRect(100,500,300,27,10);
+		o.progress_bg.endFill()
+		o.progress_bg.beginFill('0x999999',1) //For drawing progress
+		o.progress = game.add.graphics(0,0);
+		o.progress.beginFill('0xffffff',1)
+		o.progress.clear()
+		o.decimal =.1
+		//o.progress.drawRoundedRect(101,501,298*percentDone,25,10);
+	},
+	update: function () {
+		let param={
+			a:.5,
+			b:w2+100,
+			c:"inconnue",
+			d:o.roll.y,
+		}
+		o.shadow_roll.scale.x = f.proportions(param)
+		co(o.shadow_roll.y)
+		co(f.proportions(param))
+		co(param.c)
+		o.shadow_roll.scale.y = o.shadow_roll.scale.x
+
+
+
+		//progress update
+		o.decimal = o.decimal + 0.01
+
+		o.progress.drawRoundedRect(101,501,300*o.decimal,27,10);
 	},
 };
 
@@ -86,6 +117,7 @@ var rank_screen = {
 	create: function () {
 		game.add.sprite(0,0,"rank")
 		this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
+		f.create_game_first_screen()
 	},
 };
 

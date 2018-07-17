@@ -329,4 +329,10 @@ f.decision = (obj1,obj2)=>{
 		co("touch")
 	}
 }
+f.proportions = (p)=>{
+	//p.a = p.b
+	//p.c = p.d
+	p.c= (p.a*p.d)/p.b
+	return p.c
 
+}

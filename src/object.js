@@ -54,3 +54,13 @@ _obj.prototype.an = function (...arg) {
 	this.anchor.x = arg[0]
 	this.anchor.y = arg[1]
 }
+
+_graph = function (p) {
+	p.g.add
+
+
+
+
+
+}
+

@@ -1,4 +1,50 @@
-var create_main = () => {
+
+f.create_game_first_screen = () => {
+	o.shadow_roll_p = {
+		image: "shadow_roll_bondissant",
+		x: w2,
+		y: h2+450,
+		a: 1,
+		flag: true,
+		g: game,
+	}
+	o.shadow_roll = new _obj(o.shadow_roll_p)
+	//o.shadow_roll.scale.x=.8
+	o.roll_p = {
+		image: "roll_bondissant",
+		x: w2,
+		y: h2+350,
+		a: 1,
+		flag: true,
+		g: game,
+	}
+	o.roll = new _obj(o.roll_p)
+	o.roll.scale.x=.8
+	o.roll.scale.y=1.5
+
+	tw_roll={
+		o:o.roll,
+		t:300,
+		d:0,
+		e:Phaser.Easing.Bounce.Out,
+		dx:w2,
+		dy:h2+200,
+		sx:1,
+		sy:1,
+		y:true,
+		i:-1,
+
+	}
+	_tr(tw_roll)
+
+
+
+
+
+}
+
+
+f.create_main = () => {
 	//pour reseter les drapeaux au lancement du jeu
 	flag.heart =false
 	o.background_start_p = {
@@ -474,31 +520,31 @@ var create_main = () => {
 	interface.player_p = {
 		g: game,
 		x: w2 * 1.5,
-		y: 165,
+		y: h*.064,
 		message: "dev - l4",
 		taille: 100,
-		police: 'police_yellow',
-		v:false,
+		police: 'police_red',
+		v:true,
 	}
 
 	interface.player_roll_p = {
 		image: "roll",
-		x: w2 * 1.5,
-		y: w *.01982,
+		x: w2 * 1.1,
+		y: h*.105,
 		a: 1,
 		flag: true,
 		g: game,
-		v:false,
+		v:true,
 	}
 
 	interface.player_points_p = {
 		g: game,
-		x: w2 * 1.5,
-		y: 100,
+		x: w2 * 1.1,
+		y: h*.085,
 		message: "50",
-		taille: 50,
+		taille: 40,
 		police: 'police_red',
-		v:false,
+		v:true,
 	}
 	let random_name = random(0,name_opponent.length-1)
 	interface.enemy_p = {

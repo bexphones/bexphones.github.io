@@ -2,7 +2,7 @@
 f.start_game = () => {
 
 	f.prompt();
-	create_main()
+	f.create_main()
 	//camera() // to zoom th game with keyboard up and down
 	//f.random_division(330)
 	co(o.opponent_actions)
