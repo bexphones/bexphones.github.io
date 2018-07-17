@@ -30,6 +30,7 @@ var preloader = {
 		//loadingBar.anchor.setTo(0.5,0.5);
 		//this.load.setPreloadSprite(loadingBar);
 		//tuto
+		this.game.load.image("rank", "assets/rank.png");
 		this.game.load.image("background_start", "assets/background_start.png");
 		this.game.load.image("background_main", "assets/background_main.png");
 		this.game.load.image("background_top", "assets/background_top.png");
@@ -79,9 +80,18 @@ var preloader = {
 var game_first_screen = {
 	create: function () {
 		game.add.sprite(0,0,"background_start")
+		this.game.time.events.add(4000, function () { this.game.state.start("rank_screen"); }, this);
+	},
+};
+
+var rank_screen = {
+	create: function () {
+		game.add.sprite(0,0,"rank")
 		this.game.time.events.add(4000, function () { this.game.state.start("game_main"); }, this);
 	},
 };
+
+
 var game_main = {
 	create: function () {
 		game.physics.arcade.gravity.y = 1000;
