@@ -15,7 +15,7 @@ var create_main = () => {
 		y: h2,
 		a: 1,
 		flag: true,
-		g: game
+		g: game,
 	}
 	o.background_start_right_p = {
 		image: "background_start_right",
@@ -23,7 +23,7 @@ var create_main = () => {
 		y: h2,
 		a: 1,
 		flag: true,
-		g: game
+		g: game,
 	}
 
 	o.background_main_p = {
@@ -34,7 +34,7 @@ var create_main = () => {
 		anchorx : 0,
 		anchory : 0,
 		flag: true,
-		g: game
+		g: game,
 	}
 	o.background_main = new _obj(o.background_main_p)
 	o.distance_0={
@@ -189,9 +189,6 @@ var create_main = () => {
 		i: -1,
 	}
 
-	//tw.click.yoyo(200,true)
-	//tw[0] = _tr(o.click_tw)
-
 	o.points_p0 = {
 		g: game,
 		x: w2 * .5,
@@ -240,24 +237,11 @@ var create_main = () => {
 		anchorx: .5,
 		anchory: 1,
 	}
-	//o.points = {
-	//    0: new _text(o.points_p0),
-	//    //1: new _obj(o.points_p1),
-	//}
 
 	o.paper[0].points = new _text(o.points_p0)
 	o.paper[0].fil = new _obj(o.fil_p0)
 	o.paper[1].points = new _text(o.points_p1)
 	o.paper[1].fil = new _obj(o.fil_p1)
-
-
-	//o.points[0].anchor.y = 1
-	//o.points[0].fil = new _obj(o.fill_p0)
-	//o.points[0].fil.anchor.y = 1
-	//o.points[0].fil.body.moves = true
-	//o.group_points_0 = game.add.group()
-	//o.group_points_0.add(o.points[0])
-	//o.group_points_0.add(o.points[0].fill)
 
 	o.background_top_p = {
 		image: "background_top",
@@ -269,7 +253,6 @@ var create_main = () => {
 		flag: true,
 		g: game
 	}
-	// à rétablir
 	o.background_top = new _obj(o.background_top_p)
 	o.flash_p0 = {
 		image: "flash",
@@ -326,7 +309,7 @@ var create_main = () => {
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
 	}
-	//f.show_flash(o.flash_tw_p)
+
 	o.looser_p0 = {
 		image: "looser0",
 		x: w2,
@@ -403,7 +386,6 @@ var create_main = () => {
 
 	}
 
-
 	o.searching_opponent =[] 
 	for (var i = 0; i < 8; i++){
 		o.searching_opponent[i]=game.add.sprite(w2*.5,h2*.75,"timer");
@@ -429,8 +411,6 @@ var create_main = () => {
 	}
 	loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
 
-	//o.circle_search_opponent = new _obj(o.circle_search_opponent_p)
-	//game.add.tween(o.circle_search_opponent).to({ angle: 359 }, 800, Phaser.Easing.Linear.None,true,0,-1,true);
 	o.searching_opponent.alpha = 0
 
 	o.searching_opponent.number = random(0, 2)
@@ -586,7 +566,6 @@ var create_main = () => {
 		v:false,
 	}
 
-
 	interface = {
 		0: new _text(interface.enemy_p),
 		1: new _text(interface.player_p),
@@ -607,15 +586,6 @@ var create_main = () => {
 		progress:{
 			0:new _obj(interface.enemy_progress_p),
 		},
-
-
-
-		//	_0: new _obj(interface.enemy_roll_p),
-		//	roll_1: new _obj(interface.player_roll_p),
-		//	points_0: new _text(interface.enemy_points_p),
-		//	points_1: new _text(interface.player_points_p),
-		//	puissance_0 : new _obj(interface.puissance_p0),
-		//	puissance_1 : new _obj(interface.puissance_p1),
 	}
 	interface[0].scale.y = 0
 	interface.roll[0].scale.y = 0
@@ -698,7 +668,6 @@ var create_main = () => {
 		}
 	}
 
-	//peut être supprimé
 	o.particle_p = {
 		image: "particle",
 		x: w2,
@@ -715,10 +684,6 @@ var create_main = () => {
 
 	localStorage.setItem("score", interface.points[1].text)
 	localStorage.getItem("name")
-	//interface[1].text = nn
-	//o.background_start_left = new _obj(o.background_start_left_p)
-	//o.background_start_right = new _obj(o.background_start_right_p)
-	//o.background_start = new _obj(o.background_start_p)
 
 	o.transition_background_start={
 		o:o.background_start,

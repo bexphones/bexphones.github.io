@@ -46,7 +46,6 @@ var preloader = {
 		this.game.load.image("cursor_palpitant", "assets/cursor_palpitant.png");
 		this.game.load.image("line", "assets/line.png");
 		this.game.load.image("flash", "assets/flash.png");
-		this.game.load.image("yellow", "assets/yellow.png");
 		this.game.load.image("distance_0", "assets/distance_0.png");
 		this.game.load.image("distance_1", "assets/distance_1.png");
 		this.game.load.image("searching_opponent", "assets/searching_opponent.png");
@@ -55,7 +54,6 @@ var preloader = {
 		this.game.load.image("cloud", "assets/cloud.png");
 		this.game.load.image("level", "assets/level.png");
 		this.game.load.image("particle", "assets/particle.png");
-		this.game.load.image("circle_search_opponent", "assets/circle_search_opponent.png");
 		this.game.load.image("timer", "assets/timer.png");
 		this.game.load.image("restart", "assets/restart.png");
 		//spritesheet

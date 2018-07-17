@@ -6,6 +6,9 @@ var name_opponent =[
 	"devor",
 	"luc0554",
 	"amor",
+	"zozor",
+	"ginette",
+	"dark_vador",
 ]
 
 

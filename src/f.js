@@ -91,9 +91,6 @@ f.follow_text = (obj) => {
 	o.paper[1].points.y = o.paper[1].fil.y-55
 	o.paper[1].points.x = o.paper[1].fil.x
 	o.paper[1].points.text = Math.round(f.convert_points_to_100(o.paper[1].points.y))
-	//o.points[0].y = o.points[0].fil.y
-	//o.points[0].x = o.points[0].fil.x
-	//o.points[0].text = Math.round(o.points[0].y)
 }
 
 // stop l'enemi sur les obstacles
@@ -216,7 +213,6 @@ f.anim_heart_on_winner = (side)=>{
 			o.particle[i].scale.y = o.particle[i].scale.x 
 			game.add.tween(o.particle[i]).to({x:o.paper[num].points.x + random(-500,500),y:o.paper[num].points.y + random(-500,500)},time*3,anim,true,delay);
 			game.add.tween(o.particle[i]).to({alpha:0},time*4,anim,true,delay);
-			//wait(()=>{ o.particle[i].alpha = 0 },time*4 + delay)
 		}
 
 		game.add.tween(interface.roll[num].scale).to({x:1.5,y:1.5},time,anim,true,delay,3,true);
@@ -227,16 +223,6 @@ f.anim_heart_on_winner = (side)=>{
 		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},3*time)
 		let s=game.add.tween(o.paper[num].points.scale)
 		s.to({x:2,y:2},time*1.5,anim2)
-		//		s.to({x:8,y:8},time*1.5,anim2)
-		//		s.to({x:1,y:1},time,anim)
-		//		s.to({x:6,y:6},time,anim)
-		//		s.to({x:2,y:2},time*.2,anim)
-		//		s.start()
-		//		let t=game.add.tween(o.paper[num].points)
-		//		t.to({alpha:.8},time*1.5,anim2)
-		//		t.to({alpha:1},time,anim)
-		//		t.to({alpha:.1},time,anim)
-		//		t.to({alpha:1},time*.2,anim)
 		s.start()
 
 	}
@@ -252,7 +238,6 @@ f.anim_heart_on_winner = (side)=>{
 		}
 	}
 }
-
 
 // faire appaitre le fil pour annoncer le score
 f.show_points = (obj) => {
