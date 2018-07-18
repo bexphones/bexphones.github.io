@@ -52,6 +52,8 @@ var preloader = {
 		this.game.load.image("looser0", "assets/looser0.png");
 		this.game.load.image("looser1", "assets/looser1.png");
 		this.game.load.image("cloud", "assets/cloud.png");
+		this.game.load.image("play_button", "assets/play_button.png");
+		this.game.load.image("rank_button", "assets/rank_button.png");
 		this.game.load.image("level", "assets/level.png");
 		this.game.load.image("particle", "assets/particle.png");
 		this.game.load.image("roll_bondissant", "assets/roll_bondissant.png");
@@ -77,15 +79,14 @@ var preloader = {
 var game_first_screen = {
 	create: function () {
 		game.add.sprite(0,0,"background_start")
-		this.game.time.events.add(4000, function () { this.game.state.start("rank_screen"); }, this);
 		f.create_game_first_screen();
-		o.progress_bg = game.add.graphics(w2-150,h2);
+		o.progress_bg = game.add.graphics(w2-300,h2+400);
 		//o.progress_bg.lineStyle(2, '0x000000');
 		o.progress_bg.beginFill('0xfe3e63',.5)
 		o.progress_bg.drawRoundedRect(100,500,300,27,10);
 		o.progress_bg.endFill()
 		o.progress_bg.beginFill('0x999999',1) //For drawing progress
-		o.progress = game.add.graphics(w2-150,h2);
+		o.progress = game.add.graphics(w2-300,h2+400);
 		o.progress.beginFill('0xfe3e63',1)
 		o.progress.clear()
 		o.decimal =.1
@@ -99,9 +100,6 @@ var game_first_screen = {
 			d:o.roll.y,
 		}
 		o.shadow_roll.scale.x = f.proportions(param)
-		co(o.shadow_roll.y)
-		co(f.proportions(param))
-		co(param.c)
 		o.shadow_roll.scale.y = o.shadow_roll.scale.x
 
 		//progress update

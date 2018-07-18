@@ -24,7 +24,7 @@ f.create_game_first_screen = () => {
 
 	tw_roll={
 		o:o.roll,
-		t:300,
+		t:500,
 		d:0,
 		e:Phaser.Easing.Bounce.Out,
 		dx:w2,
@@ -36,6 +36,25 @@ f.create_game_first_screen = () => {
 
 	}
 	_tr(tw_roll)
+	o.button_play_p={
+		g:game,
+		callback: ()=>{game.state.start("game_main")},
+		image:"play_button",
+		x:w2,
+		y:h2,
+	}
+	o.button_play = new _bu(o.button_play_p)
+	o.button_rank_p={
+		g:game,
+		callback: ()=>{game.state.start("rank_screen")},
+		image:"rank_button",
+		x:w2,
+		y:h2*1.57,
+	}
+	o.button_rank = new _bu(o.button_rank_p)
+
+}
+f.create_rank=()=>{
 }
 
 
