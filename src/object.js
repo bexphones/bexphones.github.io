@@ -56,11 +56,38 @@ _obj.prototype.an = function (...arg) {
 }
 
 _graph = function (p) {
-	p.g.add
+	// for anchor .5 :) 
+	let x_adapted = p.x - p.width/2
+	let y_adapted = p.y - p.heigth/2
+	this.bg = p.g.add.graphics(x_adapted,y_adapted);
 
+	//Phaser.Graphics.call(this,x_adapted,y_adapted)
+	//this.lineStyle(2, '0x000000');
+	this.bg.beginFill('0xfe3e63',.5)
+	this.bg.drawRoundedRect(0,0,p.width,p.heigth,p.round);
+	this.bg.endFill()
+	this.main = p.g.add.graphics(x_adapted,y_adapted);
+	this.main.beginFill(p.color,1)
+	//this.main.clear()
+	this.main.drawRoundedRect(0,0,p.initial_value,p.heigth,p.round);
+	this.g = p.g
+	this.color = p.color
+	this.height = p.heigth
+	this.width = p.width
+	this.round = p.round
+	this.decimal =0
+}
 
+//_graph.prototype = Object.create(Phaser.Graphics.prototype);
 
+_graph.prototype.constructor = _graph
 
-
+_graph.prototype.anim = function(points){
+	this.decimal = this.decimal + 0.01
+	let progress_length = this.width*this.decimal
+	if(progress_length < this.width){
+		this.main.clear()
+		this.main.drawRoundedRect(0,0,progress_length,this.height,this.round);
+	}
 }
 

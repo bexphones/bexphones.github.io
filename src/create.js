@@ -26,11 +26,11 @@ f.create_game_first_screen = () => {
 		o:o.roll,
 		t:500,
 		d:0,
-		e:Phaser.Easing.Bounce.Out,
+		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
 		dy:h2+200,
-		sx:1,
-		sy:1,
+		sx:1.2,
+		sy:.7,
 		y:true,
 		i:-1,
 
@@ -560,6 +560,29 @@ f.create_main = () => {
 		police: 'police_red',
 		v:true,
 	}
+	interface.progress_p0 = {
+		g: game,
+		x:w2*.5,
+		y: h*.105,
+		color : '0xffe063',
+		alpha : .4,
+		width : 300,
+		heigth :30,
+		round : 10,
+		initial_value:10,
+	}
+	interface.progress_p1 = {
+		g: game,
+		x:w2*1.5,
+		y: h*.105,
+		color : '0xfe3e63',
+		alpha : .4,
+		width : 300,
+		heigth :30,
+		round : 10,
+		initial_value:100,
+	}
+
 	let random_name = random(0,name_opponent.length-1)
 	interface.enemy_p = {
 		g: game,
@@ -612,7 +635,7 @@ f.create_main = () => {
 
 	interface.puissance_p0 = {
 		g: game,
-		image:"level",
+		image:"level0",
 		x: w2*.85,
 		y: h*.10,
 		v:false,
@@ -620,10 +643,10 @@ f.create_main = () => {
 
 	interface.puissance_p1 = {
 		g: game,
-		image:"level",
-		x: w-100,
-		y: 100,
-		v:false,
+		image:"level1",
+		x: w2*.85+ w2,
+		y: h*.10,
+		v:true,
 	}
 
 	interface = {
@@ -644,13 +667,14 @@ f.create_main = () => {
 		},
 		decount : new _text(interface.decount_p),
 		progress:{
-			0:new _obj(interface.enemy_progress_p),
+			0:new _graph(interface.progress_p0),
+			1:new _graph(interface.progress_p1),
 		},
 	}
 	interface[0].scale.y = 0
 	interface.roll[0].scale.y = 0
 	interface.points[0].scale.y = 0
-	interface.progress[0].scale.y = 0
+	//interface.progress[0].scale.y = 0
 	interface.puissance[0].scale.y = 0
 
 	interface.decount.count = 3

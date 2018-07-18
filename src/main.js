@@ -54,7 +54,8 @@ var preloader = {
 		this.game.load.image("cloud", "assets/cloud.png");
 		this.game.load.image("play_button", "assets/play_button.png");
 		this.game.load.image("rank_button", "assets/rank_button.png");
-		this.game.load.image("level", "assets/level.png");
+		this.game.load.image("level0", "assets/level0.png");
+		this.game.load.image("level1", "assets/level1.png");
 		this.game.load.image("particle", "assets/particle.png");
 		this.game.load.image("roll_bondissant", "assets/roll_bondissant.png");
 		this.game.load.image("shadow_roll_bondissant", "assets/shadow_roll_bondissant.png");
@@ -184,6 +185,7 @@ var game_main = {
 			f.follow_text()
 			f.shadow_follow(o.paper[0],o.shadow_0)
 			f.shadow_follow(o.paper[1],o.shadow_1)
+			interface.progress[0].anim(200)
 		}
 	},
 	render: function () {
