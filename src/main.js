@@ -79,14 +79,14 @@ var game_first_screen = {
 		game.add.sprite(0,0,"background_start")
 		this.game.time.events.add(4000, function () { this.game.state.start("rank_screen"); }, this);
 		f.create_game_first_screen();
-		o.progress_bg = game.add.graphics(0,0);
-		o.progress_bg.lineStyle(2, '0x000000');
-		o.progress_bg.beginFill('0x000000',1)
+		o.progress_bg = game.add.graphics(w2-150,h2);
+		//o.progress_bg.lineStyle(2, '0x000000');
+		o.progress_bg.beginFill('0xfe3e63',.5)
 		o.progress_bg.drawRoundedRect(100,500,300,27,10);
 		o.progress_bg.endFill()
 		o.progress_bg.beginFill('0x999999',1) //For drawing progress
-		o.progress = game.add.graphics(0,0);
-		o.progress.beginFill('0xffffff',1)
+		o.progress = game.add.graphics(w2-150,h2);
+		o.progress.beginFill('0xfe3e63',1)
 		o.progress.clear()
 		o.decimal =.1
 		//o.progress.drawRoundedRect(101,501,298*percentDone,25,10);
@@ -104,12 +104,12 @@ var game_first_screen = {
 		co(param.c)
 		o.shadow_roll.scale.y = o.shadow_roll.scale.x
 
-
-
 		//progress update
 		o.decimal = o.decimal + 0.01
-
-		o.progress.drawRoundedRect(101,501,300*o.decimal,27,10);
+		let progress_length = 300*o.decimal
+		if(progress_length < 300){
+			o.progress.drawRoundedRect(101,501,progress_length,27,10);
+		}
 	},
 };
 
@@ -117,7 +117,6 @@ var rank_screen = {
 	create: function () {
 		game.add.sprite(0,0,"rank")
 		this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
-		f.create_game_first_screen()
 	},
 };
 

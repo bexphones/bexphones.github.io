@@ -36,11 +36,6 @@ f.create_game_first_screen = () => {
 
 	}
 	_tr(tw_roll)
-
-
-
-
-
 }
 
 
