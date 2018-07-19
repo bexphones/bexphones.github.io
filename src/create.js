@@ -24,7 +24,7 @@ f.create_game_first_screen = () => {
 
 	tw_roll={
 		o:o.roll,
-		t:500,
+		t:350,
 		d:0,
 		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
