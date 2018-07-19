@@ -63,7 +63,7 @@ _graph = function (p) {
 
 	//Phaser.Graphics.call(this,x_adapted,y_adapted)
 	//this.lineStyle(2, '0x000000');
-	this.bg.beginFill('0xfe3e63',.5)
+	this.bg.beginFill(p.color,.5)
 	this.bg.drawRoundedRect(0,0,p.width,p.heigth,p.round);
 	this.bg.endFill()
 	this.main = p.g.add.graphics(x_adapted,y_adapted);

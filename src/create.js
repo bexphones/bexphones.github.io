@@ -493,7 +493,8 @@ f.create_main = () => {
 	}
 	o.pre_sensor = new _obj(o.pre_sensor_p)
 
-	let ecart = o.sensor.y - o.pre_sensor.y-10
+	let difficulty = random(0,500)
+	let ecart = o.sensor.y - o.pre_sensor.y-difficulty
 	let minima = random(70, 180)
 	o.opponent_actions = []
 
