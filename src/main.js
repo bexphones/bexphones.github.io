@@ -127,8 +127,8 @@ var game_main = {
 		f.start_game()
 		o.background_main.scale.y = game.height/2270 
 		co(game.height)
-		o.background_main.scale.x = o.background_main.scale.y *.65 
-		o.background_top.scale.y = game.height/2270 
+		o.flash[0].scale.y = game.height/2270 
+		o.flash[1].scale.y = game.height/2270 
 		o.background_top.scale.y = game.height/2270 
 		o.filter_gray.scale.y = game.height/2270 
 		o.looser[0].scale.y = game.height/2270 
