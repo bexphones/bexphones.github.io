@@ -127,14 +127,14 @@ var game_main = {
 		f.start_game()
 		o.background_main.scale.y = game.height/2270 
 		co(game.height)
-		//o.background_main.scale.x = o.background_main.scale.y *.65 
-		//		o.background_top.scale.y = game.height/2270 
-		//		o.background_top.scale.y = game.height/2270 
-		//		o.filter_gray.scale.y = game.height/2270 
-		//		o.looser[0].scale.y = game.height/2270 
-		//		o.looser[1].scale.y = game.height/2270 
-		//		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
-		//		wait(() => { e.arrow(game) }, 3000)
+		o.background_main.scale.x = o.background_main.scale.y *.65 
+		o.background_top.scale.y = game.height/2270 
+		o.background_top.scale.y = game.height/2270 
+		o.filter_gray.scale.y = game.height/2270 
+		o.looser[0].scale.y = game.height/2270 
+		o.looser[1].scale.y = game.height/2270 
+		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
+		wait(() => { e.arrow(game) }, 3000)
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
 
