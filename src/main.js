@@ -9,7 +9,7 @@ var boot = {
 	create: function () {
 
 		//to scale the game
-		this.game.scale.scaleMode = Phaser.ScaleManager.EXACT_FIT;
+		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.game.scale.pageAlignHorizontally = true;
 		this.game.scale.pageAlignVertically = true;
 		//red color to see the background of the game itself
