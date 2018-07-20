@@ -149,9 +149,11 @@ f.anim_scale_pointer = () => {
 f.test_distance=(numA,numB)=>{
 	if(o.paper[numA].y > o.paper[numB].y){
 		f.show_looser(o.looser_tw[numB])
+		f.show_looser(o.looser_tw_text[numB])
 		wait(()=>{f.anim_heart_on_winner(numA)},t.show_heart)
 	}else{
 		f.show_looser(o.looser_tw[numA])
+		f.show_looser(o.looser_tw_text[numA])
 		wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
 	}
 }

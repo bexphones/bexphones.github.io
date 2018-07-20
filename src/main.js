@@ -51,7 +51,9 @@ var preloader = {
 		this.game.load.image("distance_1", "assets/distance_1.png");
 		this.game.load.image("searching_opponent", "assets/searching_opponent.png");
 		this.game.load.image("looser0", "assets/looser0.png");
+		this.game.load.image("looser_text0", "assets/looser_text0.png");
 		this.game.load.image("looser1", "assets/looser1.png");
+		this.game.load.image("looser_text1", "assets/looser_text1.png");
 		this.game.load.image("cloud", "assets/cloud.png");
 		this.game.load.image("play_button", "assets/play_button.png");
 		this.game.load.image("rank_button", "assets/rank_button.png");

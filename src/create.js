@@ -371,22 +371,42 @@ f.create_main = () => {
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
 	}
-
-	o.looser_p0 = {
-		image: "looser0",
-		x: w2,
+	o.looser_p0_text = {
+		image: "looser_text0",
+		x: w2*.5,
 		y: h2,
 		a: 0,
 		flag: true,
 		g: game,
 	}
-	o.looser_p1 = {
-		image: "looser1",
-		x: w2 ,
+	o.looser_p1_text = {
+		image: "looser_text1",
+		x: w2*1.5,
 		y: h2,
 		a: 0,
 		flag: true,
 		g: game,
+	}
+
+	o.looser_p0 = {
+		image: "looser0",
+		x: 0,
+		y: 0,
+		a: 0,
+		flag: true,
+		g: game,
+		anchorx:0,
+		anchory:0,
+	}
+	o.looser_p1 = {
+		image: "looser1",
+		x: 0,
+		y: 0,
+		a: 0,
+		flag: true,
+		g: game,
+		anchorx:0,
+		anchory:0,
 	}
 
 	o.looser = []
@@ -394,11 +414,46 @@ f.create_main = () => {
 		0: new _obj(o.looser_p0),
 		1: new _obj(o.looser_p1),
 	}
+	o.looser[0].text = new _obj(o.looser_p0_text)
+	o.looser[0].text.alpha =  0
+	o.looser[1].text = new _obj(o.looser_p1_text)
+	o.looser[1].text.alpha =  0
 	o.looser[0].alpha = 0
 	o.looser[1].alpha = 0
 	o.looser_tw=[]
 	o.looser_tw[0] = {
 		o: o.looser[0], //object
+		t: t.looser, //time
+		d: 0, //delay
+		a: 1, //alpha
+		e: Phaser.Easing.Exponential.Out, //Easing
+		//r: 85, //rotation
+		//sx :2, //scalex
+		//sy :4, //scaley
+		//dx :400, //displacementx
+		//dy :200, //displacementy 
+		//y: true, //yoyo,
+		//dyo: 30, //delay yoyo
+		//i: 0,
+	}
+	o.looser_tw_text=[]
+	o.looser_tw_text[0] = {
+		o: o.looser[0].text, //object
+		t: t.looser, //time
+		d: 0, //delay
+		a: 1, //alpha
+		e: Phaser.Easing.Exponential.Out, //Easing
+		//r: 85, //rotation
+		//sx :2, //scalex
+		//sy :4, //scaley
+		//dx :400, //displacementx
+		//dy :200, //displacementy 
+		//y: true, //yoyo,
+		//dyo: 30, //delay yoyo
+		//i: 0,
+	}
+	o.looser_tw_text[1] = {
+		o: o.looser[1].text, //object
 		t: t.looser, //time
 		d: 0, //delay
 		a: 1, //alpha
