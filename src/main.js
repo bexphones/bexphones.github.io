@@ -45,7 +45,8 @@ var preloader = {
 		this.game.load.image("line_collision", "assets/line_collision.png");
 		this.game.load.image("cursor_palpitant", "assets/cursor_palpitant.png");
 		this.game.load.image("line", "assets/line.png");
-		this.game.load.image("flash", "assets/flash.png");
+		this.game.load.image("flash0", "assets/flash0.png");
+		this.game.load.image("flash1", "assets/flash1.png");
 		this.game.load.image("distance_0", "assets/distance_0.png");
 		this.game.load.image("distance_1", "assets/distance_1.png");
 		this.game.load.image("searching_opponent", "assets/searching_opponent.png");
@@ -130,7 +131,7 @@ var game_main = {
 
 		o.flash[0].scale.y = game.height/2270 
 		o.flash[1].scale.y = game.height/2270 
-		
+
 		o.background_top.scale.y = game.height/2270 
 		o.background_top.scale.y = game.height/2270 
 		o.filter_gray.scale.y = game.height/2270 

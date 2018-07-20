@@ -311,26 +311,28 @@ f.create_main = () => {
 		anchorx : 0,
 		anchory : 0,
 		flag: true,
-		g: game
+		g: game,
 	}
 	o.background_top = new _obj(o.background_top_p)
 	o.flash_p0 = {
-		image: "flash",
-		x: w2 * .5,
-		y: 230,
-		a: 0,
+		image: "flash0",
+		x: 0,
+		y: 0,
+		a: 1,
+		anchorx : 0,
+		anchory : 0,
 		flag: true,
 		g: game,
-		anchory: 0,
 	}
 	o.flash_p1 = {
-		image: "flash",
-		x: w2 * 1.5,
-		y: 230,
-		a: 0,
+		image: "flash1",
+		x: 0,
+		y: 0,
+		a: 1,
+		anchorx : 0,
+		anchory : 0,
 		flag: true,
 		g: game,
-		anchory: 0,
 	}
 
 	o.flash = []
