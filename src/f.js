@@ -55,9 +55,12 @@ f.check_deep = (obj) => {
 	if (f.checkOverlap(obj, o.sensor)) {
 		if(obj.name == 0){
 			f.lock(obj,()=>{_tr(o.looser_tw[0])})
+			f.lock(o.looser[0].text,()=>{_tr(o.looser_tw_text[0])})
+
 			o.paper[0].gameover=true
 		}else{
 			f.lock(obj,()=>{_tr(o.looser_tw[1])})
+			f.lock(o.looser[1].text,()=>{_tr(o.looser_tw_text[1])})
 		}
 	}
 }
@@ -157,6 +160,7 @@ f.test_distance=(numA,numB)=>{
 		wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
 	}
 }
+
 
 
 /* lorsque button pressé 
@@ -294,7 +298,7 @@ f.shake=()=>{
 
 //montrer le perdant
 f.show_looser = (p) => {
-	wait(()=>{tw.looser = _tr(p)},t.show_looser)
+	wait(()=>{ _tr(p)},t.show_looser)
 }
 
 //ombre qui suit le joueur

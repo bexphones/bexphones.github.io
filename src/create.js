@@ -376,7 +376,7 @@ f.create_main = () => {
 		x: w2*.5,
 		y: h2,
 		a: 0,
-		flag: true,
+		flag: false,
 		g: game,
 	}
 	o.looser_p1_text = {
@@ -384,7 +384,7 @@ f.create_main = () => {
 		x: w2*1.5,
 		y: h2,
 		a: 0,
-		flag: true,
+		flag: false,
 		g: game,
 	}
 
@@ -443,6 +443,7 @@ f.create_main = () => {
 		d: 0, //delay
 		a: 1, //alpha
 		e: Phaser.Easing.Exponential.Out, //Easing
+		flag:false,
 		//r: 85, //rotation
 		//sx :2, //scalex
 		//sy :4, //scaley
@@ -458,6 +459,7 @@ f.create_main = () => {
 		d: 0, //delay
 		a: 1, //alpha
 		e: Phaser.Easing.Exponential.Out, //Easing
+		flag:false,
 		//r: 85, //rotation
 		//sx :2, //scalex
 		//sy :4, //scaley
