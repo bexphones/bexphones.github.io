@@ -70,7 +70,10 @@ var preloader = {
 		this.game.load.bitmapFont('police', 'fonts/font.png', 'fonts/font.fnt');
 		//audio
 		this.game.load.audio("clic", "sounds/clic.ogg");
+		this.game.load.audio("grow", "sounds/grow.ogg");
 		this.game.load.audio("pop", "sounds/pop.ogg");
+		this.game.load.audio("scroll", "sounds/scroll.ogg");
+		this.game.load.audio("score", "sounds/score.ogg");
 	},
 	create: function () {
 		this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
@@ -141,7 +144,9 @@ var game_main = {
 		wait(() => { e.arrow(game) }, 3000)
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
-
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		score = game.add.audio("score")
 	},
 
 	update: function () {

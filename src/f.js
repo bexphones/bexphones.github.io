@@ -125,6 +125,7 @@ f.get_duration = (pointer, obj) => {
 		f.show_points(o.paper[1])
 		obj.flag_test_duration = true // to lock the function
 		obj.flag_dont_move = true
+		grow.play()
 		co("long press",obj.name)
 		//f.test_behaviour(obj)
 	}
@@ -214,7 +215,7 @@ f.anim_heart_on_winner = (side)=>{
 			game.add.tween(o.particle[i]).to({x:o.paper[num].points.x + random(-500,500),y:o.paper[num].points.y + random(-500,500)},time*3,anim,true,delay);
 			game.add.tween(o.particle[i]).to({alpha:0},time*4,anim,true,delay);
 		}
-
+		wait(()=>{score.play()},delay)
 		game.add.tween(interface.roll[num].scale).to({x:1.5,y:1.5},time,anim,true,delay,3,true);
 		game.add.tween(interface.points[num].scale).to({x:2,y:2},time,anim,true,delay,3,true);
 		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},0)
@@ -244,6 +245,7 @@ f.anim_heart_on_winner = (side)=>{
 
 // faire appaitre le fil pour annoncer le score
 f.show_points = (obj) => {
+	scroll.play()
 	obj.fil.body.moves = true
 }
 

@@ -105,7 +105,6 @@ f.start_game = () => {
 		wait(() => { _tr(tw_appears_puissance) }, o.cloud_tw[0].d)
 
 		wait(() => { interface.progress[0].visible = true }, o.cloud_tw[0].d)
-		wait(() => { _tr(tw_appears_progress) }, o.cloud_tw[0].d)
 	}
 
 	// compte à rebours pour lancer le jeu
