@@ -251,7 +251,7 @@ f.anim_heart_on_winner = (side)=>{
 
 // faire appaitre le fil pour annoncer le score
 f.show_points = (obj) => {
-	scroll.play()
+	f.lock(scroll,()=>{scroll.play()})
 	obj.fil.body.moves = true
 }
 

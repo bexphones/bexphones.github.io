@@ -148,6 +148,7 @@ var game_main = {
 		clic=game.add.audio('clic');
 		grow = game.add.audio("grow")
 		scroll = game.add.audio("scroll")
+		scroll.flag =false
 		score = game.add.audio("score")
 	},
 
