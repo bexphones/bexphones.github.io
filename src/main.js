@@ -129,6 +129,7 @@ var rank_screen = {
 
 var game_main = {
 	create: function () {
+		game.stage.smoothed=false
 		game.physics.arcade.gravity.y = 1000;
 		f.start_game()
 		o.background_main.scale.y = game.height/2270 
