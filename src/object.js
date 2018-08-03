@@ -30,6 +30,12 @@ _obj = function (p) {
 			//			co(p.g.heigth,"here")
 		}
 	}
+
+	this.inputEnabled=true
+	this.input.enableDrag(true)
+	this.input.enableSnap(20,20,true,true)
+	this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
+	this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
 	p.g.add.existing(this)
 }
 

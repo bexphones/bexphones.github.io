@@ -80,7 +80,7 @@ f.collide = (obj, obj2, callback) => {
 }
 //converti les points dans un format 100
 f.convert_points_to_100=(position)=>{
-	let max =1255 //100
+	let max =h*0.58 //100
 	let value;
 	value=(position*100)/max
 	return value
@@ -346,4 +346,17 @@ f.proportions = (p)=>{
 	p.c= (p.a*p.d)/p.b
 	return p.c
 
+}
+
+f.arrondir_2_decimales=(num,division)=>{
+let n = Math.round((num/division)*100)/100
+return n
+}
+
+//affiche les infos de positions lorsqu'on déplace un objet
+f.debug_pos=(obj)=>{
+	let transformx = f.arrondir_2_decimales(obj.x,w)
+	let transformy = f.arrondir_2_decimales(obj.y,h)
+	t.debug.text="w*" + transformx + "  " + "h*" + transformy
+	co(obj.y)
 }

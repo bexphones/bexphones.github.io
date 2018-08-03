@@ -153,5 +153,53 @@ var _transition = (p) => { //transition,game,parameter
 	this.c()
 }
 
+var _a = (p) => { //transition,game,parameter
+	if (p.e == null) {
+		p.e = Phaser.Easing.Linear.None
+	}
+	if (p.i == null) {
+		p.i = 0
+	}
+
+	this.s = () => { // start tween
+		if (p.a != null) { // alpha
+			p.tw = game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i);
+		}
+		if (p.onstart != null) { // alpha
+			wait(p.onstart, p.d)
+		}
+		if (p.r != null) { //rotation
+			p.tw = game.add.tween(p.o).to({ angle: p.r }, p.t, p.e, true, p.d, p.i);
+		}
+		if (p.sx != null) { //scale
+			p.tw = game.add.tween(p.o.scale).to({ x: p.sx, y: p.sy }, p.t, p.e, true, p.d, p.i);
+		}
+		if (p.dx != null) { //displacement
+			p.tw = game.add.tween(p.o).to({ x: p.dx, y: p.dy }, p.t, p.e, true, p.d, p.i);
+		}
+		if (p.y != null) {
+			p.tw.yoyo(true, p.dyo)
+		}
+
+		this.c = () => {
+			if (p.c != null) {
+				let time_adapted = p.d + p.t + p.ctime
+				wait(p.callback, time_adapted)
+			}
+		}
+
+
+	}
+
+	this.p = () => { //pause
+		p.tw.pause()
+	}
+	this.r = () => { //resume
+		p.tw.resume()
+	}
+	this.s() //start the tween
+	this.c()
+}
+
 
 

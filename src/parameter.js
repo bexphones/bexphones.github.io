@@ -8,7 +8,8 @@ var flag = {
 	start_game: false,
 	heart:false,//pour éviter de lancer 2 x cette animation
 }
-
+var tp;
+var te={}
 var f = {}
 
 var o = {
@@ -29,6 +30,7 @@ var e = {//effects
 var s = {
 
 }
+
 
 var interface = {
 

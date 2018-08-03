@@ -43,7 +43,7 @@ f.create_game_first_screen = () => {
 		x:w2,
 		y:h2,
 	}
-	o.button_play = new _bu(o.button_play_p)
+	o.button_play = new _b(o.button_play_p)
 	o.button_rank_p={
 		g:game,
 		callback: ()=>{game.state.start("rank_screen")},
@@ -51,7 +51,8 @@ f.create_game_first_screen = () => {
 		x:w2,
 		y:h2*1.57,
 	}
-	o.button_rank = new _bu(o.button_rank_p)
+	o.button_rank = new _b(o.button_rank_p)
+
 
 }
 f.create_rank=()=>{
@@ -59,6 +60,8 @@ f.create_rank=()=>{
 
 
 f.create_main = () => {
+	f.start_config_main()
+	
 	//pour reseter les drapeaux au lancement du jeu
 	flag.heart =false
 	o.background_start_p = {
@@ -200,7 +203,7 @@ f.create_main = () => {
 	o.sensor_p = {
 		image: "line_collision",
 		x: w2,
-		y: 3655,
+		y: h*0.58+2400,
 		a: 1,
 		flag: true,
 		anchorx: .5,
@@ -298,9 +301,9 @@ f.create_main = () => {
 		anchory: 1,
 	}
 
-	o.paper[0].points = new _text(o.points_p0)
+	o.paper[0].points = new _t(o.points_p0)
 	o.paper[0].fil = new _obj(o.fil_p0)
-	o.paper[1].points = new _text(o.points_p1)
+	o.paper[1].points = new _t(o.points_p1)
 	o.paper[1].fil = new _obj(o.fil_p1)
 
 	o.background_top_p = {
@@ -710,22 +713,22 @@ f.create_main = () => {
 	}
 
 	interface = {
-		0: new _text(interface.enemy_p),
-		1: new _text(interface.player_p),
+		0: new _t(interface.enemy_p),
+		1: new _t(interface.player_p),
 		roll:{
 			0:new _obj(interface.enemy_roll_p),
 			1:new _obj(interface.player_roll_p),
 		},
 		points:{
-			0:new _text(interface.enemy_points_p),
-			1:new _text(interface.player_points_p),
+			0:new _t(interface.enemy_points_p),
+			1:new _t(interface.player_points_p),
 
 		},
 		puissance:{
 			0:new _obj(interface.puissance_p0),
 			1:new _obj(interface.puissance_p1),
 		},
-		decount : new _text(interface.decount_p),
+		decount : new _t(interface.decount_p),
 		progress:{
 			0:new _graph(interface.progress_p0),
 			1:new _graph(interface.progress_p1),
@@ -769,7 +772,7 @@ f.create_main = () => {
 		callback : restart,
 	}
 
-	interface.restart = new _bu(interface.restart_p)
+	interface.restart = new _b(interface.restart_p)
 	game.add.tween(interface.restart.scale).to({x:1.2,y:1.2},800,Phaser.Easing.Linear.None,true,0,-1,true);
 
 	o.cloud = []
@@ -847,4 +850,5 @@ f.create_main = () => {
 		d:500,
 		dx:-w,
 	}
+	t.debug = new _t(tp.debug)
 }
