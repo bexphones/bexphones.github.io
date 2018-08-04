@@ -1,3 +1,6 @@
+//affiche une boite de dialogue pour entrer le nom du joueur
+//TODO : 
+
 f.prompt=()=>{
 	//var name = prompt("Please enter your name", "Anonymous");if(name) {    console.log("Hello "+name+", nice to meet you!");}
 	//localStorage.setItem("username", name)
@@ -108,6 +111,7 @@ f.stop_opponent = (obj) => {
 	}
 }
 
+//dernier coup de l'enemi
 f.stop_opponent_on_the_last = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false && o.paper[0].gameover == false) {
@@ -270,6 +274,7 @@ f.stop_body = function () {
 	}
 }
 
+//objet qui suit le pointer
 f.follow_pointer = (obj) => {
 	obj.y = game.input.activePointer.y;
 }
@@ -340,6 +345,10 @@ f.decision = (obj1,obj2)=>{
 		co("touch")
 	}
 }
+
+//regle de trois c étant le nombre à rechercher
+// a=b
+// c=d
 f.proportions = (p)=>{
 	//p.a = p.b
 	//p.c = p.d
@@ -349,14 +358,17 @@ f.proportions = (p)=>{
 }
 
 f.arrondir_2_decimales=(num,division)=>{
-let n = Math.round((num/division)*100)/100
-return n
+	let n = Math.round((num/division)*100)/100
+	return n
 }
 
 //affiche les infos de positions lorsqu'on déplace un objet
+// seulement si drapeau debug est en true
 f.debug_pos=(obj)=>{
-	let transformx = f.arrondir_2_decimales(obj.x,w)
-	let transformy = f.arrondir_2_decimales(obj.y,h)
-	t.debug.text="w*" + transformx + "  " + "h*" + transformy
-	co(obj.y)
+	if (d.debug) {
+		t.debug.visible =true
+		let transformx = f.arrondir_2_decimales(obj.x,w)
+		let transformy = f.arrondir_2_decimales(obj.y,h)
+		t.debug.text="w*" + transformx + "  " + "h*" + transformy
+	}
 }

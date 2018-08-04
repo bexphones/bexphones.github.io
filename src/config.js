@@ -1,3 +1,9 @@
+//démarre la configuration de l'écran de démarrage 
+// doit etre renseigner après, sinon game n'est pas pris en compte
+f.start_config_first_screen=()=>{
+
+}
+
 f.start_config_main=()=>{
 	tp={
 		//in tp config
@@ -8,7 +14,7 @@ f.start_config_main=()=>{
 			message: "debug",
 			taille: 60,
 			police: 'police',
-			v:true,
+			v:false,
 		},
 	}
 

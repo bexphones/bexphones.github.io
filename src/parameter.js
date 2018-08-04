@@ -8,21 +8,35 @@ var flag = {
 	start_game: false,
 	heart:false,//pour éviter de lancer 2 x cette animation
 }
-var tp;
 var te={}
 var f = {}
 
+
+
+// animation
+var a={};
+
+// object
 var o = {
 	background_main: "obj",
 }
-var te = {
 
-}
+// object config
+var op={};
+
+// texte
+var te = {}
+// texte config
+var tp={};
+
+// buttons
 var b = {
 	play: "",
 	how_to: "",
 	timer: "",
 }
+// button config
+var bp={};
 var e = {//effects
 
 }
@@ -30,6 +44,11 @@ var e = {//effects
 var s = {
 
 }
+//drapeau
+var d={
+	debug : true,
+};
+
 
 
 var interface = {
@@ -42,6 +61,8 @@ var tw = {
 	1:"something",
 };
 var click_tw;
+//TODO : changer en time
+
 var t = {
 	searching_opponent: 500,
 	pointer_duration: 500,
@@ -53,41 +74,15 @@ var t = {
 	start_game: 1500 + 4000,
 	wait_end_game : 3000,
 }
+// pour renseigner un paramètre propre à un objet
 t.show_heart = t.show_looser - 500
 
+// calcul des dimensions de l'écran
 var h = 2270;
 var w = 1480;
-
 var h2 = h * .5;
-
 var w2 = w * .5;
 var w0 = Math.round(w * .19);
 var w4 = Math.round(w * .75);
 
-
-o.sensor_p = {
-	image: "line_collision",
-	x: w2,
-	y: 3655,
-	a: 1,
-	flag: true,
-	anchorx: .5,
-	anchory: 0,
-	//g: game,
-	physics: true,
-	immovable: true,
-}
-//o.sensor = new _obj(o.sensor_p)
-
-
-o.pre_sensor_p = {
-	image: "line_collision",
-	x: w2,
-	y: 2270 + 620,
-	a: 1,
-	flag: true,
-	//g: game,
-	physics: true,
-	immovable: true,
-}
 

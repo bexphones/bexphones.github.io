@@ -22,20 +22,50 @@ f.create_game_first_screen = () => {
 	o.roll.scale.x=.8
 	o.roll.scale.y=1.5
 
-	tw_roll={
+	a.roll_next={
 		o:o.roll,
-		t:350,
+		t:280,
+		d:0,
+		e:Phaser.Easing.Bounce.InOut,
+		dx:w2,
+		dy:h2+350,
+		sx:0.8,
+		sy:1.2,
+		//y:true,
+		//i:-1,
+		callback : ()=>{_a(a.roll)},
+		//tw : "roll_next",
+		c:true,	
+		ctime:0,
+
+
+
+	}
+
+	a.roll={
+		o:o.roll,
+		t:280,
 		d:0,
 		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
 		dy:h2+200,
 		sx:1.2,
 		sy:.7,
-		y:true,
-		i:-1,
+		//y:true,
+		//i:-1,
+		callback : ()=> {_a(a.roll_next)},
 
+		ctime:0,
+		//tw : "roll",
+		c: true,
 	}
-	_tr(tw_roll)
+
+
+
+	_a(a.roll)
+
+	//a.roll.onComplete.add(()=>{_a(a.roll_next)},this)
+
 	o.button_play_p={
 		g:game,
 		callback: ()=>{game.state.start("game_main")},
@@ -56,12 +86,48 @@ f.create_game_first_screen = () => {
 
 }
 f.create_rank=()=>{
+
+
+	//in op config
+	op.rank={
+		image: "rank",
+		x: 0,
+		y: 0,
+		a: 1,
+		flag: true,
+		g: game,
+		anchorx:0,
+		anchory:0,
+	}
+
+	o.rank = new _obj(op.rank)
+
+	bp.button_home={
+		callback: ()=>{game.state.start("game_main")},
+		image:"button_home",
+		x: w*.16,
+		y: h*.92,
+		g:game,
+	},
+		b.button_home = new _b(bp.button_home)
+
+	bp.button_next_screen={
+		callback: ()=>{game.state.start("game_main")},
+		image:"button_next_screen",
+		x: w*.86,
+		y: h*.92,
+		g:game,
+	},
+		b.button_next_screen = new _b(bp.button_next_screen)
+
+
+
 }
 
 
 f.create_main = () => {
 	f.start_config_main()
-	
+
 	//pour reseter les drapeaux au lancement du jeu
 	flag.heart =false
 	o.background_start_p = {

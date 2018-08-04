@@ -64,6 +64,8 @@ var preloader = {
 		this.game.load.image("shadow_roll_bondissant", "assets/shadow_roll_bondissant.png");
 		this.game.load.image("timer", "assets/timer.png");
 		this.game.load.image("restart", "assets/restart.png");
+		this.game.load.image("button_next_screen", "assets/button_next_screen.png");
+		this.game.load.image("button_home", "assets/button_home.png");
 		//spritesheet
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
@@ -103,7 +105,7 @@ var game_first_screen = {
 	update: function () {
 		let param={
 			a:.5,
-			b:w2+100,
+			b:w2+200,
 			c:"inconnue",
 			d:o.roll.y,
 		}
@@ -121,8 +123,9 @@ var game_first_screen = {
 
 var rank_screen = {
 	create: function () {
-		game.add.sprite(0,0,"rank")
-		this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
+		f.create_rank()
+
+		//this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
 	},
 };
 
@@ -155,25 +158,52 @@ var game_main = {
 	update: function () {
 
 
-
+		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
 		if(flag.start_game){
 			if (o.paper[0].flag) { o.paper[0].body.moves = true }
 			//f.collide(o.paper[0], o.sensor_opponent[0])
-			if ( o.paper[1].y > 1700 ) {
-				o.distance[1].visible =true
-				o.distance[1].scale.y =o.distance[1].scale.y -0.05
-				if (o.distance[1].scale.y < 0){
-					o.distance[1].visible =false
-				}
-			}
-			if ( o.paper[0].y > 1700 ) {
-				o.distance[0].visible =true
-				o.distance[0].scale.y =o.distance[0].scale.y -0.05
-				if (o.distance[0].scale.y < 0){
-					o.distance[0].visible =false
-				}
-			}
+			//if ( o.paper[1].y > distance_mask ) {
+			//	o.distance[1].visible =true
+			//	o.distance[1].scale.y =o.distance[1].scale.y -0.05
+			//	if (o.distance[1].scale.y < 0){
+			//		o.distance[1].visible =false
+			//	}
+			//}
+			//if ( o.paper[0].y > distance_mask ) {
+			//	o.distance[0].visible =true
+			//	o.distance[0].scale.y =o.distance[0].scale.y -0.05
+			//	if (o.distance[0].scale.y < 0){
+			//		o.distance[0].visible =false
+			//	}
+			//}
 
+			// affiche un mask variant suivant la position du papier
+			//100% = distance
+			//0% = distance
+			// => proportions
+			let distance_100= h*.58 - 1200  // papier = 2400 => 2400/2 = 1200 
+			let distance_0 =  h*58 // limite du jeu
+			let distance={
+				a : 1,
+				b : distance_100,
+				c: "inconnue",	
+				d: distance_0,
+			};
+			let dist = 1/(distance_0-distance_100)
+			//anime le mask suivant un distance
+			f.mask_scale=(obj,mask)=>{
+				if ( obj.y > distance_100 ) {
+					mask.visible=true
+					mask.scale.y=obj.y*dist
+					co("mask.scale.y :",mask.scale.y);
+					// pour éviter un scale négatif
+					if (mask.scale.y < 0){
+						mask.visible =false
+					}
+				}
+			}
+			f.mask_scale(o.paper[0],o.distance[0])
+			f.mask_scale(o.paper[1],o.distance[1])
 
 
 
@@ -182,19 +212,25 @@ var game_main = {
 			f.collide(o.paper[1], o.paper[1].fil, f.decision)
 			f.get_duration(game.input.activePointer, o.paper[1])
 			f.check()
-			//arrête et redémarre l'enemi sur les obstacles
+			//pour arrêter et redémarrer l'enemi sur les obstacles
 			// on met -2 car si o.length = 3 c'est à dire 0 1 2 donc l'avant dernier = 3-2
 			for (let i = 0; i < o.opponent_actions.length-2; i++) {
 				f.stop_opponent(o.sensor_opponent[i])
 			}
 			f.stop_opponent_on_the_last(o.sensor_opponent[o.sensor_opponent.length-1])
 			f.check_pre_sensor()
+			// pointer qui suit le mouvement
+
 			f.follow_pointer(o.click)
+
 			if (o.paper[0].flag == false) {
 				f.follow_text(o.paper[0])
 			}
+
+			// animation du pointer
 			f.anim_scale_pointer()
-			f.follow_text()
+
+			// ombre qui suit le papier lors de sa chute
 			f.shadow_follow(o.paper[0],o.shadow_0)
 			f.shadow_follow(o.paper[1],o.shadow_1)
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width

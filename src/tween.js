@@ -132,9 +132,12 @@ var _transition = (p) => { //transition,game,parameter
 		if (p.y != null) {
 			p.tw.yoyo(true, p.dyo)
 		}
+		// temps additionel pour onComplete
+		p.c == null ? p.ctime = 0 : p.ctime = p.ctime;
 
 		this.c = () => {
 			if (p.c != null) {
+				co
 				let time_adapted = p.d + p.t + p.ctime
 				wait(p.callback, time_adapted)
 			}
@@ -183,6 +186,8 @@ var _a = (p) => { //transition,game,parameter
 
 		this.c = () => {
 			if (p.c != null) {
+				co("camarche :");
+				
 				let time_adapted = p.d + p.t + p.ctime
 				wait(p.callback, time_adapted)
 			}
