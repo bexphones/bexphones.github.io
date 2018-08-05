@@ -177,31 +177,6 @@ var game_main = {
 			//	}
 			//}
 
-			// affiche un mask variant suivant la position du papier
-			//100% = distance
-			//0% = distance
-			// => proportions
-			let distance_100= h*.58 - 1200  // papier = 2400 => 2400/2 = 1200 
-			let distance_0 =  h*58 // limite du jeu
-			let distance={
-				a : 1,
-				b : distance_100,
-				c: "inconnue",	
-				d: distance_0,
-			};
-			let dist = 1/(distance_0-distance_100)
-			//anime le mask suivant un distance
-			f.mask_scale=(obj,mask)=>{
-				if ( obj.y > distance_100 ) {
-					mask.visible=true
-					mask.scale.y=obj.y*dist
-					co("mask.scale.y :",mask.scale.y);
-					// pour éviter un scale négatif
-					if (mask.scale.y < 0){
-						mask.visible =false
-					}
-				}
-			}
 			f.mask_scale(o.paper[0],o.distance[0])
 			f.mask_scale(o.paper[1],o.distance[1])
 

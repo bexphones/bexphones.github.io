@@ -372,3 +372,15 @@ f.debug_pos=(obj)=>{
 		t.debug.text="w*" + transformx + "  " + "h*" + transformy
 	}
 }
+
+//anime le mask suivant un distance
+f.mask_scale=(obj,mask)=>{
+	if ( obj.y > distance_100 ) {
+		mask.visible=true
+		mask.scale.y=1-obj.y*dist*50
+		// pour éviter un scale négatif
+		if (mask.scale.y < 0){
+			mask.visible =false
+		}
+	}
+}
