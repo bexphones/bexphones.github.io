@@ -17,6 +17,10 @@ f.start_config_main=()=>{
 			v:false,
 		},
 	}
+	d={
+		0:false,
+		1 : false,
+	}
 
 }
 

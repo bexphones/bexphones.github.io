@@ -68,7 +68,7 @@ var t = {
 	pointer_duration: 500,
 	start_opponent: 3000,
 	show_looser: 1000, //temps du délai de l'animation du looser
-	show_heart : "",
+	show_heart : 1000,//temps du délai de l'animation du gagnant
 	looser: 3000, //temps de l'animation pour l'apparition du looser
 	cloud: 500,
 	start_game: 1500 + 4000,
@@ -77,6 +77,7 @@ var t = {
 // pour renseigner un paramètre propre à un objet
 t.show_heart = t.show_looser - 500
 
+// ne sait pas pourquoi mais doit rester ainsi 
 // calcul des dimensions de l'écran
 var h = 2270;
 var w = 1480;
@@ -99,4 +100,6 @@ var w4 = Math.round(w * .75);
 			d: distance_0,
 		};
 		var dist = 1/(distance_0-distance_100)
+
+
 

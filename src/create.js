@@ -1,5 +1,30 @@
 
 f.create_game_first_screen = () => {
+	//in op config
+	op.background_start={
+		image: "background_start",
+		x: 0,
+		y: 0,
+		a: 1,
+		flag: true,
+		anchorx: 0,
+		anchory: 0,
+		g: game,
+	}
+
+	o.background_start = new _obj(op.background_start)
+	o.background_start.scale.y = game.height/2270 
+	// barre de progression
+	o.progress_bg = game.add.graphics(w2-150,h*.85);
+	o.progress_bg.beginFill('0xfe3e63',.5)
+	o.progress_bg.drawRoundedRect(0,0,300,27,10);
+	o.progress_bg.endFill()
+	o.progress_bg.beginFill('0x999999',1) //For drawing progress
+	o.progress = game.add.graphics(w2-150,h*.85);
+	o.progress.anchor.x=.5
+	o.progress.beginFill('0xfe3e63',1)
+	o.progress.clear()
+	o.decimal =.1
 	o.shadow_roll_p = {
 		image: "shadow_roll_bondissant",
 		x: w2,
@@ -68,7 +93,7 @@ f.create_game_first_screen = () => {
 
 	o.button_play_p={
 		g:game,
-		callback: ()=>{game.state.start("game_main")},
+		callback: ()=>{game.state.start("game_main"),clic.play()},
 		image:"play_button",
 		x:w2,
 		y:h2,
@@ -76,14 +101,12 @@ f.create_game_first_screen = () => {
 	o.button_play = new _b(o.button_play_p)
 	o.button_rank_p={
 		g:game,
-		callback: ()=>{game.state.start("rank_screen")},
+		callback: ()=>{game.state.start("rank_screen"),clic.play()},
 		image:"rank_button",
 		x:w2,
 		y:h2*1.57,
 	}
 	o.button_rank = new _b(o.button_rank_p)
-
-
 }
 f.create_rank=()=>{
 
@@ -103,7 +126,7 @@ f.create_rank=()=>{
 	o.rank = new _obj(op.rank)
 
 	bp.button_home={
-		callback: ()=>{game.state.start("game_main")},
+		callback: ()=>{game.state.start("game_main"),clic.play()},
 		image:"button_home",
 		x: w*.16,
 		y: h*.92,
@@ -112,7 +135,7 @@ f.create_rank=()=>{
 		b.button_home = new _b(bp.button_home)
 
 	bp.button_next_screen={
-		callback: ()=>{game.state.start("game_main")},
+		callback: ()=>{game.state.start("game_main"),clic.play()},
 		image:"button_next_screen",
 		x: w*.86,
 		y: h*.92,
@@ -426,7 +449,7 @@ f.create_main = () => {
 		dyo: 30, //delay yoyo
 		c: true,
 		callback : ()=> {o.flash[0].flag=false},
-		
+
 		//i: 0,
 	}
 	o.flash_tw_p1 = {
@@ -889,7 +912,7 @@ f.create_main = () => {
 	o.particle_p = {
 		image: "particle",
 		x: w2,
-		y: h,
+		y: h*2,
 		flag: true,
 		g: game,
 	}

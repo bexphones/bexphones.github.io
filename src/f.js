@@ -225,19 +225,13 @@ f.anim_heart_on_winner = (side)=>{
 			game.add.tween(o.particle[i]).to({x:o.paper[num].points.x + random(-500,500),y:o.paper[num].points.y + random(-500,500)},time*3,anim,true,delay);
 			game.add.tween(o.particle[i]).to({alpha:0},time*4,anim,true,delay);
 		}
-		wait(()=>{score.play()},delay)
-		game.add.tween(interface.roll[num].scale).to({x:1.5,y:1.5},time,anim,true,delay,3,true);
-		game.add.tween(interface.points[num].scale).to({x:2,y:2},time,anim,true,delay,3,true);
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},0)
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},time)
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},2*time)
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},3*time)
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},4*time)
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},5*time)
-		wait(()=>{interface.points[num].text = parseInt(interface.points[num].text) +100},6*time)
-		let s=game.add.tween(o.paper[num].points.scale)
-		s.to({x:2,y:2},time*1.5,anim2)
-		s.start()
+		score.play()
+		wait( ()=> {score.play()},250)
+		wait( ()=> {score.play()},500)
+		wait( ()=> {score.play()},750)
+		wait( ()=> {score.play()},1000)
+		game.add.tween(interface.roll[num].scale).to({x:1.5,y:1.5},time,anim,true,delay,5,true);
+		game.add.tween(interface.points[num].scale).to({x:1.5,y:1.5},time,anim,true,delay,5,true);
 
 	}
 	if(flag.heart==false){ //pour éviter de lancer 2 x cette animation
@@ -245,13 +239,25 @@ f.anim_heart_on_winner = (side)=>{
 		if (side == 0){
 			co("anim winner 0")
 			anim_winner(0)
+			wait( ()=> {d[0]=true},time)
 		}
 		if (side == 1){
 			co("anim winner 1")
 			anim_winner(1)
+			wait( ()=> {d[1]=true},time)
 		}
 	}
 }
+
+
+//animation des points => counter
+f.anim_score=(num)=>{
+	if(interface.points[num].text < 30000){
+	interface.points[num].text = parseInt(interface.points[num].text) +1
+
+	}
+}
+
 
 // faire appaitre le fil pour annoncer le score
 f.show_points = (obj) => {
@@ -386,3 +392,9 @@ f.mask_scale=(obj,mask)=>{
 		}
 	}
 }
+
+//adapter le sprite à l'écran
+f.adapt_to_screen=(obj)=>{
+	obj.scale.y=game.heigth/2280
+}
+

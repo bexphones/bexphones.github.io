@@ -66,6 +66,7 @@ var preloader = {
 		this.game.load.image("restart", "assets/restart.png");
 		this.game.load.image("button_next_screen", "assets/button_next_screen.png");
 		this.game.load.image("button_home", "assets/button_home.png");
+		this.game.load.image("background_start", "assets/background_start.png");
 		//spritesheet
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
@@ -87,29 +88,23 @@ var preloader = {
 
 var game_first_screen = {
 	create: function () {
-		game.add.sprite(0,0,"background_start")
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		score = game.add.audio("score")
+		h=game.height
 		f.create_game_first_screen();
-		o.progress_bg = game.add.graphics(w2-150,h2+800);
-		//o.progress_bg.lineStyle(2, '0x000000');
-		o.progress_bg.beginFill('0xfe3e63',.5)
-		o.progress_bg.drawRoundedRect(0,0,300,27,10);
-		o.progress_bg.endFill()
-		o.progress_bg.beginFill('0x999999',1) //For drawing progress
-		o.progress = game.add.graphics(w2-150,h2+800);
-		o.progress.anchor.x=.5
-		o.progress.beginFill('0xfe3e63',1)
-		o.progress.clear()
-		o.decimal =.1
-		//o.progress.drawRoundedRect(101,501,298*percentDone,25,10);
 	},
 	update: function () {
-		let param={
+// paramètre pour calucler la proportion de l'ombre du papier bondissant
+		var param_shadow={
 			a:.5,
 			b:w2+200,
 			c:"inconnue",
 			d:o.roll.y,
 		}
-		o.shadow_roll.scale.x = f.proportions(param)
+		o.shadow_roll.scale.x = f.proportions(param_shadow)
 		o.shadow_roll.scale.y = o.shadow_roll.scale.x
 
 		//progress update
@@ -123,6 +118,11 @@ var game_first_screen = {
 
 var rank_screen = {
 	create: function () {
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		score = game.add.audio("score")
 		f.create_rank()
 
 		//this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
@@ -132,11 +132,17 @@ var rank_screen = {
 
 var game_main = {
 	create: function () {
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		scroll.flag =false
+		score = game.add.audio("score")
+		h=game.height
 		game.physics.arcade.gravity.y = 1000;
 		f.start_game()
 		o.background_main.scale.y = game.height/2270 
 		co(game.height)
-
 		o.flash[0].scale.y = game.height/2270 
 		o.flash[1].scale.y = game.height/2270 
 
@@ -147,12 +153,6 @@ var game_main = {
 		o.looser[1].scale.y = game.height/2270 
 		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
 		wait(() => { e.arrow(game) }, 3000)
-		pop=game.add.audio('pop');
-		clic=game.add.audio('clic');
-		grow = game.add.audio("grow")
-		scroll = game.add.audio("scroll")
-		scroll.flag =false
-		score = game.add.audio("score")
 	},
 
 	update: function () {
@@ -161,41 +161,42 @@ var game_main = {
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
 		if(flag.start_game){
 			if (o.paper[0].flag) { o.paper[0].body.moves = true }
-			//f.collide(o.paper[0], o.sensor_opponent[0])
-			//if ( o.paper[1].y > distance_mask ) {
-			//	o.distance[1].visible =true
-			//	o.distance[1].scale.y =o.distance[1].scale.y -0.05
-			//	if (o.distance[1].scale.y < 0){
-			//		o.distance[1].visible =false
-			//	}
-			//}
-			//if ( o.paper[0].y > distance_mask ) {
-			//	o.distance[0].visible =true
-			//	o.distance[0].scale.y =o.distance[0].scale.y -0.05
-			//	if (o.distance[0].scale.y < 0){
-			//		o.distance[0].visible =false
-			//	}
-			//}
+			if(d[0]){
+				f.anim_score(0)
+			}
+			if(d[1]){
+				f.anim_score(1)
+			}
 
+
+
+
+			//anime le mask signifiant la fin proche de la limite du gameover
 			f.mask_scale(o.paper[0],o.distance[0])
 			f.mask_scale(o.paper[1],o.distance[1])
 
 
-
-
+			// collision entre le texte et le papier puis décision
 			f.collide(o.paper[0], o.paper[0].fil, f.decision)
 			f.collide(o.paper[1], o.paper[1].fil, f.decision)
+
+			// vérifie la durée de pression du pointer
 			f.get_duration(game.input.activePointer, o.paper[1])
+
+			// vérifier si le papier touche le dernier repère physique et donc par conséquent provoque un gameover
 			f.check()
+			
 			//pour arrêter et redémarrer l'enemi sur les obstacles
 			// on met -2 car si o.length = 3 c'est à dire 0 1 2 donc l'avant dernier = 3-2
 			for (let i = 0; i < o.opponent_actions.length-2; i++) {
 				f.stop_opponent(o.sensor_opponent[i])
 			}
 			f.stop_opponent_on_the_last(o.sensor_opponent[o.sensor_opponent.length-1])
-			f.check_pre_sensor()
-			// pointer qui suit le mouvement
 
+			// vérifie si on peut cliquer pour arrêter le papier
+			f.check_pre_sensor()
+
+			// pointer qui suit le mouvement
 			f.follow_pointer(o.click)
 
 			if (o.paper[0].flag == false) {

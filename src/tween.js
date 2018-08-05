@@ -186,8 +186,6 @@ var _a = (p) => { //transition,game,parameter
 
 		this.c = () => {
 			if (p.c != null) {
-				co("camarche :");
-				
 				let time_adapted = p.d + p.t + p.ctime
 				wait(p.callback, time_adapted)
 			}
