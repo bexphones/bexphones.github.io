@@ -99,25 +99,25 @@ f.follow_text = (obj) => {
 	o.paper[1].points.text = Math.round(f.convert_points_to_100(o.paper[1].points.y))
 }
 
-// stop l'enemi sur les obstacles
+// stop le papier 
 f.stop_opponent = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false) {
 			obj.flag = true
-			f.show_flash(o.flash_tw_p0)
+			f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			wait(() => { o.paper[0].body.moves = true }, random(200, 500))
 		}
 	}
 }
 
-//dernier coup de l'enemi
+//stop le papier => dernier coup 
 f.stop_opponent_on_the_last = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false && o.paper[0].gameover == false) {
 			f.show_points(o.paper[0])
 			obj.flag = true
-			f.show_flash(o.flash_tw_p0)
+			f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			o.paper[0].flag_dont_move = true
 			//f.test_behaviour(o.paper[0])
@@ -269,7 +269,7 @@ f.move_body = function () {
 f.stop_body = function () {
 	if (o.paper[1].flag == false) {
 		o.paper[1].body.moves = false
-		f.show_flash(o.flash_tw_p1)
+		f.lock(o.flash[1], ()=> {f.show_flash(o.flash_tw_p1)})
 
 	}
 }
@@ -292,7 +292,9 @@ f.debug = (obj) => {
 
 //animation flash lorsqu'on clic
 f.show_flash = (p) => {
+	// son du clic
 	clic.play()
+	// animation 
 	tw.flash = _tr(p)
 }
 

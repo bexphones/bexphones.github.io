@@ -169,7 +169,7 @@ f.create_main = () => {
 	o.distance_0={
 		image: "distance_0",
 		x: (w2*.5)-20,
-		y: 1340,
+		y: h*.58,
 		a: 1,
 		anchorx : 0.5,
 		anchory : 1,
@@ -180,7 +180,7 @@ f.create_main = () => {
 	o.distance_1={
 		image: "distance_1",
 		x: (w2*1.5)-20,
-		y: 1340,
+		y: h*.58,
 		a: 1,
 		anchorx : 0.5,
 		anchory : 1,
@@ -390,7 +390,7 @@ f.create_main = () => {
 		a: 1,
 		anchorx : 0,
 		anchory : 0,
-		flag: true,
+		flag: false,
 		g: game,
 	}
 	o.flash_p1 = {
@@ -400,7 +400,7 @@ f.create_main = () => {
 		a: 1,
 		anchorx : 0,
 		anchory : 0,
-		flag: true,
+		flag: false,
 		g: game,
 	}
 
@@ -424,6 +424,9 @@ f.create_main = () => {
 		//dy :200, //displacementy 
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
+		c: true,
+		callback : ()=> {o.flash[0].flag=false},
+		
 		//i: 0,
 	}
 	o.flash_tw_p1 = {
@@ -439,6 +442,8 @@ f.create_main = () => {
 		//dy :200, //displacementy 
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
+		c: true,
+		callback : ()=> {o.flash[1].flag=false},
 	}
 	o.looser_p0_text = {
 		image: "looser_text0",
