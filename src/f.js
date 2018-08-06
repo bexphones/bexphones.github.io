@@ -104,6 +104,7 @@ f.stop_opponent = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false) {
 			obj.flag = true
+			
 			f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			wait(() => { o.paper[0].body.moves = true }, random(200, 500))
@@ -117,6 +118,7 @@ f.stop_opponent_on_the_last = (obj) => {
 		if (obj.flag == false && o.paper[0].gameover == false) {
 			f.show_points(o.paper[0])
 			obj.flag = true
+			
 			f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			o.paper[0].flag_dont_move = true
@@ -275,6 +277,7 @@ f.move_body = function () {
 f.stop_body = function () {
 	if (o.paper[1].flag == false) {
 		o.paper[1].body.moves = false
+		
 		f.lock(o.flash[1], ()=> {f.show_flash(o.flash_tw_p1)})
 
 	}
@@ -301,7 +304,9 @@ f.show_flash = (p) => {
 	// son du clic
 	clic.play()
 	// animation 
-	tw.flash = _tr(p)
+	//TODO : 
+	
+	//tw.flash = _tr(p)
 }
 
 //faire trembler la camera
