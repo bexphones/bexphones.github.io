@@ -68,7 +68,7 @@ var t = {
 	pointer_duration: 500,
 	start_opponent: 3000,
 	show_looser: 1000, //temps du délai de l'animation du looser
-	show_heart : 1000,//temps du délai de l'animation du gagnant
+	show_heart : 2000,//temps du délai de l'animation du gagnant
 	looser: 3000, //temps de l'animation pour l'apparition du looser
 	cloud: 500,
 	start_game: 1500 + 4000,
