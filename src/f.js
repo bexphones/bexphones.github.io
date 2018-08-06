@@ -306,7 +306,7 @@ f.show_flash = (p) => {
 	// animation 
 	//TODO : 
 	
-	//tw.flash = _tr(p)
+	tw.flash = _tr(p)
 }
 
 //faire trembler la camera

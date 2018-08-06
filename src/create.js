@@ -69,22 +69,22 @@ f.create_game_first_screen = () => {
 
 	a.roll={
 		o:o.roll,
-		t:280,
+		//t:280,
+		t:9800,
 		d:0,
 		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
 		dy:h2+200,
 		sx:1.2,
 		sy:.7,
-		//y:true,
+		y:true,
 		//i:-1,
-		callback : ()=> {_a(a.roll_next)},
+		callback : ()=> {_a(a.roll_next,co("jhrjhjrhjzhjhjhrjh"))},
 
 		ctime:0,
 		//tw : "roll",
 		c: true,
 	}
-
 
 
 	_a(a.roll)

@@ -161,7 +161,7 @@ var _a = (p) => { //transition,game,parameter
 		p.e = Phaser.Easing.Linear.None
 	}
 	if (p.i == null) {
-		p.i = 0
+		p.i = false
 	}
 
 	this.s = () => { // start tween
@@ -186,7 +186,8 @@ var _a = (p) => { //transition,game,parameter
 
 		this.c = () => {
 			if (p.c != null) {
-				let time_adapted = p.d + p.t + p.ctime
+				let time_adapted;
+				p.y ? time_adapted = p.d +p.t*2 +p.ctime : time_adapted = p.d + p.t + p.ctime;
 				wait(p.callback, time_adapted)
 			}
 		}
