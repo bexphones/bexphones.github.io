@@ -69,8 +69,7 @@ f.create_game_first_screen = () => {
 
 	a.roll={
 		o:o.roll,
-		//t:280,
-		t:9800,
+		t:280,
 		d:0,
 		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
@@ -414,6 +413,7 @@ f.create_main = () => {
 		anchorx : 0,
 		anchory : 0,
 		flag: false,
+		ctime : 5,
 		g: game,
 	}
 	o.flash_p1 = {
@@ -424,6 +424,7 @@ f.create_main = () => {
 		anchorx : 0,
 		anchory : 0,
 		flag: false,
+		ctime : 5,
 		g: game,
 	}
 
