@@ -7,10 +7,10 @@ _t = function (p) {
 	p.g.add.existing(this);
 	p.v != null ? this.visible = p.v : this.visible = true
 	this.inputEnabled=true
-	this.input.enableDrag(true)
-	this.input.enableSnap(20,20,true,true)
-	this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
-	this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
+	d.debug && this.input.enableDrag(true)
+	d.dedug && this.input.enableSnap(20,20,true,true)
+	d.debug && this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
+	d.debug && this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
 
 };
 _t.prototype = Object.create(Phaser.BitmapText.prototype);

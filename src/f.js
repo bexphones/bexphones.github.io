@@ -99,6 +99,20 @@ f.follow_text = (obj) => {
 	o.paper[1].points.text = Math.round(f.convert_points_to_100(o.paper[1].points.y))
 }
 
+//animation du flash lorsque le joueur clic
+f.anim_flash=(obj,p,p2)=>{
+
+obj.tw2=(obj,p2)=>{
+	game.add.tween(p2.o).to({ alpha: p2.a }, p2.t, p2.e, true, p2.d, p2.i, p2.y);
+
+}
+
+
+	obj.tw =game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i, p.y);
+	obj.tw.onComplete.add( ()=> {obj.tw2(obj,p2)},this)
+}
+
+
 // stop le papier 
 f.stop_opponent = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
@@ -144,11 +158,11 @@ f.get_duration = (pointer, obj) => {
 f.anim_scale_pointer = () => {
 	if (o.paper[1].flag_dont_move) {
 		tw_click.pause();
-		if (o.click.scale.x < 10) {
-			o.click.scale.x = o.click.scale.x + .29
-			o.click.scale.y = o.click.scale.y + .29
+		if (o.click.scale.x < 3) {
+			o.click.scale.x = o.click.scale.x + .06
+			o.click.scale.y = o.click.scale.y + .06
 		}
-		if (o.click.scale.x > 9.5) {
+		if (o.click.scale.x > 2.5) {
 			o.click.visible = false
 		}
 	}

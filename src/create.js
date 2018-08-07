@@ -14,21 +14,10 @@ f.create_game_first_screen = () => {
 
 	o.background_start = new _obj(op.background_start)
 	o.background_start.scale.y = game.height/2270 
-	// barre de progression
-	o.progress_bg = game.add.graphics(w2-150,h*.85);
-	o.progress_bg.beginFill('0xfe3e63',.5)
-	o.progress_bg.drawRoundedRect(0,0,300,27,10);
-	o.progress_bg.endFill()
-	o.progress_bg.beginFill('0x999999',1) //For drawing progress
-	o.progress = game.add.graphics(w2-150,h*.85);
-	o.progress.anchor.x=.5
-	o.progress.beginFill('0xfe3e63',1)
-	o.progress.clear()
-	o.decimal =.1
 	o.shadow_roll_p = {
 		image: "shadow_roll_bondissant",
 		x: w2,
-		y: h2+450,
+		y: h2+950,
 		a: 1,
 		flag: true,
 		g: game,
@@ -38,7 +27,7 @@ f.create_game_first_screen = () => {
 	o.roll_p = {
 		image: "roll_bondissant",
 		x: w2,
-		y: h2+350,
+		y: h2+850,
 		a: 1,
 		flag: true,
 		g: game,
@@ -53,7 +42,7 @@ f.create_game_first_screen = () => {
 		d:0,
 		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
-		dy:h2+350,
+		dy:h2+850,
 		sx:0.8,
 		sy:1.2,
 		//y:true,
@@ -73,7 +62,7 @@ f.create_game_first_screen = () => {
 		d:0,
 		e:Phaser.Easing.Bounce.InOut,
 		dx:w2,
-		dy:h2+200,
+		dy:h2+600,
 		sx:1.2,
 		sy:.7,
 		y:true,
@@ -84,6 +73,8 @@ f.create_game_first_screen = () => {
 		//tw : "roll",
 		c: true,
 	}
+
+
 
 
 	_a(a.roll)
@@ -103,9 +94,29 @@ f.create_game_first_screen = () => {
 		callback: ()=>{game.state.start("rank_screen"),clic.play()},
 		image:"rank_button",
 		x:w2,
-		y:h2*1.57,
+		y:h2*1.40,
 	}
 	o.button_rank = new _b(o.button_rank_p)
+	o.button_play.scale.x=.95
+	o.button_play.scale.y=1.05
+
+
+	//in ap config
+	ap.button_play={
+		o: o.button_play,
+		e: Phaser.Easing.Linear.None,
+		i: -1, //number repeat
+		y: true, //yoyo
+		//a: 0, // alpha
+		t: 800, //time
+		//d:100, // delay
+		//r: 45, //rotation
+		//dx:100, //distance
+		//dy:200,
+		sx:1.05, //scale
+		sy:.95,
+	}
+	_a(ap.button_play)	
 }
 f.create_rank=()=>{
 
@@ -323,6 +334,9 @@ f.create_main = () => {
 		g: game,
 	}
 	o.click = new _obj(o.click_p)
+
+	o.click.height = 100
+	o.click.width = 100
 	o.click_tw = {
 		o: o.click, //object
 		t: 200, //time
@@ -447,10 +461,9 @@ f.create_main = () => {
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
 		c: true,
-		ctime : 5,
+		ctime : 15,
 		callback : ()=> {o.flash[0].flag=false},
-
-		//i: 0,
+		i: 0,
 	}
 	o.flash_tw_p1 = {
 		o: o.flash[1], //object
@@ -463,11 +476,12 @@ f.create_main = () => {
 		//sy :4, //scaley
 		//dx :400, //displacementx
 		//dy :200, //displacementy 
-		ctime : 5,
+		ctime : 15,
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
 		c: true,
 		callback : ()=> {o.flash[1].flag=false},
+		i:0,
 	}
 	o.looser_p0_text = {
 		image: "looser_text0",

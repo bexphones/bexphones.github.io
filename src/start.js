@@ -134,7 +134,7 @@ f.start_game = () => {
 
 
 
-	tw_click=game.add.tween(o.click.scale).to({ x: 2, y :2 }, 200, Phaser.Easing.Linear.None, true, 0, -1, true);
+	tw_click=game.add.tween(o.click.scale).to({ x: .4, y :.4 }, 200, Phaser.Easing.Linear.None, true, 0, -1, true);
 
 	//appel des differents events avec les time_converted spécifique
 	f.start_searching_opponent()
