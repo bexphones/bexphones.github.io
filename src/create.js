@@ -413,7 +413,6 @@ f.create_main = () => {
 		anchorx : 0,
 		anchory : 0,
 		flag: false,
-		ctime : 5,
 		g: game,
 	}
 	o.flash_p1 = {
@@ -424,7 +423,6 @@ f.create_main = () => {
 		anchorx : 0,
 		anchory : 0,
 		flag: false,
-		ctime : 5,
 		g: game,
 	}
 
@@ -449,6 +447,7 @@ f.create_main = () => {
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
 		c: true,
+		ctime : 5,
 		callback : ()=> {o.flash[0].flag=false},
 
 		//i: 0,
@@ -464,6 +463,7 @@ f.create_main = () => {
 		//sy :4, //scaley
 		//dx :400, //displacementx
 		//dy :200, //displacementy 
+		ctime : 5,
 		y: true, //yoyo,
 		dyo: 30, //delay yoyo
 		c: true,
