@@ -100,16 +100,9 @@ f.follow_text = (obj) => {
 }
 
 //animation du flash lorsque le joueur clic
-f.anim_flash=(obj,p,p2)=>{
-
-obj.tw2=(obj,p2)=>{
-	game.add.tween(p2.o).to({ alpha: p2.a }, p2.t, p2.e, true, p2.d, p2.i, p2.y);
-
-}
-
-
+f.anim_flash=(obj,p)=>{
 	obj.tw =game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i, p.y);
-	obj.tw.onComplete.add( ()=> {obj.tw2(obj,p2)},this)
+	obj.tw.onComplete.add( ()=> {o.flash[1].flag=false},this)
 }
 
 
@@ -291,8 +284,10 @@ f.move_body = function () {
 f.stop_body = function () {
 	if (o.paper[1].flag == false) {
 		o.paper[1].body.moves = false
-		
-		f.lock(o.flash[1], ()=> {f.show_flash(o.flash_tw_p1)})
+		//TODO : 
+		//f.lock(o.flash[1], ()=> {f.show_flash(o.flash_tw_p1)})
+
+		f.lock(o.flash[1], ()=> {f.anim_flash(o.flash[1],o.flash_tw_p1)})
 
 	}
 }
