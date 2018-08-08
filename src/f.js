@@ -101,6 +101,7 @@ f.follow_text = (obj) => {
 
 //animation du flash lorsque le joueur clic
 f.anim_flash=(obj,p)=>{
+	clic.play()
 	obj.tw =game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i, p.y);
 	obj.tw.onComplete.add( ()=> {o.flash[1].flag=false},this)
 }
@@ -112,7 +113,7 @@ f.stop_opponent = (obj) => {
 		if (obj.flag == false) {
 			obj.flag = true
 			
-			f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
+			//f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			wait(() => { o.paper[0].body.moves = true }, random(200, 500))
 		}
@@ -125,8 +126,8 @@ f.stop_opponent_on_the_last = (obj) => {
 		if (obj.flag == false && o.paper[0].gameover == false) {
 			f.show_points(o.paper[0])
 			obj.flag = true
-			
-			f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
+			scroll.play()	
+			//f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			o.paper[0].flag_dont_move = true
 			//f.test_behaviour(o.paper[0])
@@ -139,9 +140,10 @@ f.get_duration = (pointer, obj) => {
 	let lastDuration = pointer.duration;
 	if (lastDuration > t.pointer_duration && obj.flag_pre_sensor == true && obj.flag_test_duration == false && obj.flag == false) {
 		f.show_points(o.paper[1])
+		scroll.play()
 		obj.flag_test_duration = true // to lock the function
 		obj.flag_dont_move = true
-		grow.play()
+		wait(()=>{grow.play()},250)
 		co("long press",obj.name)
 		//f.test_behaviour(obj)
 	}
@@ -152,8 +154,8 @@ f.anim_scale_pointer = () => {
 	if (o.paper[1].flag_dont_move) {
 		tw_click.pause();
 		if (o.click.scale.x < 3) {
-			o.click.scale.x = o.click.scale.x + .06
-			o.click.scale.y = o.click.scale.y + .06
+			o.click.scale.x = o.click.scale.x + .08
+			o.click.scale.y = o.click.scale.y + .08
 		}
 		if (o.click.scale.x > 2.5) {
 			o.click.visible = false
@@ -270,7 +272,7 @@ f.anim_score=(num)=>{
 
 // faire appaitre le fil pour annoncer le score
 f.show_points = (obj) => {
-	f.lock(scroll,()=>{scroll.play()})
+	//f.lock(d.scroll[num],()=>{scroll.play()})
 	obj.fil.body.moves = true
 }
 
@@ -395,7 +397,7 @@ f.debug_pos=(obj)=>{
 	}
 }
 
-//anime le mask suivant un distance
+//anime le mask permettant de voir si la fin est proche suivant un distance
 f.mask_scale=(obj,mask)=>{
 	if ( obj.y > distance_100 ) {
 		mask.visible=true

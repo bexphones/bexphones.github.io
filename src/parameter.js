@@ -52,6 +52,10 @@ var s = {
 //drapeau
 var d={
 	debug : true, // pour déplacer les objets
+	scroll:{
+		0:false,
+		1:false,
+	},
 };
 
 
@@ -74,7 +78,7 @@ var t = {
 	start_opponent: 3000,
 	show_looser: 2000, //temps du délai de l'animation du looser
 	show_heart : 1500,//temps du délai de l'animation du gagnant
-	looser: 3000, //temps de l'animation pour l'apparition du looser
+	looser: 500, //temps de l'animation pour l'apparition du looser
 	cloud: 500,
 	start_game: 1500 + 4000,
 	wait_end_game : 3000,

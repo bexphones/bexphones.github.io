@@ -68,6 +68,7 @@ var preloader = {
 		this.game.load.image("button_next_screen", "assets/button_next_screen.png");
 		this.game.load.image("button_home", "assets/button_home.png");
 		this.game.load.image("background_start", "assets/background_start.png");
+		this.game.load.image("title_game", "assets/title_game.png");
 		//spritesheet
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
@@ -100,7 +101,7 @@ var game_first_screen = {
 	update: function () {
 // paramètre pour calucler la proportion de l'ombre du papier bondissant
 		var param_shadow={
-			a:.5,
+			a:.4,
 			b:w2+200,
 			c:"inconnue",
 			d:o.roll.y,
@@ -133,6 +134,7 @@ var rank_screen = {
 
 var game_main = {
 	create: function () {
+		grow.flag=false
 		this.game.stage.backgroundColor = '#ffe063';
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');

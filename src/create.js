@@ -14,10 +14,45 @@ f.create_game_first_screen = () => {
 
 	o.background_start = new _obj(op.background_start)
 	o.background_start.scale.y = game.height/2270 
+
+
+	//in op config
+	op.title_game={
+		image: "title_game",
+		x: w2,
+		y: -h,
+		a: 1,
+		flag: true,
+		g: game,
+	}
+
+	o.title_game = new _obj(op.title_game)
+
+
+	//in ap config
+	ap.title_game={
+		e: Phaser.Easing.Bounce.Out,
+		o: o.title_game,
+		i: 0, //number repeat
+		//y: true, //yoyo
+		//a: 0, // alpha
+		t: 600, //time
+		d: 400, // delay
+		//r: 45, //rotation
+		dx: w2, //distance
+		dy: h*.2+20,
+		//sx:1, //scale
+		//sy:1,
+	}
+	_a(ap.title_game)
+
+
+
+
 	o.shadow_roll_p = {
 		image: "shadow_roll_bondissant",
 		x: w2,
-		y: h2+950,
+		y: h*.85,
 		a: 1,
 		flag: true,
 		g: game,
@@ -27,7 +62,7 @@ f.create_game_first_screen = () => {
 	o.roll_p = {
 		image: "roll_bondissant",
 		x: w2,
-		y: h2+850,
+		y: h*.87,
 		a: 1,
 		flag: true,
 		g: game,
@@ -67,7 +102,7 @@ f.create_game_first_screen = () => {
 		sy:.7,
 		y:true,
 		//i:-1,
-		callback : ()=> {_a(a.roll_next,co("jhrjhjrhjzhjhjhrjh"))},
+		callback : ()=> {_a(a.roll_next)},
 
 		ctime:0,
 		//tw : "roll",
