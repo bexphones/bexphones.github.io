@@ -210,7 +210,7 @@ f.create_rank=()=>{
 
 f.create_main = () => {
 	//f.start_config_main()
-	co(d.debug,"debug")
+	co(d,"debug")
 
 	//pour reseter les drapeaux au lancement du jeu
 	flag.heart =false
@@ -357,7 +357,7 @@ f.create_main = () => {
 		a: 1,
 		flag: true,
 		anchorx: .5,
-		anchory: 0,
+		anchory: 1,
 		g: game,
 		physics: true,
 		immovable: true,
@@ -374,6 +374,8 @@ f.create_main = () => {
 		g: game,
 		physics: true,
 		immovable: true,
+		anchorx: .5,
+		anchory: 1,
 	}
 
 	o.click_p = {
@@ -425,7 +427,7 @@ f.create_main = () => {
 		physics: true,
 		gravity: true,
 		moves: false,
-		bounce: 1.0,
+		//bounce: 1.0,
 		anchorx: .5,
 		anchory: 1,
 	}
@@ -909,14 +911,16 @@ f.create_main = () => {
 		ex = 200 
 	}
 	if(interface.puissance[0].frame == 3){
-		ex = 100 
+		ex = 300 
 	}
 	if(interface.puissance[0].frame == 4){
-		ex = 5 
+		ex = 0 
 	}
 
 	difficulty = random(0,ex)
-	let ecart = o.sensor.y - o.pre_sensor.y-difficulty
+	//let ecart = o.sensor.y - o.pre_sensor.y-difficulty
+	let ecart = o.sensor.y - o.pre_sensor.y
+	//let ecart = o.sensor.y - o.pre_sensor.y+40
 	let minima = random(70, 180)
 	o.opponent_actions = []
 
@@ -950,11 +954,11 @@ f.create_main = () => {
 			g: game,
 			physics: true,
 			immovable: true,
+			anchory : 1,
+			anchorx : .5,
 		}
 		o.sensor_opponent[i] = new _obj(o.sensor_opponent_p[i])
 	}
-
-
 
 	var restart =()=>{game.state.start("game_main");interface.restart.visible=false}
 

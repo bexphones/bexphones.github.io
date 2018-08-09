@@ -86,7 +86,8 @@ f.collide = (obj, obj2, callback) => {
 f.convert_points_to_100=(position)=>{
 	let max =h*0.58 //100
 	let value;
-	value=(position*100)/max
+	//ne sait pas pourquoi il faut rajouter 4 pour avoir 100 ????
+	value=((position*100)/max)+4
 	return value
 }
 

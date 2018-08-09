@@ -188,6 +188,8 @@ var game_main = {
 			// vérifie la durée de pression du pointer
 			f.get_duration(game.input.activePointer, o.paper[1])
 
+			//f.collide(o.paper[1], o.sensor)
+
 			// vérifier si le papier touche le dernier repère physique et donc par conséquent provoque un gameover
 			f.check()
 			
@@ -220,8 +222,8 @@ var game_main = {
 		}
 	},
 	render: function () {
-		//f.debug(o.paper[1])
-		//f.debug(o.points[0].fil)
+		//f.debug(o.paper[0])
+		//f.debug(o.paper[0].fil)
 		f.debug(o.sensor)
 		f.debug(o.pre_sensor)
 

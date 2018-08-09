@@ -51,7 +51,7 @@ var s = {
 }
 //drapeau
 var d={
-	debug : false, // pour déplacer les objets
+	debug : true, // pour déplacer les objets
 	scroll:{
 		0:false,
 		1:false,
