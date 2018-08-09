@@ -118,7 +118,6 @@ var cat={
 	3:50000,
 	4:100000,
 }
-co(cat.length)
 
 var joker = random(1,4)
 var supplement = random(1,99999)
@@ -129,6 +128,9 @@ var numero = {
 	3:joker == 1 ? random(1,35000) : supplement,
 	4:joker == 1 ? random(1,555200) : supplement,
 }
+//difficulté du joueur plus la valeur est basse plus fort le joueur est
+var ex ;  
+var difficulty
 
 
 

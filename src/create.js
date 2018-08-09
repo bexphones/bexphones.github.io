@@ -368,7 +368,7 @@ f.create_main = () => {
 	o.pre_sensor_p = {
 		image: "line_collision",
 		x: w2,
-		y: 2270 + 620,
+		y: h*1.273,
 		a: 1,
 		flag: true,
 		g: game,
@@ -719,45 +719,6 @@ f.create_main = () => {
 
 	o.pre_sensor = new _obj(o.pre_sensor_p)
 
-	let difficulty = random(0,500)
-	let ecart = o.sensor.y - o.pre_sensor.y-difficulty
-	let minima = random(70, 180)
-	o.opponent_actions = []
-
-	//obstacles aléatoires avec ecart =distance à partir de laquelle on peut presser et maxima => distance pour la dernière touche
-	f.random_division = (maxima, minimus) => {
-		let [n, total, m = n] = [maxima, 0];
-		const [min, arr, range = min + min / (Math.random(0, 1) * 3)] = [minimus, []];
-
-		do {
-			let r = Math.random() * (range - min) + min; // random number in our range
-			n -= r; // subtract `min` from `n`
-			o.opponent_actions.push(Math.round(n > min ? r : m - total)); // push `r` or remainder 
-			total += o.opponent_actions[o.opponent_actions.length - 1]; // keep track of total
-		} while (n > min);
-	}
-	f.random_division(ecart, minima)
-
-	o.sensor_opponent_p = []
-	o.sensor_opponent = []
-	let summed_actions = 0
-
-	for (let i = 0; i < o.opponent_actions.length; i++) {
-		summed_actions += o.opponent_actions[i]
-
-		o.sensor_opponent_p[i] = {
-			image: "line_collision",
-			x: w2,
-			y: o.pre_sensor.y + summed_actions,
-			a: 1,
-			flag: false,
-			g: game,
-			physics: true,
-			immovable: true,
-		}
-		o.sensor_opponent[i] = new _obj(o.sensor_opponent_p[i])
-	}
-
 	interface.player_p = {
 		g: game,
 		x: w2 * 1.5,
@@ -907,7 +868,6 @@ f.create_main = () => {
 	interface.progress[0].bg.scale.y = 0
 	interface.puissance[0].scale.y = 0
 
-
 	//attribution de l'enemy en fonction du niveau du joueur 
 	f.attribute_enemy_fn_player=(category,num)=>{
 		co(interface.points[1].text)
@@ -921,7 +881,7 @@ f.create_main = () => {
 		f.attribute_enemy_fn_player(cat[i],numero[i]);
 	}
 
-	//on définit la puissance de l'enemy
+	//on définit la puissance de l'enemy en fonctions des points
 	if (interface.points[0].text > 0 && interface.points[0].text < 1000) {
 		interface.puissance[0].frame=0
 	}	
@@ -938,6 +898,63 @@ f.create_main = () => {
 	if (interface.points[0].text >= 50000 && interface.points[0].text < 900000) {
 		interface.puissance[0].frame=4
 	}	
+
+	if(interface.puissance[0].frame == 0){
+		ex = 500 
+	}
+	if(interface.puissance[0].frame == 1){
+		ex = 300 
+	}
+	if(interface.puissance[0].frame == 2){
+		ex = 200 
+	}
+	if(interface.puissance[0].frame == 3){
+		ex = 100 
+	}
+	if(interface.puissance[0].frame == 4){
+		ex = 5 
+	}
+
+	difficulty = random(0,ex)
+	let ecart = o.sensor.y - o.pre_sensor.y-difficulty
+	let minima = random(70, 180)
+	o.opponent_actions = []
+
+	//obstacles aléatoires avec ecart =distance à partir de laquelle on peut presser et maxima => distance pour la dernière touche
+	f.random_division = (maxima, minimus) => {
+		let [n, total, m = n] = [maxima, 0];
+		const [min, arr, range = min + min / (Math.random(0, 1) * 3)] = [minimus, []];
+
+		do {
+			let r = Math.random() * (range - min) + min; // random number in our range
+			n -= r; // subtract `min` from `n`
+			o.opponent_actions.push(Math.round(n > min ? r : m - total)); // push `r` or remainder 
+			total += o.opponent_actions[o.opponent_actions.length - 1]; // keep track of total
+		} while (n > min);
+	}
+	f.random_division(ecart, minima)
+
+	o.sensor_opponent_p = []
+	o.sensor_opponent = []
+	let summed_actions = 0
+
+	for (let i = 0; i < o.opponent_actions.length; i++) {
+		summed_actions += o.opponent_actions[i]
+
+		o.sensor_opponent_p[i] = {
+			image: "line_collision",
+			x: w2,
+			y: o.pre_sensor.y + summed_actions,
+			a: 1,
+			flag: false,
+			g: game,
+			physics: true,
+			immovable: true,
+		}
+		o.sensor_opponent[i] = new _obj(o.sensor_opponent_p[i])
+	}
+
+
 
 	var restart =()=>{game.state.start("game_main");interface.restart.visible=false}
 
