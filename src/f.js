@@ -126,6 +126,7 @@ f.stop_opponent = (obj) => {
 f.stop_opponent_on_the_last = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false && o.paper[0].gameover == false) {
+			co("stop_opponent_on_the_last :");
 			f.show_points(o.paper[0])
 			obj.flag = true
 			scroll.play()	
