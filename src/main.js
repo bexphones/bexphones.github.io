@@ -69,6 +69,7 @@ var preloader = {
 		this.game.load.image("button_home", "assets/button_home.png");
 		this.game.load.image("background_start", "assets/background_start.png");
 		this.game.load.image("title_game", "assets/title_game.png");
+		this.game.load.image("background_button_play", "assets/background_button_play.png");
 		//spritesheet
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont

@@ -32,14 +32,6 @@ f.start_game = () => {
 
 	f.convert_events_time()
 
-
-	// animation pour chercher l'enemi
-	f.start_searching_opponent = () => {
-		//game.add.tween(o.searching_opponent).to({ alpha: 1 }, t.searching_opponent, Phaser.Easing.Linear.None, true,0,2);
-		_tw(o.searching_opponent_tw,0)
-		//wait(()=>{tw[0].pause()},800)
-	}
-
 	//animation pour faire apparaitre le nom de l'enemi
 	f.start_cloud = () => {
 		for (var i = 0; i < o.searching_opponent.length; i++){
@@ -137,7 +129,6 @@ f.start_game = () => {
 	tw_click=game.add.tween(o.click.scale).to({ x: .4, y :.4 }, 200, Phaser.Easing.Linear.None, true, 0, -1, true);
 
 	//appel des differents events avec les time_converted spécifique
-	f.start_searching_opponent()
 	wait(f.start_cloud,ev.tc[0])
 	wait(f.start_timer,ev.tc[1])
 

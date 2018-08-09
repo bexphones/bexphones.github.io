@@ -3778,15 +3778,15 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.42666668"
-     inkscape:cx="39253.907"
-     inkscape:cy="5303.023"
+     inkscape:zoom="0.21333334"
+     inkscape:cx="43077.058"
+     inkscape:cy="4563.0866"
      inkscape:document-units="px"
-     inkscape:current-layer="g14573"
+     inkscape:current-layer="layer3"
      showgrid="false"
      showguides="false"
-     inkscape:window-width="2558"
-     inkscape:window-height="1058"
+     inkscape:window-width="1918"
+     inkscape:window-height="953"
      inkscape:window-x="0"
      inkscape:window-y="20"
      inkscape:window-maximized="1"
@@ -3993,7 +3993,7 @@
      inkscape:label="background"
      inkscape:groupmode="layer"
      id="layer1"
-     style="display:none">
+     style="display:inline">
     <rect
        style="opacity:0.43300003;fill:#ffffff;fill-opacity:0.11353712;fill-rule:nonzero;stroke:none;stroke-width:2.36910462;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect9681"
@@ -5730,7 +5730,7 @@
          id="g1522"
          style="fill:#ffcc00">
         <polygon
-           points="247.35,153 94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 "
+           points="58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 94.35,0 "
            id="polygon1520"
            style="fill:#ffcc00" />
       </g>
@@ -5744,7 +5744,7 @@
          style="fill:#ffcc00">
         <polygon
            id="polygon1526"
-           points="247.35,153 94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 "
+           points="58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 94.35,0 "
            style="fill:#ffcc00" />
       </g>
     </g>
@@ -5757,7 +5757,7 @@
          style="fill:#ffcc00">
         <polygon
            id="polygon4680"
-           points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 "
+           points="175.95,153 58.65,270.3 94.35,306 247.35,153 94.35,0 58.65,35.7 "
            style="fill:#ffcc00" />
       </g>
     </g>
@@ -9769,7 +9769,7 @@
          style="fill:#ffcc00;fill-opacity:1;stroke:#ffffff;stroke-width:5.58831549;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
         <polygon
            id="polygon5679"
-           points="244.364,453.818 267.636,407.273 290.909,407.273 267.636,453.818 "
+           points="290.909,407.273 267.636,453.818 244.364,453.818 267.636,407.273 "
            style="fill:#ffcc00;fill-opacity:1;stroke:#ffffff;stroke-width:5.58831549;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
         <path
            id="path5681-7"
@@ -10139,7 +10139,7 @@
          id="g5922">
         <polygon
            style="fill:#ffcc00;fill-opacity:1;stroke:#ffffff;stroke-width:5.58831549;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           points="290.909,407.273 267.636,453.818 244.364,453.818 267.636,407.273 "
+           points="244.364,453.818 267.636,407.273 290.909,407.273 267.636,453.818 "
            id="polygon5917" />
         <path
            inkscape:connector-curvature="0"
@@ -10754,7 +10754,7 @@
          id="g6059">
         <polygon
            style="fill:#ffcc00;fill-opacity:1;stroke:#ffffff;stroke-width:5.58831549;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           points="290.909,407.273 267.636,453.818 244.364,453.818 267.636,407.273 "
+           points="244.364,453.818 267.636,407.273 290.909,407.273 267.636,453.818 "
            id="polygon6054" />
         <path
            inkscape:connector-curvature="0"
@@ -11187,7 +11187,7 @@
          id="g6183">
         <polygon
            style="fill:#ffcc00;fill-opacity:1;stroke:#ffffff;stroke-width:5.58831549;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-           points="244.364,453.818 267.636,407.273 290.909,407.273 267.636,453.818 "
+           points="290.909,407.273 267.636,453.818 244.364,453.818 267.636,407.273 "
            id="polygon6179" />
         <path
            inkscape:connector-curvature="0"
@@ -27110,6 +27110,14 @@
      id="layer19"
      inkscape:label="hide"
      style="display:inline">
+    <circle
+       style="opacity:1;fill:#fe3e63;fill-opacity:1;stroke:none;stroke-width:2.31642699;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path5401"
+       cx="35582.812"
+       cy="-3421.1392"
+       r="240"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-weight:normal;font-size:97.72342682px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;display:inline;fill:#fe3e63;fill-opacity:1;stroke:none;stroke-width:2.44308567"
@@ -27582,7 +27590,9 @@
     <g
        transform="translate(2601.4549,-2884.1213)"
        id="g16433"
-       style="display:inline;opacity:1;fill:#ffe063;fill-opacity:1">
+       style="display:inline;opacity:1;fill:#ffe063;fill-opacity:1"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96">
       <text
          transform="scale(1.087425,0.91960366)"
          xml:space="preserve"
@@ -27622,6 +27632,40 @@
            sodipodi:role="line"
            id="tspan16203">Mania</tspan></text>
     </g>
+    <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       style="display:inline;opacity:1;fill:#ffe063;fill-opacity:1"
+       transform="translate(-1414.9055,1287.3047)"
+       id="g5399">
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffe063;fill-opacity:1;stroke-width:30"
+         d="m 36997.718,-4918.4439 c 117,0 210,93 210,210 0,117 -93,210 -210,210 -117,0 -210,-93 -210,-210 0,-117 93,-210 210,-210 z m 0,-30 c -132,0 -240,108 -240,240 0,132 108,240 240,240 132,0 240,-108 240,-240 0,-132 -108,-240 -240,-240 z"
+         id="path5390" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffe063;fill-opacity:1;stroke-width:30"
+         d="m 36937.718,-4828.4439 v 240 l 180,-120 z"
+         id="path5397" />
+    </g>
+    <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       style="display:inline;opacity:1;fill:#ffe063;fill-opacity:1"
+       transform="translate(-2996.9367,883.00779)"
+       id="g5409">
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffe063;fill-opacity:1;stroke-width:30"
+         d="m 36997.718,-4918.4439 c 117,0 210,93 210,210 0,117 -93,210 -210,210 -117,0 -210,-93 -210,-210 0,-117 93,-210 210,-210 z m 0,-30 c -132,0 -240,108 -240,240 0,132 108,240 240,240 132,0 240,-108 240,-240 0,-132 -108,-240 -240,-240 z"
+         id="path5403" />
+      <path
+         inkscape:connector-curvature="0"
+         style="fill:#ffe063;fill-opacity:1;stroke-width:30"
+         d="m 36937.718,-4828.4439 v 240 l 180,-120 z"
+         id="path5407" />
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -27660,7 +27704,7 @@
      inkscape:groupmode="layer"
      id="layer3"
      inkscape:label="texte"
-     style="display:none;opacity:1">
+     style="display:inline;opacity:1">
     <g
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
@@ -28329,6 +28373,13 @@
          inkscape:connector-curvature="0"
          d="m 38882.585,-3327.5235 c 18.529,0 33.553,13.3571 33.553,29.8285 0,27.2254 -60.673,63.3854 -60.673,63.3854 0,0 -60.669,-34.8568 -60.669,-63.3857 0,-20.5074 15.024,-29.8282 33.55,-29.8282 11.16,0 21.018,4.8658 27.119,12.3157 6.103,-7.4499 15.962,-12.3157 27.12,-12.3157 z"
          id="path16177" />
+      <path
+         id="path5416"
+         d="m 37338.36,-5581.918 c 21,0 38.027,15.1382 38.027,33.806 0,30.8558 -68.763,71.8375 -68.763,71.8375 0,0 -68.759,-39.5048 -68.759,-71.8379 0,-23.2419 17.027,-33.8056 38.024,-33.8056 12.648,0 23.82,5.5146 30.735,13.9579 6.917,-8.4433 18.09,-13.9579 30.736,-13.9579 z"
+         inkscape:connector-curvature="0"
+         style="display:inline;fill:#ffe063;fill-opacity:1;stroke-width:0.29620364"
+         inkscape:export-xdpi="96"
+         inkscape:export-ydpi="96" />
     </g>
     <g
        id="g16209"
@@ -28813,6 +28864,66 @@
          x="33876.266"
          id="tspan16569"
          sodipodi:role="line">ogames</tspan></text>
+    <g
+       style="display:inline;fill:#000000;fill-opacity:0"
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       transform="matrix(5.2586125,0,0,5.0960806,13220.919,-6819.6828)"
+       id="g5381">
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot5385"
+         style="fill:#000000;fill-opacity:0;stroke:none;font-family:Dyuthi;font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;letter-spacing:0px;word-spacing:0px;-inkscape-font-specification:Dyuthi;font-stretch:normal;font-variant:normal"><flowRegion
+           id="flowRegion5387"
+           style="fill:#000000;fill-opacity:0"><rect
+             id="rect5389"
+             width="689.42908"
+             height="238.64853"
+             x="43029.656"
+             y="-4498.979"
+             style="fill:#000000;fill-opacity:0" /></flowRegion><flowPara
+           id="flowPara5391" /></flowRoot>      <g
+         id="g5405"
+         transform="matrix(0.84045049,0,0,0.84045049,992.28218,118.84704)"
+         style="fill:#000000;fill-opacity:0">
+        <text
+           xml:space="preserve"
+           style="font-style:normal;font-weight:normal;font-size:5.10586262px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.42548856px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           x="5312.0239"
+           y="550.14471"
+           id="text5379"
+           inkscape:export-xdpi="90.452461"
+           inkscape:export-ydpi="90.452461"><tspan
+             sodipodi:role="line"
+             id="tspan5377"
+             x="5312.0239"
+             y="551.47107"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.6607933px;line-height:1.25;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0;stroke-width:0.42548856px" /><tspan
+             id="tspan5383"
+             sodipodi:role="line"
+             x="5312.0239"
+             y="568.42847"
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.6607933px;line-height:1.25;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0;stroke-width:0.42548856px">opponent</tspan></text>
+        <text
+           inkscape:export-ydpi="90.452461"
+           inkscape:export-xdpi="90.452461"
+           id="text5397"
+           y="548.01056"
+           x="5312.6382"
+           style="font-style:normal;font-weight:normal;font-size:5.10586262px;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:0;stroke:none;stroke-width:0.42548856px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.6607933px;line-height:1.25;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0;stroke-width:0.42548856px"
+             y="548.01056"
+             x="5312.6382"
+             id="tspan5393"
+             sodipodi:role="line">searching</tspan><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.6607933px;line-height:1.25;font-family:'Fredoka One';-inkscape-font-specification:'Fredoka One';text-align:center;text-anchor:middle;fill:#000000;fill-opacity:0;stroke-width:0.42548856px"
+             y="555.62915"
+             x="5312.6382"
+             sodipodi:role="line"
+             id="tspan5395" /></text>
+      </g>
+    </g>
   </g>
   <g
      inkscape:groupmode="layer"
@@ -29008,7 +29119,7 @@
      inkscape:groupmode="layer"
      id="layer15"
      inkscape:label="bacground_top"
-     style="display:none">
+     style="display:inline">
     <rect
        style="display:inline;opacity:1;fill:#ffe063;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.68540633;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect13996"
@@ -29047,7 +29158,7 @@
      inkscape:groupmode="layer"
      id="layer13"
      inkscape:label="players"
-     style="display:none">
+     style="display:inline">
     <g
        id="g14956"
        inkscape:export-xdpi="96"
@@ -29092,7 +29203,7 @@
          style="opacity:1;fill:#ffe063;fill-opacity:1;stroke:none;stroke-width:2.45132446;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     </g>
     <g
-       style="display:none"
+       style="display:inline"
        inkscape:label="players_opponent"
        id="layer14"
        inkscape:groupmode="layer"
@@ -31418,7 +31529,7 @@
      inkscape:groupmode="layer"
      id="layer20"
      inkscape:label="flash1"
-     style="display:inline">
+     style="display:none">
     <rect
        inkscape:export-ydpi="96"
        inkscape:export-xdpi="96"
@@ -31429,7 +31540,7 @@
        height="2128.125"
        width="693.75"
        id="rect8759"
-       style="display:inline;opacity:0.705;fill:#fe3e63;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.67521012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       style="display:inline;opacity:0.70499998;fill:#fe3e63;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.67521012;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   </g>
   <g
      inkscape:groupmode="layer"

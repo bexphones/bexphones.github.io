@@ -389,12 +389,12 @@ f.arrondir_2_decimales=(num,division)=>{
 //affiche les infos de positions lorsqu'on déplace un objet
 // seulement si drapeau debug est en true
 f.debug_pos=(obj)=>{
-	if (d.debug) {
+	//if (d.debug) {
 		t.debug.visible =true
 		let transformx = f.arrondir_2_decimales(obj.x,w)
 		let transformy = f.arrondir_2_decimales(obj.y,h)
 		t.debug.text="w*" + transformx + "  " + "h*" + transformy
-	}
+	//}
 }
 
 //anime le mask permettant de voir si la fin est proche suivant un distance

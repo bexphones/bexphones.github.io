@@ -30,12 +30,17 @@ _obj = function (p) {
 			//			co(p.g.heigth,"here")
 		}
 	}
-
 	this.inputEnabled=true
-	d.debug && this.input.enableDrag(true)
-	d.dedug && this.input.enableSnap(20,20,true,true)
-	d.debug && this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
-	d.debug && this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
+	co("ca")
+	if(d.debug == true){
+	this.input.enableDrag(true)
+	this.input.enableSnap(20,20,true,true)
+	this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
+	this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
+	
+	}
+		
+
 	p.g.add.existing(this)
 }
 

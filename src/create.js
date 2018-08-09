@@ -20,7 +20,7 @@ f.create_game_first_screen = () => {
 	op.title_game={
 		image: "title_game",
 		x: w2,
-		y: -h,
+		y: h*.2,
 		a: 1,
 		flag: true,
 		g: game,
@@ -28,19 +28,20 @@ f.create_game_first_screen = () => {
 
 	o.title_game = new _obj(op.title_game)
 
+	o.title_game.angle =-15
 
 	//in ap config
 	ap.title_game={
 		e: Phaser.Easing.Bounce.Out,
 		o: o.title_game,
-		i: 0, //number repeat
-		//y: true, //yoyo
+		i: -1, //number repeat
+		y: true, //yoyo
 		//a: 0, // alpha
-		t: 600, //time
+		t: 1200, //time
 		d: 400, // delay
-		//r: 45, //rotation
-		dx: w2, //distance
-		dy: h*.2+20,
+		r: 15, //rotation
+		//dx: w2, //distance
+		//dy: h*.2+20,
 		//sx:1, //scale
 		//sy:1,
 	}
@@ -52,7 +53,7 @@ f.create_game_first_screen = () => {
 	o.shadow_roll_p = {
 		image: "shadow_roll_bondissant",
 		x: w2,
-		y: h*.85,
+		y: h*.91,
 		a: 1,
 		flag: true,
 		g: game,
@@ -116,6 +117,20 @@ f.create_game_first_screen = () => {
 
 	//a.roll.onComplete.add(()=>{_a(a.roll_next)},this)
 
+//in op config
+op.background_button_play={
+image: "background_button_play",
+x: w2,
+y: h2,
+a: 1,
+flag: true,
+g: game,
+}
+
+o.background_button_play = new _obj(op.background_button_play)
+
+
+
 	o.button_play_p={
 		g:game,
 		callback: ()=>{game.state.start("game_main"),clic.play()},
@@ -132,13 +147,13 @@ f.create_game_first_screen = () => {
 		y:h2*1.40,
 	}
 	o.button_rank = new _b(o.button_rank_p)
-	o.button_play.scale.x=.95
-	o.button_play.scale.y=1.05
+	//o.button_play.scale.x=.95
+	//o.button_play.scale.y=1.05
 
 
 	//in ap config
 	ap.button_play={
-		o: o.button_play,
+		o: o.background_button_play,
 		e: Phaser.Easing.Linear.None,
 		i: -1, //number repeat
 		y: true, //yoyo
@@ -148,8 +163,8 @@ f.create_game_first_screen = () => {
 		//r: 45, //rotation
 		//dx:100, //distance
 		//dy:200,
-		sx:1.05, //scale
-		sy:.95,
+		sx:1.2, //scale
+		sy:1.2,
 	}
 	_a(ap.button_play)	
 }
@@ -194,7 +209,8 @@ f.create_rank=()=>{
 
 
 f.create_main = () => {
-	f.start_config_main()
+	//f.start_config_main()
+	co(d.debug,"debug")
 
 	//pour reseter les drapeaux au lancement du jeu
 	flag.heart =false
@@ -632,17 +648,7 @@ f.create_main = () => {
 		//dyo: 30, //delay yoyo
 		//i: 0,
 	}
-	o.searching_opponent_p = {
-		image: "searching_opponent",
-		x: 0,
-		y: 0,
-		//a: 0,
-		flag: true,
-		g: game,
-		anchorx:0,
-		anchory:0,
 
-	}
 	o.circle_search_opponent_p = {
 		image: "circle_search_opponent",
 		x: w2*.5,
@@ -659,6 +665,8 @@ f.create_main = () => {
 		o.searching_opponent[i].anchor.y = 0  
 		o.searching_opponent[i].angle = i*45  
 	}
+
+
 	o.searching_opponent_tw=[]
 	let ts=200
 	let ds=200
@@ -677,12 +685,22 @@ f.create_main = () => {
 	}
 	loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
 
-	o.searching_opponent.alpha = 0
 
-	o.searching_opponent.number = random(0, 2)
+	o.searching_opponent.number = random(0, 5)
 
-	o.searching_opponent_tw = {
-		o: o.searching_opponent, //object
+	o.text_searching_opponent_p = {
+		image: "searching_opponent",
+		x: w2*.5,
+		y: h*.21,
+		a: 0,
+		flag: true,
+		g: game,
+
+	}
+	o.text_searching_opponent= new _obj(o.text_searching_opponent_p)
+
+	o.text_searching_opponent_tw = {
+		o: o.text_searching_opponent, //object
 		//t: 500t.searching_opponent, //time
 		t: t.searching_opponent,
 		d: 0, //delay
@@ -694,9 +712,11 @@ f.create_main = () => {
 		//dx :400, //displacementx
 		//dy :200, //displacementy 
 		y: true, //yoyo,
-		dyo: t.searching_opponent, //delay yoyo
+		//dyo: t.searching_opponent, //delay yoyo
 		i: o.searching_opponent.number,
 	}
+	_a(o.text_searching_opponent_tw)
+
 	o.pre_sensor = new _obj(o.pre_sensor_p)
 
 	let difficulty = random(0,500)
@@ -994,5 +1014,17 @@ f.create_main = () => {
 		d:500,
 		dx:-w,
 	}
+
+tp.debug={
+		g: game,
+		x: w2,
+		y: 50,
+		message: "ready",
+		taille: 40,
+		police: 'police',
+		v: false,
+
+}
+
 	t.debug = new _t(tp.debug)
 }
