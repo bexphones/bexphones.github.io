@@ -82,6 +82,7 @@ var preloader = {
 		this.game.load.audio("pop", "sounds/pop.ogg");
 		this.game.load.audio("scroll", "sounds/scroll.ogg");
 		this.game.load.audio("score", "sounds/score.ogg");
+		this.game.load.audio("music", "sounds/Attack-of-the-Flaming-Pie-Tins.ogg");
 	},
 	create: function () {
 		this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
@@ -91,6 +92,8 @@ var preloader = {
 
 var game_first_screen = {
 	create: function () {
+		music=game.add.audio('music');
+		music.play()
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
 		grow = game.add.audio("grow")
@@ -135,6 +138,7 @@ var rank_screen = {
 
 var game_main = {
 	create: function () {
+		music.stop()
 		grow.flag=false
 		this.game.stage.backgroundColor = '#ffe063';
 		pop=game.add.audio('pop');

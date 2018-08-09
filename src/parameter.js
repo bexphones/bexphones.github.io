@@ -4,6 +4,7 @@ var clic;
 var grow;
 var score;
 var scroll;
+var music;
 var flag = {
 	start_game: false,
 	heart:false,//pour éviter de lancer 2 x cette animation
