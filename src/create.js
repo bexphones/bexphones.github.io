@@ -117,17 +117,17 @@ f.create_game_first_screen = () => {
 
 	//a.roll.onComplete.add(()=>{_a(a.roll_next)},this)
 
-//in op config
-op.background_button_play={
-image: "background_button_play",
-x: w2,
-y: h2,
-a: 1,
-flag: true,
-g: game,
-}
+	//in op config
+	op.background_button_play={
+		image: "background_button_play",
+		x: w2,
+		y: h2,
+		a: 1,
+		flag: true,
+		g: game,
+	}
 
-o.background_button_play = new _obj(op.background_button_play)
+	o.background_button_play = new _obj(op.background_button_play)
 
 
 
@@ -684,7 +684,7 @@ f.create_main = () => {
 		}
 	}
 	loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
-
+	t.appear_opponent=(ts*2+ds+7*rs)*2
 
 	o.searching_opponent.number = random(0, 5)
 
@@ -844,12 +844,13 @@ f.create_main = () => {
 		g: game,
 		x: w2 * .145,
 		y: h*.085,
-		message: random(50,90000),
+		message: "",
 		taille: 40,
 		police: 'police_yellow',
 		v:true,
 	}
 
+	//message ready pour commencer le jeu
 	interface.decount_p = {
 		g: game,
 		x: w2,
@@ -898,24 +899,35 @@ f.create_main = () => {
 			1:new _graph(interface.progress_p1),
 		},
 	}
+	// on met le scaley à 0 pour avoir un effet de repli lors de l'apparition de l'enemy
 	interface[0].scale.y = 0
 	interface.roll[0].scale.y = 0
 	interface.points[0].scale.y = 0
-	interface.progress[0].main.visible = false
-	interface.progress[0].bg.visible = false
+	interface.progress[0].main.scale.y = 0
+	interface.progress[0].bg.scale.y = 0
 	interface.puissance[0].scale.y = 0
-	interface.puissance[0].visible = false
 
-	interface.decount.count = 3
+
+	//attribution de l'enemy en fonction du niveau du joueur 
+	f.attribute_enemy_fn_player=(category,num)=>{
+		co(interface.points[1].text)
+		if(parseInt(interface.points[1].text) > category ){
+			co("dejdjhfjfhf")
+			interface.points[0].text = num
+		}
+	}
+	co(cat)
+	for (var i = 0; i < 5; i++){
+		f.attribute_enemy_fn_player(cat[i],numero[i]);
+	}
+
 	//on définit la puissance de l'enemy
 	if (interface.points[0].text > 0 && interface.points[0].text < 1000) {
-		//À RÉTABLIR
-		//interface.puissance[0].frame=0
+		interface.puissance[0].frame=0
 	}	
 
 	if (interface.points[0].text >= 1000 && interface.points[0].text < 50000) {
-		//À RÉTABLIR
-		//interface.puissance[0].frame=1
+		interface.puissance[0].frame=1
 	}	
 	if (interface.points[0].text >= 50000 && interface.points[0].text < 100000) {
 		interface.puissance[0].frame=2
@@ -1017,7 +1029,7 @@ f.create_main = () => {
 		dx:-w,
 	}
 
-tp.debug={
+	tp.debug={
 		g: game,
 		x: w2,
 		y: 50,
@@ -1026,7 +1038,7 @@ tp.debug={
 		police: 'police',
 		v: false,
 
-}
+	}
 
 	t.debug = new _t(tp.debug)
 }

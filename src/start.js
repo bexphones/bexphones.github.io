@@ -83,6 +83,22 @@ f.start_game = () => {
 			sy:1,
 			sx:1,
 		}
+		let tw_appears_progress_bg={
+			o:interface.progress[0].bg,
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
+		}
+		let tw_appears_progress_main={
+			o:interface.progress[0].main,
+			t:500,
+			d:0,
+			e:Phaser.Easing.Exponential.Out,
+			sy:1,
+			sx:1,
+		}
 		//À RÉTABLIR
 		wait(()=>{pop.play()},o.cloud_tw[0].d-70)
 		wait(() => { interface[0].visible = true }, o.cloud_tw[0].d)
@@ -97,6 +113,10 @@ f.start_game = () => {
 		wait(() => { _tr(tw_appears_puissance) }, o.cloud_tw[0].d)
 
 		wait(() => { interface.progress[0].visible = true }, o.cloud_tw[0].d)
+		//progress bar de l'enemy
+		wait(() => { _tr(tw_appears_progress_bg) }, o.cloud_tw[0].d)
+		wait(() => { _tr(tw_appears_progress_main) }, o.cloud_tw[0].d)
+
 	}
 
 	// compte à rebours pour lancer le jeu
@@ -130,6 +150,8 @@ f.start_game = () => {
 
 	//appel des differents events avec les time_converted spécifique
 	wait(f.start_cloud,ev.tc[0])
+	wait(()=>{interface.progress[0].main.visible=true},ev.tc[0])
+	wait(()=>{interface.progress[0].bg.visible=true},ev.tc[0])
 	wait(f.start_timer,ev.tc[1])
 
 	wait(()=>{f.wait_start_game(o.paper[0], 0)},ev.tc[2])

@@ -93,12 +93,17 @@ _graph = function (p) {
 
 _graph.prototype.constructor = _graph
 
+// dans update
 _graph.prototype.anim = function(points){
 	this.decimal = this.decimal + 0.01
 	let progress_length = this.width*this.decimal
 	if(progress_length < this.width){
+		if(progress_length < points){
 		this.main.clear()
 		this.main.drawRoundedRect(0,0,progress_length,this.height,this.round);
+		
+		
+		}
 	}
 }
 

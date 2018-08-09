@@ -9,6 +9,13 @@ var name_opponent =[
 	"zozor",
 	"ginette",
 	"dark_vador",
+	"lucie",
+	"sophie",
+	"jean",
+	"gilbert",
+	"naf_naf",
+	"loup",
+	"calimero",
 ]
 
 

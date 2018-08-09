@@ -58,8 +58,6 @@ var preloader = {
 		this.game.load.image("cloud", "assets/cloud.png");
 		this.game.load.image("play_button", "assets/play_button.png");
 		this.game.load.image("rank_button", "assets/rank_button.png");
-		this.game.load.image("level0", "assets/level0.png");
-		this.game.load.image("level1", "assets/level1.png");
 		this.game.load.image("particle", "assets/particle.png");
 		this.game.load.image("roll_bondissant", "assets/roll_bondissant.png");
 		this.game.load.image("shadow_roll_bondissant", "assets/shadow_roll_bondissant.png");
@@ -71,6 +69,8 @@ var preloader = {
 		this.game.load.image("title_game", "assets/title_game.png");
 		this.game.load.image("background_button_play", "assets/background_button_play.png");
 		//spritesheet
+		this.game.load.spritesheet("level0", "assets/level0.png",100,100);
+		this.game.load.spritesheet("level1", "assets/level1.png",100,100);
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
 		this.game.load.bitmapFont('police_red', 'fonts/font_red.png', 'fonts/font.fnt');
@@ -215,11 +215,8 @@ var game_main = {
 			f.shadow_follow(o.paper[0],o.shadow_0)
 			f.shadow_follow(o.paper[1],o.shadow_1)
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width
-			//TODO : régler le time en fonction de l'enemy
-			
-			wait(()=>{interface.progress[0].main.visible=true},t.searching_opponent*8)
-			wait(()=>{interface.progress[0].bg.visible=true},t.searching_opponent*8)
-			wait(()=>{interface.progress[0].anim(200)},t.searching_opponent*8)
+			interface.progress[0].anim(150)
+
 		}
 	},
 	render: function () {

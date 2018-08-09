@@ -22,5 +22,15 @@ f.start_config_main=()=>{
 		1 : false,
 	}
 
+	enemy_data={
+	
+	
+	
+	
+	
+	}
+
+
+
 }
 

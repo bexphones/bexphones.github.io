@@ -1,6 +1,7 @@
 //affiche une boite de dialogue pour entrer le nom du joueur
 //TODO : 
 
+//entrer le nom du player
 f.prompt=()=>{
 	//var name = prompt("Please enter your name", "Anonymous");if(name) {    console.log("Hello "+name+", nice to meet you!");}
 	//localStorage.setItem("username", name)

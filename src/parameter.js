@@ -95,20 +95,40 @@ var w2 = w * .5;
 var w0 = Math.round(w * .19);
 var w4 = Math.round(w * .75);
 
-		// voir dans main.js => update
-		// affiche un mask variant suivant la position du papier
-		//100% = distance
-		//0% = distance
-		// => proportions
-		var distance_100= h*.58 - 400  // papier = 2400 => 2400/2 = 1200 
-		var distance_0 =  h*58 // limite du jeu
-		var distance={
-			a : 1,
-			b : distance_100,
-			c: "inconnue",	
-			d: distance_0,
-		};
-		var dist = 1/(distance_0-distance_100)
+// voir dans main.js => update
+// affiche un mask variant suivant la position du papier
+//100% = distance
+//0% = distance
+// => proportions
+var distance_100= h*.58 - 400  // papier = 2400 => 2400/2 = 1200 
+var distance_0 =  h*58 // limite du jeu
+var distance={
+	a : 1,
+	b : distance_100,
+	c: "inconnue",	
+	d: distance_0,
+};
+var dist = 1/(distance_0-distance_100)
+
+//caterogies pour afficher la puissance de l'enemi en fonction du player
+var cat={
+	0:10,
+	1:5000,
+	2:20000,
+	3:50000,
+	4:100000,
+}
+co(cat.length)
+
+var joker = random(1,4)
+var supplement = random(1,99999)
+var numero = {
+	0:joker == 1 ? random(1,3500) : supplement,
+	1:joker == 1 ? random(1,8500) : supplement,
+	2:joker == 1 ? random(1,13500) : supplement,
+	3:joker == 1 ? random(1,35000) : supplement,
+	4:joker == 1 ? random(1,555200) : supplement,
+}
 
 
 
