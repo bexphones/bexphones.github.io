@@ -901,8 +901,10 @@ f.create_main = () => {
 	interface[0].scale.y = 0
 	interface.roll[0].scale.y = 0
 	interface.points[0].scale.y = 0
-	//interface.progress[0].scale.y = 0
+	interface.progress[0].main.visible = false
+	interface.progress[0].bg.visible = false
 	interface.puissance[0].scale.y = 0
+	interface.puissance[0].visible = false
 
 	interface.decount.count = 3
 	//on définit la puissance de l'enemy

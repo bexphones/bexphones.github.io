@@ -215,7 +215,11 @@ var game_main = {
 			f.shadow_follow(o.paper[0],o.shadow_0)
 			f.shadow_follow(o.paper[1],o.shadow_1)
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width
-			interface.progress[0].anim(200)
+			//TODO : régler le time en fonction de l'enemy
+			
+			wait(()=>{interface.progress[0].main.visible=true},t.searching_opponent*8)
+			wait(()=>{interface.progress[0].bg.visible=true},t.searching_opponent*8)
+			wait(()=>{interface.progress[0].anim(200)},t.searching_opponent*8)
 		}
 	},
 	render: function () {
