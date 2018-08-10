@@ -83,8 +83,8 @@ var preloader = {
 		this.game.load.audio("scroll", "sounds/scroll.ogg");
 		this.game.load.audio("score", "sounds/score.ogg");
 	//	this.game.load.audio("music", "sounds/Attack-of-the-Flaming-Pie-Tins.ogg");
-		this.game.load.audio("music", "sounds/music/Another-Day-in-8_Bit-Land.ogg");
-	//	this.game.load.audio("music", "sounds/music/Attack-of-the-Flaming-Pie-Tins.ogg");
+//		this.game.load.audio("music", "sounds/music/Another-Day-in-8_Bit-Land.ogg");
+		this.game.load.audio("music", "sounds/music/Attack-of-the-Flaming-Pie-Tins.ogg");
 	//	this.game.load.audio("music", "sounds/music/Crazy-Candy-Highway-2.ogg");
 	//	this.game.load.audio("music", "sounds/music/Hypnotic-Puzzle3.ogg");
 	//	this.game.load.audio("music", "sounds/music/Monsters-in-Bell-Bottoms.ogg");
