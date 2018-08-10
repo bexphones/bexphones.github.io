@@ -82,7 +82,13 @@ var preloader = {
 		this.game.load.audio("pop", "sounds/pop.ogg");
 		this.game.load.audio("scroll", "sounds/scroll.ogg");
 		this.game.load.audio("score", "sounds/score.ogg");
-		this.game.load.audio("music", "sounds/Attack-of-the-Flaming-Pie-Tins.ogg");
+	//	this.game.load.audio("music", "sounds/Attack-of-the-Flaming-Pie-Tins.ogg");
+		this.game.load.audio("music", "sounds/music/Another-Day-in-8_Bit-Land.ogg");
+	//	this.game.load.audio("music", "sounds/music/Attack-of-the-Flaming-Pie-Tins.ogg");
+	//	this.game.load.audio("music", "sounds/music/Crazy-Candy-Highway-2.ogg");
+	//	this.game.load.audio("music", "sounds/music/Hypnotic-Puzzle3.ogg");
+	//	this.game.load.audio("music", "sounds/music/Monsters-in-Bell-Bottoms.ogg");
+	//	this.game.load.audio("music", "sounds/music/The-8-bit-Princess.ogg");
 	},
 	create: function () {
 		this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
