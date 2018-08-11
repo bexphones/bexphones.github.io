@@ -114,7 +114,7 @@ f.stop_opponent = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false) {
 			obj.flag = true
-			
+
 			//f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			wait(() => { o.paper[0].body.moves = true }, random(200, 500))
@@ -267,7 +267,7 @@ f.anim_heart_on_winner = (side)=>{
 //animation des points => counter
 f.anim_score=(num)=>{
 	if(interface.points[num].text < 30000){
-	interface.points[num].text = parseInt(interface.points[num].text) +1
+		interface.points[num].text = parseInt(interface.points[num].text) +1
 
 	}
 }
@@ -319,7 +319,7 @@ f.show_flash = (p) => {
 	clic.play()
 	// animation 
 	//TODO : 
-	
+
 	tw.flash = _tr(p)
 }
 
@@ -393,14 +393,12 @@ f.arrondir_2_decimales=(num,division)=>{
 // seulement si drapeau debug est en true
 f.debug_pos=(obj)=>{
 	//if (d.debug) {
-		t.debug.visible =true
-		let transformx = f.arrondir_2_decimales(obj.x,w)
-		let transformy = f.arrondir_2_decimales(obj.y,h)
-		t.debug.text="w*" + transformx + "  " + "h*" + transformy
+	t.debug.visible =true
+	let transformx = f.arrondir_2_decimales(obj.x,w)
+	let transformy = f.arrondir_2_decimales(obj.y,h)
+	t.debug.text="w*" + transformx + "  " + "h*" + transformy
 	//}
 }
-
-//anime le mask permettant de voir si la fin est proche suivant un distance
 f.mask_scale=(obj,mask)=>{
 	if ( obj.y > distance_100 ) {
 		mask.visible=true
@@ -416,4 +414,24 @@ f.mask_scale=(obj,mask)=>{
 f.adapt_to_screen=(obj)=>{
 	obj.scale.y=game.heigth/2280
 }
+// transition simple seulement un déplacement ou une modification à la fois => pas des déplacements combinés voir en bas
+// from(properties, duration, ease, autoStart, delay, repeat, yoyo)
+f.simple_tween = (p) => {
+	p.name = game.add.tween(p.o).to({x: p.dx, y: p.dy}, p.t, p.e,true,p.d,p.i,p.y)
+	p.name = game.add.tween(p.o.scale).to({x: p.sx, y: p.sy}, p.t, p.e,true,p.d,p.i,p.y)
+	p.name.onComplete.add(()=>{p.callback()}, this)
+	//p.name.start()
+}
+
+// transition complexe avec plusieurs deplacements possibles
+//attention seulement une modification par ex : déplacement mais pas scale en même temps
+// from(properties, duration, ease, autoStart, delay, repeat, yoyo)
+//
+f.complex_tween = (p) => {
+	p.name = game.add.tween(p.o)
+	p.name.to({x: p.sx, y: p.sy}, p.t, p.e,false,p.d,p.i,p.y)
+	p.name.onComplete.add(()=>{p.callback()}, this)
+	p.name.start()
+}
+
 

@@ -111,10 +111,10 @@ var game_first_screen = {
 	update: function () {
 // paramètre pour calucler la proportion de l'ombre du papier bondissant
 		var param_shadow={
-			a:.4,
+			a:.5,
 			b:w2+200,
 			c:"inconnue",
-			d:o.roll.y,
+			d:o.roll.y-100,
 		}
 		o.shadow_roll.scale.x = f.proportions(param_shadow)
 		o.shadow_roll.scale.y = o.shadow_roll.scale.x
@@ -130,14 +130,13 @@ var game_first_screen = {
 
 var rank_screen = {
 	create: function () {
+		this.game.stage.backgroundColor = '#ffe063';
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
 		grow = game.add.audio("grow")
 		scroll = game.add.audio("scroll")
 		score = game.add.audio("score")
 		f.create_rank()
-
-		//this.game.time.events.add(2000, function () { this.game.state.start("game_main"); }, this);
 	},
 };
 

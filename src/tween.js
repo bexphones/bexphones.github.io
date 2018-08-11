@@ -168,9 +168,9 @@ var _a = (p) => { //transition,game,parameter
 		if (p.a != null) { // alpha
 			p.tw = game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i);
 		}
-//		if (p.onstart != null) { // alpha
-//			wait(p.onstart, p.d)
-//		}
+		//		if (p.onstart != null) { // alpha
+		//			wait(p.onstart, p.d)
+		//		}
 		if (p.r != null) { //rotation
 			p.tw = game.add.tween(p.o).to({ angle: p.r }, p.t, p.e, true, p.d, p.i);
 		}
@@ -205,5 +205,11 @@ var _a = (p) => { //transition,game,parameter
 	this.c()
 }
 
+var _tra = (p) => {
+	p.name = game.add.tween(p.o)
+	p.name.to({x: p.dx, y: p.dy}, p.t, p.e)
+	//p.onComplete.addOnce(p.callback, this)
+	p.start()
+}
 
 

@@ -53,13 +53,13 @@ f.create_game_first_screen = () => {
 	o.shadow_roll_p = {
 		image: "shadow_roll_bondissant",
 		x: w2,
-		y: h*.91,
-		a: 1,
+		y: h*.89,
+		a: .6,
 		flag: true,
 		g: game,
 	}
 	o.shadow_roll = new _obj(o.shadow_roll_p)
-	//o.shadow_roll.scale.x=.8
+
 	o.roll_p = {
 		image: "roll_bondissant",
 		x: w2,
@@ -69,28 +69,16 @@ f.create_game_first_screen = () => {
 		g: game,
 	}
 	o.roll = new _obj(o.roll_p)
-	o.roll.scale.x=.8
-	o.roll.scale.y=1.5
+	o.roll.scale.x=1.2
+	o.roll.scale.y=.8
 
-	a.roll_next={
-		o:o.roll,
-		t:280,
-		d:0,
-		e:Phaser.Easing.Bounce.InOut,
-		dx:w2,
-		dy:h2+850,
-		sx:0.8,
-		sy:1.2,
-		//y:true,
-		//i:-1,
-		callback : ()=>{_a(a.roll)},
-		//tw : "roll_next",
-		c:true,	
-		ctime:0,
-
-
-
+	//animation tire de simple tween pour faire sauter le rouleau de papier
+	f.anim_roll = (p) => {
+		p.name = game.add.tween(p.o).to({x: p.dx, y: h*.8}, p.t, p.e,true,p.d,p.i,true)
+		p.name = game.add.tween(p.o.scale).to({x: .8, y: 1.2}, p.t, p.e,true,p.d,p.i,true)
+		p.name.onComplete.add(()=>{p.callback()}, this)
 	}
+
 
 	a.roll={
 		o:o.roll,
@@ -101,19 +89,23 @@ f.create_game_first_screen = () => {
 		dy:h2+600,
 		sx:1.2,
 		sy:.7,
-		y:true,
-		//i:-1,
-		callback : ()=> {_a(a.roll_next)},
-
+		//y:true,
+		i:0,
+		callback : ()=>{f.anim_roll(a.roll)},
+		name: "anim_roll",
 		ctime:0,
 		//tw : "roll",
 		c: true,
+		y:false,
 	}
 
 
 
 
-	_a(a.roll)
+
+	f.anim_roll(a.roll)
+
+	//_a(a.roll)
 
 	//a.roll.onComplete.add(()=>{_a(a.roll_next)},this)
 
@@ -128,8 +120,6 @@ f.create_game_first_screen = () => {
 	}
 
 	o.background_button_play = new _obj(op.background_button_play)
-
-
 
 	o.button_play_p={
 		g:game,
@@ -170,7 +160,6 @@ f.create_game_first_screen = () => {
 }
 f.create_rank=()=>{
 
-
 	//in op config
 	op.rank={
 		image: "rank",
@@ -191,8 +180,9 @@ f.create_rank=()=>{
 		x: w*.16,
 		y: h*.92,
 		g:game,
-	},
-		b.button_home = new _b(bp.button_home)
+	}
+	b.button_home = new _b(bp.button_home)
+
 
 	bp.button_next_screen={
 		callback: ()=>{game.state.start("game_main"),clic.play()},
@@ -874,7 +864,6 @@ f.create_main = () => {
 	f.attribute_enemy_fn_player=(category,num)=>{
 		co(interface.points[1].text)
 		if(parseInt(interface.points[1].text) > category ){
-			co("dejdjhfjfhf")
 			interface.points[0].text = num
 		}
 	}

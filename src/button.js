@@ -10,9 +10,3 @@ _b = function (p) {
 
 _b.prototype = Object.create(Phaser.Button.prototype);
 _b.prototype.constructor = _b
-
-
-
-
-
-

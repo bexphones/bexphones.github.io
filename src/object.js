@@ -31,7 +31,6 @@ _obj = function (p) {
 		}
 	}
 	this.inputEnabled=true
-	co("ca")
 	if(d.debug == true){
 	this.input.enableDrag(true)
 	this.input.enableSnap(20,20,true,true)
