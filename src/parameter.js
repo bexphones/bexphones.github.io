@@ -13,6 +13,12 @@ var te={}
 var f = {}
 
 
+//nom du joueur accessible via le localStorage
+var name_player;
+
+//boleen pour checker si le nom du joeueur a déjà été entré.
+var name_player_entered = false
+
 
 // animation
 var a={};

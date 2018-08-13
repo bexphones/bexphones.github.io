@@ -3,10 +3,16 @@
 
 //entrer le nom du player
 f.prompt=()=>{
-	//var name = prompt("Please enter your name", "Anonymous");if(name) {    console.log("Hello "+name+", nice to meet you!");}
-	//localStorage.setItem("username", name)
-	//alert(localStorage.getItem("username"))
+
+	if(localStorage.getItem("username")==null){
+
+		name_player = prompt("Please enter your name", "Anonymous");if(name_player) {    console.log("Hello "+name+", nice to meet you!");localStorage.setItem("username", name_player);name_player_entered =true}
+		// pour récuper une valeur dans le localStorage
+		alert(localStorage.getItem("username"))
+	}
+
 }
+
 //démmarer la chute des joueurs
 f.wait_start_game = (obj, time) => {
 	wait(() => { obj.body.moves = true }, time)
@@ -57,6 +63,7 @@ f.lock = (obj, callback) => {
 //check pour voir si le joueur dépasse la limite du gameover
 f.check_deep = (obj) => {
 	if (f.checkOverlap(obj, o.sensor)) {
+
 		if(obj.name == 0){
 			f.lock(obj,()=>{_tr(o.looser_tw[0])})
 			f.lock(o.looser[0].text,()=>{_tr(o.looser_tw_text[0])})
@@ -143,6 +150,7 @@ f.get_duration = (pointer, obj) => {
 	let lastDuration = pointer.duration;
 	if (lastDuration > t.pointer_duration && obj.flag_pre_sensor == true && obj.flag_test_duration == false && obj.flag == false) {
 		f.show_points(o.paper[1])
+		localStorage.setItem("score", interface.points[1].text)
 		scroll.play()
 		obj.flag_test_duration = true // to lock the function
 		obj.flag_dont_move = true
@@ -266,9 +274,8 @@ f.anim_heart_on_winner = (side)=>{
 
 //animation des points => counter
 f.anim_score=(num)=>{
-	if(interface.points[num].text < 30000){
+	if(interface.points[num].text < 500){
 		interface.points[num].text = parseInt(interface.points[num].text) +1
-
 	}
 }
 

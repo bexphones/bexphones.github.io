@@ -715,7 +715,8 @@ f.create_main = () => {
 		g: game,
 		x: w2 * 1.5,
 		y: h*.064,
-		message: "dev - l4",
+		//message: "dev - l4",
+		message: localStorage.getItem("username"),
 		taille: 100,
 		police: 'police_red',
 		v:true,
@@ -735,7 +736,7 @@ f.create_main = () => {
 		g: game,
 		x: w2 * 1.1,
 		y: h*.085,
-		message: "50",
+		message: localStorage.getItem("score") != null ? localStorage.getItem("score") :  "50",
 		taille: 40,
 		police: 'police_red',
 		v:true,
@@ -1017,7 +1018,6 @@ f.create_main = () => {
 	}
 
 
-	localStorage.setItem("score", interface.points[1].text)
 	localStorage.getItem("name")
 
 	o.transition_background_start={
