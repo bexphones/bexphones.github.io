@@ -177,21 +177,21 @@ f.create_rank=()=>{
 	bp.button_home={
 		callback: ()=>{game.state.start("game_main"),clic.play()},
 		image:"button_home",
-		x: w*.16,
+		x: w2,
 		y: h*.92,
 		g:game,
 	}
 	b.button_home = new _b(bp.button_home)
 
 
-	bp.button_next_screen={
-		callback: ()=>{game.state.start("game_main"),clic.play()},
-		image:"button_next_screen",
-		x: w*.86,
-		y: h*.92,
-		g:game,
-	},
-		b.button_next_screen = new _b(bp.button_next_screen)
+//	bp.button_next_screen={
+//		callback: ()=>{game.state.start("game_main"),clic.play()},
+//		image:"button_next_screen",
+//		x: w*.86,
+//		y: h*.92,
+//		g:game,
+//	},
+//		//b.button_next_screen = new _b(bp.button_next_screen)
 
 
 

@@ -143,7 +143,7 @@ var rank_screen = {
 		score = game.add.audio("score")
 		f.create_rank()
 
-game.world.setBounds(0,0,1400,2000)
+game.world.setBounds(0,0,1400,2200)
 
 
 
@@ -156,7 +156,7 @@ game.world.setBounds(0,0,1400,2000)
 			//in op config
 			op.rolls={
 				image: "roll_bondissant",
-				x: random(0,w),
+				x: random(400,w),
 				y: random(0,h),
 				a: 1,
 				flag: true,
@@ -168,7 +168,7 @@ game.world.setBounds(0,0,1400,2000)
 			}
 
 			//o.rolls = new _obj(op.rolls)
-			o.rolls = game.add.sprite(random(0,w),random(0,h),'roll_bondissant') 
+			o.rolls = game.add.sprite(random(50,w-50),random(400,h),'roll_bondissant') 
 game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
 
 			o.rolls.body.collideWorldBounds = true;
@@ -178,8 +178,30 @@ game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
 			o.lot_of_roll.addChild(o.rolls);
 
 			stars.push(o.rolls);
+
+
+
+//in op config
+			op.collision={
+				image: "line_collision",
+				x: w2,
+				y: 400,
+				a: 0,
+				flag: true,
+				g: game,
+				physics:true,
+				immovable:true,
+				moves:false,
+			}
+			o.collision = new _obj(op.collision)
+//o.collision.body.immovable=true
+
+
 		}
 
+	},
+	update : function(){
+		f.collide(o.collision,stars)
 	},
 };
 
