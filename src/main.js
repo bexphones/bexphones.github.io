@@ -1,3 +1,5 @@
+var stars;
+
 var boot = {
 	preload: function () {
 		// on definit ici car game subit un scale et les valeurs w2 ,h2 sont faussées après global.js
@@ -82,13 +84,13 @@ var preloader = {
 		this.game.load.audio("pop", "sounds/pop.ogg");
 		this.game.load.audio("scroll", "sounds/scroll.ogg");
 		this.game.load.audio("score", "sounds/score.ogg");
-	//	this.game.load.audio("music", "sounds/Attack-of-the-Flaming-Pie-Tins.ogg");
-//		this.game.load.audio("music", "sounds/music/Another-Day-in-8_Bit-Land.ogg");
+		//	this.game.load.audio("music", "sounds/Attack-of-the-Flaming-Pie-Tins.ogg");
+		//		this.game.load.audio("music", "sounds/music/Another-Day-in-8_Bit-Land.ogg");
 		//this.game.load.audio("music", "sounds/music/Attack-of-the-Flaming-Pie-Tins.ogg");
-	//	this.game.load.audio("music", "sounds/music/Crazy-Candy-Highway-2.ogg");
+		//	this.game.load.audio("music", "sounds/music/Crazy-Candy-Highway-2.ogg");
 		this.game.load.audio("music", "sounds/music/Hypnotic-Puzzle3.ogg");
-	//	this.game.load.audio("music", "sounds/music/Monsters-in-Bell-Bottoms.ogg");
-	//	this.game.load.audio("music", "sounds/music/The-8-bit-Princess.ogg");
+		//	this.game.load.audio("music", "sounds/music/Monsters-in-Bell-Bottoms.ogg");
+		//	this.game.load.audio("music", "sounds/music/The-8-bit-Princess.ogg");
 	},
 	create: function () {
 		this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
@@ -109,7 +111,7 @@ var game_first_screen = {
 		f.create_game_first_screen();
 	},
 	update: function () {
-// paramètre pour calucler la proportion de l'ombre du papier bondissant
+		// paramètre pour calucler la proportion de l'ombre du papier bondissant
 		var param_shadow={
 			a:.5,
 			b:w2+200,
@@ -130,6 +132,9 @@ var game_first_screen = {
 
 var rank_screen = {
 	create: function () {
+
+		//game.physics.startSystem(Phaser.Physics.ARCADE);
+		game.physics.arcade.gravity.y = 1000;
 		this.game.stage.backgroundColor = '#ffe063';
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
@@ -137,6 +142,44 @@ var rank_screen = {
 		scroll = game.add.audio("scroll")
 		score = game.add.audio("score")
 		f.create_rank()
+
+game.world.setBounds(0,0,1400,2000)
+
+
+
+		o.lot_of_roll = game.add.spriteBatch();
+
+		stars = [];
+
+		for (var i = 0; i < 1000; i++)
+		{
+			//in op config
+			op.rolls={
+				image: "roll_bondissant",
+				x: random(0,w),
+				y: random(0,h),
+				a: 1,
+				flag: true,
+				g: game,
+				physics:true,
+				gravity:true,
+				moves:true,
+				bounces : 8,
+			}
+
+			//o.rolls = new _obj(op.rolls)
+			o.rolls = game.add.sprite(random(0,w),random(0,h),'roll_bondissant') 
+game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
+
+			o.rolls.body.collideWorldBounds = true;
+			o.rolls.body.bounce.y = 1.2;
+			o.rolls.body.gravity.y = 800;
+			o.rolls.body.allowGravity = true;
+			o.lot_of_roll.addChild(o.rolls);
+
+			stars.push(o.rolls);
+		}
+
 	},
 };
 
@@ -201,7 +244,7 @@ var game_main = {
 
 			// vérifier si le papier touche le dernier repère physique et donc par conséquent provoque un gameover
 			f.check()
-			
+
 			//pour arrêter et redémarrer l'enemi sur les obstacles
 			// on met -2 car si o.length = 3 c'est à dire 0 1 2 donc l'avant dernier = 3-2
 			for (let i = 0; i < o.opponent_actions.length-2; i++) {

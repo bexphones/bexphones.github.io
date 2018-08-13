@@ -1051,4 +1051,5 @@ f.create_main = () => {
 	}
 
 	t.debug = new _t(tp.debug)
+
 }
