@@ -69,7 +69,7 @@ var d={
 
 
 
-var interface = {
+var interf = {
 
 }
 // a supprimer
