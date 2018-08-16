@@ -41,8 +41,8 @@ var ctime = function ctime(n) {
 };
 
 var start_timer = function start_timer(a) {
-	b.begin = performance.now();
-	console.time(b.begin);
+	//b.begin = performance.now();
+	//console.time(b.begin);
 };
 var stop_timer = function stop_timer(a) {
 	if (a != null) {
