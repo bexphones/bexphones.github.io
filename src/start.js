@@ -1,6 +1,9 @@
 
 f.start_game = () => {
 
+
+
+
 	f.prompt();
 	f.create_main()
 	//camera() // to zoom th game with keyboard up and down

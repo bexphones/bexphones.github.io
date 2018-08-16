@@ -1,17 +1,43 @@
-//affiche une boite de dialogue pour entrer le nom du joueur
-//TODO : 
+f.check_if_username_is_not_in_database_enemy=(st)=>{
+	for (var i = 0; i < name_opponent.length; i++){
+		return (st === name_opponent[i])
+	}
+}
+var secret; 
 
 //entrer le nom du player
 f.prompt=()=>{
+	//pour tester que c'est bien une chaine de caractères
+	let test = localStorage.getItem("username")
+	if(typeof test != "string"){
 
-	if(localStorage.getItem("username")==null){
-
-		name_player = prompt("Please enter your name", "Anonymous");if(name_player) {    console.log("Hello "+name+", nice to meet you!");localStorage.setItem("username", name_player);name_player_entered =true}
-		// pour récuper une valeur dans le localStorage
-		alert(localStorage.getItem("username"))
+		while (name_player !== "sesame") {
+			name_player = prompt("What is the secret password fghffhgfhfghgfhfghfghfghfghfgfhgfhgfhgfhgfhgfhfghfgfhgfhgfhgfhfgfhg?");
+		}
 	}
-
 }
+
+
+
+
+///		name_player = prompt("Please enter your name", "Anonymous")
+///		if(name_player) {
+///			if (name_player.length < 4) {
+///				name_player = prompt("Please enter min. 4 letters", "Anonymous")
+///			}
+///			if(f.check_if_username_is_not_in_database_enemy(name_player) == true && name_player.length > 4){
+///				name_player = prompt("Name already exist, please choose a different name", "Anonymous")
+///			}
+///			if(f.check_if_username_is_not_in_database_enemy(name_player) == false){
+///				localStorage.setItem("username", name_player)
+///				// pour récuper une valeur dans le localStorage
+///				alert(localStorage.getItem("username"))
+///			}
+///		}
+///	}
+///}
+
+
 
 //démmarer la chute des joueurs
 f.wait_start_game = (obj, time) => {
@@ -101,10 +127,10 @@ f.convert_points_to_100=(position)=>{
 //texte qui suit le papier
 f.follow_text = (obj) => {
 	o.paper[0].points.y = o.paper[0].fil.y-55
-	o.paper[0].points.x = o.paper[0].fil.x
+	//o.paper[0].points.x = o.paper[0].fil.x
 	o.paper[0].points.text = Math.round(f.convert_points_to_100(o.paper[0].points.y))
 	o.paper[1].points.y = o.paper[1].fil.y-55
-	o.paper[1].points.x = o.paper[1].fil.x
+	//o.paper[1].points.x = o.paper[1].fil.x
 	o.paper[1].points.text = Math.round(f.convert_points_to_100(o.paper[1].points.y))
 }
 
@@ -114,7 +140,6 @@ f.anim_flash=(obj,p)=>{
 	obj.tw =game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i, p.y);
 	obj.tw.onComplete.add( ()=> {o.flash[1].flag=false},this)
 }
-
 
 // stop le papier 
 f.stop_opponent = (obj) => {
@@ -133,14 +158,13 @@ f.stop_opponent = (obj) => {
 f.stop_opponent_on_the_last = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false && o.paper[0].gameover == false) {
+			//wait(()=>{d.could_anim_score[0]=true},t.delay_to_anim_score)
 			co("stop_opponent_on_the_last :");
 			f.show_points(o.paper[0])
 			obj.flag = true
 			scroll.play()	
-			//f.lock(o.flash[0], ()=> {f.show_flash(o.flash_tw_p0)})
 			o.paper[0].body.moves = false
 			o.paper[0].flag_dont_move = true
-			//f.test_behaviour(o.paper[0])
 		}
 	}
 }
@@ -149,6 +173,7 @@ f.stop_opponent_on_the_last = (obj) => {
 f.get_duration = (pointer, obj) => {
 	let lastDuration = pointer.duration;
 	if (lastDuration > t.pointer_duration && obj.flag_pre_sensor == true && obj.flag_test_duration == false && obj.flag == false) {
+		//wait(()=>{d.could_anim_score[1]=true},t.delay_to_anim_score)
 		f.show_points(o.paper[1])
 		localStorage.setItem("score", interface.points[1].text)
 		scroll.play()
@@ -267,22 +292,21 @@ f.anim_heart_on_winner = (side)=>{
 			co("anim winner 1")
 			anim_winner(1)
 			wait( ()=> {d[1]=true},time)
+
+			//animation des points => counter
+			// vérifie si le score est inférieur à la valeur stockée dans create.js
+			f.anim_score=(num)=>{
+				let condition = parseInt(o.score[num])+100
+				if(interface.points[num].text < condition){
+					co(condition,interface.points[num].text)
+					interface.points[num].text = parseInt(interface.points[num].text) +1
+				}
+			}
 		}
 	}
 }
-
-
-//animation des points => counter
-f.anim_score=(num)=>{
-	if(interface.points[num].text < 500){
-		interface.points[num].text = parseInt(interface.points[num].text) +1
-	}
-}
-
-
 // faire appaitre le fil pour annoncer le score
 f.show_points = (obj) => {
-	//f.lock(d.scroll[num],()=>{scroll.play()})
 	obj.fil.body.moves = true
 }
 

@@ -108,6 +108,7 @@ var game_first_screen = {
 		scroll = game.add.audio("scroll")
 		score = game.add.audio("score")
 		h=game.height
+		f.prompt()
 		f.create_game_first_screen();
 	},
 	update: function () {
@@ -143,7 +144,7 @@ var rank_screen = {
 		score = game.add.audio("score")
 		f.create_rank()
 
-game.world.setBounds(0,0,1400,2200)
+		game.world.setBounds(0,0,1400,2200)
 
 
 
@@ -169,7 +170,7 @@ game.world.setBounds(0,0,1400,2200)
 
 			//o.rolls = new _obj(op.rolls)
 			o.rolls = game.add.sprite(random(50,w-50),random(400,h),'roll_bondissant') 
-game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
+			game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
 
 			o.rolls.body.collideWorldBounds = true;
 			o.rolls.body.bounce.y = 1.2;
@@ -181,7 +182,7 @@ game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
 
 
 
-//in op config
+			//in op config
 			op.collision={
 				image: "line_collision",
 				x: w2,
@@ -194,7 +195,7 @@ game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
 				moves:false,
 			}
 			o.collision = new _obj(op.collision)
-//o.collision.body.immovable=true
+			//o.collision.body.immovable=true
 
 
 		}
@@ -240,12 +241,8 @@ var game_main = {
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
 		if(flag.start_game){
 			if (o.paper[0].flag) { o.paper[0].body.moves = true }
-			if(d[0]){
-				f.anim_score(0)
-			}
-			if(d[1]){
-				f.anim_score(1)
-			}
+			d[0] &&	f.anim_score(0)
+			d[1] && f.anim_score(1)
 
 
 
@@ -280,8 +277,13 @@ var game_main = {
 			// pointer qui suit le mouvement
 			f.follow_pointer(o.click)
 
+			//pour permettre au point de descendre
 			if (o.paper[0].flag == false) {
 				f.follow_text(o.paper[0])
+			}
+			//pour permettre au point de descendre
+			if (o.paper[1].flag == false) {
+				f.follow_text(o.paper[1])
 			}
 
 			// animation du pointer

@@ -184,14 +184,14 @@ f.create_rank=()=>{
 	b.button_home = new _b(bp.button_home)
 
 
-//	bp.button_next_screen={
-//		callback: ()=>{game.state.start("game_main"),clic.play()},
-//		image:"button_next_screen",
-//		x: w*.86,
-//		y: h*.92,
-//		g:game,
-//	},
-//		//b.button_next_screen = new _b(bp.button_next_screen)
+	//	bp.button_next_screen={
+	//		callback: ()=>{game.state.start("game_main"),clic.play()},
+	//		image:"button_next_screen",
+	//		x: w*.86,
+	//		y: h*.92,
+	//		g:game,
+	//	},
+	//		//b.button_next_screen = new _b(bp.button_next_screen)
 
 
 
@@ -861,17 +861,26 @@ f.create_main = () => {
 	interface.progress[0].bg.scale.y = 0
 	interface.puissance[0].scale.y = 0
 
+	o.score={
+		0:"50",		
+		1:localStorage.getItem("score") != null ? localStorage.getItem("score") :  "50",
+
+	}
+
 	//attribution de l'enemy en fonction du niveau du joueur 
 	f.attribute_enemy_fn_player=(category,num)=>{
 		co(interface.points[1].text)
 		if(parseInt(interface.points[1].text) > category ){
 			interface.points[0].text = num
+			o.score[0]=interface.points[0].text = num
 		}
 	}
-	co(cat)
 	for (var i = 0; i < 5; i++){
 		f.attribute_enemy_fn_player(cat[i],numero[i]);
 	}
+
+	//store the current value of score (enemy and player) for f.anim_score
+
 
 	//on définit la puissance de l'enemy en fonctions des points
 	if (interface.points[0].text > 0 && interface.points[0].text < 1000) {

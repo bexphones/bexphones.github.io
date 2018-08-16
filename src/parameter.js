@@ -63,6 +63,8 @@ var d={
 		0:false,
 		1:false,
 	},
+	0:false,
+	1:false,
 };
 
 
