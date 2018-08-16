@@ -294,7 +294,7 @@ f.anim_heart_on_winner = function (side) {
 	var time = 100;
 	var delay = 0;
 	var anim = Phaser.Easing.Linear.None;
-	var anim2 = Phaser.Easing.bounce.out;
+	var anim2 = Phaser.Easing.Bounce.Out;
 
 	var anim_winner = function anim_winner(num) {
 		for (var i = 0; i < o.particle.length; i++) {
