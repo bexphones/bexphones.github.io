@@ -341,10 +341,10 @@ f.anim_heart_on_winner = function (side) {
 			//animation des points => counter
 			// vérifie si le score est inférieur à la valeur stockée dans create.js
 			f.anim_score = function (num) {
-				var condition = parseint(o.score[num]) + 100;
+				var condition = parseInt(o.score[num]) + 100;
 				if (interf.points[num].text < condition) {
 					co(condition, interf.points[num].text);
-					interf.points[num].text = parseint(interf.points[num].text) + 1;
+					interf.points[num].text = parseInt(interf.points[num].text) + 1;
 				}
 			};
 		}
