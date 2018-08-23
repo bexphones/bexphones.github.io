@@ -7,14 +7,14 @@ var secret;
 
 //entrer le nom du player
 f.prompt = function () {
-	//	//pour tester que c'est bien une chaine de caractères
-	//	var test = localStorage.getitem("username");
-	//	if (typeof test != "string") {
-	//
-	//		while (name_player !== "sesame") {
-	//			name_player = prompt("what is the secret password fghffhgfhfghgfhfghfghfghfghfgfhgfhgfhgfhgfhgfhfghfgfhgfhgfhgfhfgfhg?");
-	//		}
-	//	}
+	//pour tester que c'est bien une chaine de caractères
+	var test = localStorage.getItem("username");
+	if (typeof test != "string") {
+
+		while (name_player !== "sesame") {
+			name_player = prompt("what is the secret password fghffhgfhfghgfhfghfghfghfghfgfhgfhgfhgfhgfhgfhfghfgfhgfhgfhgfhfgfhg?");
+		}
+	}
 	//};
 
 	//	name_player = prompt("please enter your name", "anonymous")
