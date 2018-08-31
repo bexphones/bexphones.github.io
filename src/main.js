@@ -106,14 +106,13 @@ var preloader = {
 var game_first_screen = {
 	create: function create() {
 		music = game.add.audio('music');
-		music.play();
+		!d.debug && music.play();
 		pop = game.add.audio('pop');
 		clic = game.add.audio('clic');
 		grow = game.add.audio("grow");
 		scroll = game.add.audio("scroll");
 		score = game.add.audio("score");
 		h = game.height;
-		f.prompt();
 		f.create_game_first_screen();
 	},
 	update: function update() {
@@ -236,7 +235,7 @@ var game_main = {
 	update: function update() {
 
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
-		if (flag.start_game) {
+		if (d.start_game) {
 			if (o.paper[0].flag) {
 				o.paper[0].body.moves = true;
 			}

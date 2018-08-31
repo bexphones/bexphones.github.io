@@ -183,7 +183,7 @@ f.start_game = function () {
 		interf.restart.visible = true;
 	}, ev.tc[3]);
 	//wait(() => { f.show_looser(o.looser_tw_1) }, ev.tc[3])
-	flag.start_game = true;
+	d.start_game = true;
 
 	//animation des papiers vers le joueur gagnant
 	//wait(()=>{f.anim_paper_winner(interf.roll_0.x)},8000)

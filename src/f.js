@@ -1,19 +1,53 @@
+//verifie si le nom est dans la database enemi et accorde true ou false en fonction
 f.check_if_username_is_not_in_database_enemy = function (st) {
 	for (var i = 0; i < name_opponent.length; i++) {
-		return st === name_opponent[i];
+		return st === name_opponent[i]
 	}
 };
+co("name_opponent.length :",name_opponent.length);
+
+co(f.check_if_username_is_not_in_database_enemy("alba"))
+co(f.check_if_username_is_not_in_database_enemy("albator"))
 var secret;
+
+//récupérer un valeur dans le localStorage
+//doit être associé à une variable;
+f.open=(value)=>{
+	let temp=localStorage.getItem(value)
+	return temp
+	//var temp;
+	//var variable;
+	//f.write("essai",variable)
+	//temp=f.open("essai")
+}
+
+//écrire dans le localStorage
+//value est une chaine de caractères => "string"
+f.write=(value,variable)=>{
+	// localStorage.setItem("value",variable)
+	localStorage.setItem(value,variable)
+}
 
 //entrer le nom du player
 f.prompt = function () {
+	//attention car cela boucle tant que name_player n'est pas enregistré dans le localStorage
 	//pour tester que c'est bien une chaine de caractères
-	var test = localStorage.getItem("username");
+	name_player = f.open("username")
 	if (typeof test != "string") {
-
-		while (name_player !== "sesame") {
-			name_player = prompt("what is the secret password fghffhgfhfghgfhfghfghfghfghfgfhgfhgfhgfhgfhgfhfghfgfhgfhgfhgfhfgfhg?");
+		//enter name si pas de valeur on boucle
+		while (name_player === null){
+			name_player = prompt("please enter your name");
 		}
+		//si la valeur n'est pas supérieur à 8 on boucle
+		while (name_player.length > 8 ) {
+			name_player = prompt("name must be 4 character maximum");
+		}
+
+		while (f.check_if_username_is_not_in_database_enemy(name_player) == true ) {
+			name_player = prompt("name already exist");
+		}
+
+		f.write("username",name_player)
 	}
 	//};
 
@@ -32,6 +66,7 @@ f.prompt = function () {
 	//		}
 	//	}
 }
+
 
 
 //démmarer la chute des joueurs
@@ -208,10 +243,12 @@ f.get_duration = function (pointer, obj) {
 // anim le pointer
 f.anim_scale_pointer = function () {
 	if (o.paper[1].flag_dont_move) {
+		//annule la transition sur le pointer, le scintillement
 		tw_click.pause();
+
 		if (o.click.scale.x < 3) {
-			o.click.scale.x = o.click.scale.x + .08;
-			o.click.scale.y = o.click.scale.y + .08;
+			o.click.scale.x = o.click.scale.x + .18;
+			o.click.scale.y = o.click.scale.y + .18;
 		}
 		if (o.click.scale.x > 2.5) {
 			o.click.visible = false;
@@ -321,9 +358,9 @@ f.anim_heart_on_winner = function (side) {
 		game.add.tween(interf.roll[num].scale).to({ x: 1.5, y: 1.5 }, time, anim, true, delay, 5, true);
 		game.add.tween(interf.points[num].scale).to({ x: 1.5, y: 1.5 }, time, anim, true, delay, 5, true);
 	};
-	if (flag.heart == false) {
+	if (d.heart == false) {
 		//pour éviter de lancer 2 x cette animation
-		flag.heart = true;
+		d.heart = true;
 		if (side == 0) {
 			co("anim winner 0");
 			anim_winner(0);
@@ -479,6 +516,7 @@ f.debug_pos = function (obj) {
 	t.debug.text = "w*" + transformx + "  " + "h*" + transformy;
 	//}
 };
+//pour signifier la fin proche du game_over
 f.mask_scale = function (obj, mask) {
 	if (obj.y > distance_100) {
 		mask.visible = true;

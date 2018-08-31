@@ -1,4 +1,4 @@
-var name_opponent =[
+name_opponent =[
 	"gigi",
 	"coco",
 	"stupid",

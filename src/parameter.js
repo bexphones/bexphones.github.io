@@ -5,10 +5,6 @@ var grow;
 var score;
 var scroll;
 var music;
-var flag = {
-	start_game: false,
-	heart:false,//pour éviter de lancer 2 x cette animation
-}
 var te={}
 var f = {}
 
@@ -19,6 +15,7 @@ var name_player;
 //boleen pour checker si le nom du joeueur a déjà été entré.
 var name_player_entered = false
 
+var name_opponent;
 
 // animation
 var a={};
@@ -58,7 +55,9 @@ var s = {
 }
 //drapeau
 var d={
-	debug : false, // pour déplacer les objets
+	heart:false,//pour éviter de lancer 2 x cette animation
+	start_game: false,
+	debug : true, // pour déplacer les objets et ne pas mettre la musique en debug
 	scroll:{
 		0:false,
 		1:false,

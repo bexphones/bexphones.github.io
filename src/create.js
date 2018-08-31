@@ -201,7 +201,7 @@ f.create_main = function () {
 	co(d, "debug");
 
 	//pour reseter les drapeaux au lancement du jeu
-	flag.heart = false;
+	d.heart = false;
 	o.background_start_p = {
 		image: "background_start",
 		x: w2,
