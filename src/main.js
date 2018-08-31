@@ -1,15 +1,14 @@
-
 var stars;
 
 var boot = {
-	preload: function preload() {
+	preload: function () {
 		// on definit ici car game subit un scale et les valeurs w2 ,h2 sont faussées après global.js
 		w2 = game.world.centerX;
 		h2 = game.world.centerY;
 		//	this.game.load.image("loading","assets/loading.png");
 		//	this.game.load.image("loading_back","assets/loading_back.png");
 	},
-	create: function create() {
+	create: function () {
 
 		//to scale the game
 		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
@@ -26,7 +25,7 @@ var boot = {
 };
 
 var preloader = {
-	preload: function preload() {
+	preload: function () {
 		//loadingBar
 		//var loadingBar_back = this.add.sprite(game.width/2,h2,"loading_back");
 		//loadingBar_back.anchor.setTo(0.5,0.5);
@@ -72,8 +71,8 @@ var preloader = {
 		this.game.load.image("title_game", "assets/title_game.png");
 		this.game.load.image("background_button_play", "assets/background_button_play.png");
 		//spritesheet
-		this.game.load.spritesheet("level0", "assets/level0.png", 100, 100);
-		this.game.load.spritesheet("level1", "assets/level1.png", 100, 100);
+		this.game.load.spritesheet("level0", "assets/level0.png",100,100);
+		this.game.load.spritesheet("level1", "assets/level1.png",100,100);
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
 		//font bitmapFont
 		this.game.load.bitmapFont('police_red', 'fonts/font_red.png', 'fonts/font.fnt');
@@ -93,84 +92,85 @@ var preloader = {
 		//	this.game.load.audio("music", "sounds/music/Monsters-in-Bell-Bottoms.ogg");
 		//	this.game.load.audio("music", "sounds/music/The-8-bit-Princess.ogg");
 	},
-	create: function create() {
-		this.game.time.events.add(1000, function () {
-			this.game.state.start("game_main");
-		}, this);
-		this.game.time.events.add(1000, function () {
-			this.game.state.start("game_first_screen");
-		}, this);
+	create: function () {
+		this.game.time.events.add(1000, function () { this.game.state.start("game_main"); }, this);
+		this.game.time.events.add(1000, function () { this.game.state.start("game_first_screen"); }, this);
 	}
 };
 
 var game_first_screen = {
-	create: function create() {
-		music = game.add.audio('music');
-		!d.debug && music.play();
-		pop = game.add.audio('pop');
-		clic = game.add.audio('clic');
-		grow = game.add.audio("grow");
-		scroll = game.add.audio("scroll");
-		score = game.add.audio("score");
-		h = game.height;
+	create: function () {
+		music=game.add.audio('music');
+		music.play()
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		score = game.add.audio("score")
+		h=game.height
+		f.prompt()
 		f.create_game_first_screen();
 	},
-	update: function update() {
+	update: function () {
 		// paramètre pour calucler la proportion de l'ombre du papier bondissant
-		var param_shadow = {
-			a: .5,
-			b: w2 + 200,
-			c: "inconnue",
-			d: o.roll.y - 100
-		};
-		o.shadow_roll.scale.x = f.proportions(param_shadow);
-		o.shadow_roll.scale.y = o.shadow_roll.scale.x;
+		var param_shadow={
+			a:.5,
+			b:w2+200,
+			c:"inconnue",
+			d:o.roll.y-100,
+		}
+		o.shadow_roll.scale.x = f.proportions(param_shadow)
+		o.shadow_roll.scale.y = o.shadow_roll.scale.x
 
 		//progress update
-		o.decimal = o.decimal + 0.01;
-		var progress_length = 300 * o.decimal;
-		if (progress_length < 300) {
-			o.progress.drawRoundedRect(0, 0, progress_length, 27, 10);
+		o.decimal = o.decimal + 0.01
+		let progress_length = 300*o.decimal
+		if(progress_length < 300){
+			o.progress.drawRoundedRect(0,0,progress_length,27,10);
 		}
-	}
+	},
 };
 
 var rank_screen = {
-	create: function create() {
+	create: function () {
 
 		//game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 1000;
 		this.game.stage.backgroundColor = '#ffe063';
-		pop = game.add.audio('pop');
-		clic = game.add.audio('clic');
-		grow = game.add.audio("grow");
-		scroll = game.add.audio("scroll");
-		score = game.add.audio("score");
-		f.create_rank();
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		score = game.add.audio("score")
+		f.create_rank()
 
-		game.world.setBounds(0, 0, 1400, 2200);
+		game.world.setBounds(0,0,1400,2200)
+
+
 
 		o.lot_of_roll = game.add.spriteBatch();
 
 		stars = [];
 
-		for (var i = 0; i < 1000; i++) {
+		for (var i = 0; i < 1000; i++)
+		{
 			//in op config
-			op.rolls = {
+			op.rolls={
 				image: "roll_bondissant",
-				x: random(400, w),
-				y: random(0, h),
+				x: random(400,w),
+				y: random(0,h),
 				a: 1,
 				flag: true,
 				g: game,
-				physics: true,
-				gravity: true,
-				moves: true,
-				bounces: 8
+				physics:true,
+				gravity:true,
+				moves:true,
+				bounces : 8,
+			}
 
-				//o.rolls = new _obj(op.rolls)
-			};o.rolls = game.add.sprite(random(50, w - 50), random(400, h), 'roll_bondissant');
-			game.physics.enable([o.rolls], Phaser.Physics.ARCADE);
+			//o.rolls = new _obj(op.rolls)
+			o.rolls = game.add.sprite(random(50,w-50),random(400,h),'roll_bondissant') 
+			game.physics.enable( [ o.rolls ], Phaser.Physics.ARCADE);
 
 			o.rolls.body.collideWorldBounds = true;
 			o.rolls.body.bounce.y = 1.2;
@@ -180,124 +180,133 @@ var rank_screen = {
 
 			stars.push(o.rolls);
 
+
+
 			//in op config
-			op.collision = {
+			op.collision={
 				image: "line_collision",
 				x: w2,
 				y: 400,
 				a: 0,
 				flag: true,
 				g: game,
-				physics: true,
-				immovable: true,
-				moves: false
-			};
-			o.collision = new _obj(op.collision);
+				physics:true,
+				immovable:true,
+				moves:false,
+			}
+			o.collision = new _obj(op.collision)
 			//o.collision.body.immovable=true
 
+
 		}
+
 	},
-	update: function update() {
-		f.collide(o.collision, stars);
-	}
+	update : function(){
+		f.collide(o.collision,stars)
+	},
 };
 
-var game_main = {
-	create: function create() {
-		music.stop();
-		grow.flag = false;
-		this.game.stage.backgroundColor = '#ffe063';
-		pop = game.add.audio('pop');
-		clic = game.add.audio('clic');
-		grow = game.add.audio("grow");
-		scroll = game.add.audio("scroll");
-		scroll.flag = false;
-		score = game.add.audio("score");
-		h = game.height;
-		game.physics.arcade.gravity.y = 1000;
-		f.start_game();
-		o.background_main.scale.y = game.height / 2270;
-		co(game.height);
-		o.flash[0].scale.y = game.height / 2270;
-		o.flash[1].scale.y = game.height / 2270;
 
-		o.background_top.scale.y = game.height / 2270;
-		o.background_top.scale.y = game.height / 2270;
-		o.filter_gray.scale.y = game.height / 2270;
-		o.looser[0].scale.y = game.height / 2270;
-		o.looser[1].scale.y = game.height / 2270;
-		o.pre_sensor.y = o.pre_sensor.y + game.height / 2270;
-		wait(function () {
-			e.arrow(game);
-		}, 3000);
+var game_main = {
+	create: function () {
+		music.stop()
+		grow.flag=false
+		this.game.stage.backgroundColor = '#ffe063';
+		pop=game.add.audio('pop');
+		clic=game.add.audio('clic');
+		grow = game.add.audio("grow")
+		scroll = game.add.audio("scroll")
+		scroll.flag =false
+		score = game.add.audio("score")
+		h=game.height
+		game.physics.arcade.gravity.y = 1000;
+		f.start_game()
+		o.background_main.scale.y = game.height/2270 
+		co(game.height)
+		o.flash[0].scale.y = game.height/2270 
+		o.flash[1].scale.y = game.height/2270 
+
+		o.background_top.scale.y = game.height/2270 
+		o.background_top.scale.y = game.height/2270 
+		o.filter_gray.scale.y = game.height/2270 
+		o.looser[0].scale.y = game.height/2270 
+		o.looser[1].scale.y = game.height/2270 
+		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
+		wait(() => { e.arrow(game) }, 3000)
 	},
 
-	update: function update() {
+	update: function () {
+
 
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
-		if (d.start_game) {
-			if (o.paper[0].flag) {
-				o.paper[0].body.moves = true;
-			}
-			d[0] && f.anim_score(0);
-			d[1] && f.anim_score(1);
+		if(flag.start_game){
+			if (o.paper[0].flag) { o.paper[0].body.moves = true }
+			d[0] &&	f.anim_score(0)
+			d[1] && f.anim_score(1)
+
+
+
 
 			//anime le mask signifiant la fin proche de la limite du gameover
-			f.mask_scale(o.paper[0], o.distance[0]);
-			f.mask_scale(o.paper[1], o.distance[1]);
+			f.mask_scale(o.paper[0],o.distance[0])
+			f.mask_scale(o.paper[1],o.distance[1])
+
 
 			// collision entre le texte et le papier puis décision
-			f.collide(o.paper[0], o.paper[0].fil, f.decision);
-			f.collide(o.paper[1], o.paper[1].fil, f.decision);
+			f.collide(o.paper[0], o.paper[0].fil, f.decision)
+			f.collide(o.paper[1], o.paper[1].fil, f.decision)
 
 			// vérifie la durée de pression du pointer
-			f.get_duration(game.input.activePointer, o.paper[1]);
+			f.get_duration(game.input.activePointer, o.paper[1])
 
 			//f.collide(o.paper[1], o.sensor)
 
 			// vérifier si le papier touche le dernier repère physique et donc par conséquent provoque un gameover
-			f.check();
+			f.check()
 
 			//pour arrêter et redémarrer l'enemi sur les obstacles
 			// on met -2 car si o.length = 3 c'est à dire 0 1 2 donc l'avant dernier = 3-2
-			for (var i = 0; i < o.opponent_actions.length - 2; i++) {
-				f.stop_opponent(o.sensor_opponent[i]);
+			for (let i = 0; i < o.opponent_actions.length-2; i++) {
+				f.stop_opponent(o.sensor_opponent[i])
 			}
-			f.stop_opponent_on_the_last(o.sensor_opponent[o.sensor_opponent.length - 1]);
+			f.stop_opponent_on_the_last(o.sensor_opponent[o.sensor_opponent.length-1])
 
 			// vérifie si on peut cliquer pour arrêter le papier
-			f.check_pre_sensor();
+			f.check_pre_sensor()
 
 			// pointer qui suit le mouvement
-			f.follow_pointer(o.click);
+			f.follow_pointer(o.click)
 
 			//pour permettre au point de descendre
 			if (o.paper[0].flag == false) {
-				f.follow_text(o.paper[0]);
+				f.follow_text(o.paper[0])
 			}
 			//pour permettre au point de descendre
 			if (o.paper[1].flag == false) {
-				f.follow_text(o.paper[1]);
+				f.follow_text(o.paper[1])
 			}
 
 			// animation du pointer
-			f.anim_scale_pointer();
+			f.anim_scale_pointer()
 
 			// ombre qui suit le papier lors de sa chute
-			f.shadow_follow(o.paper[0], o.shadow_0);
-			f.shadow_follow(o.paper[1], o.shadow_1);
+			f.shadow_follow(o.paper[0],o.shadow_0)
+			f.shadow_follow(o.paper[1],o.shadow_1)
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width
-			interf.progress[0].anim(150);
+			interface.progress[0].anim(150)
+
 		}
 	},
-	render: function render() {
+	render: function () {
 		//f.debug(o.paper[0])
 		//f.debug(o.paper[0].fil)
-		f.debug(o.sensor);
-		f.debug(o.pre_sensor);
-	}
-};
+		f.debug(o.sensor)
+		f.debug(o.pre_sensor)
+
+	},
+}
 
 var how_to = {
-	create: function create() {}
+	create: function () {
+	},
 };
