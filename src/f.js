@@ -3,39 +3,47 @@ f.check_if_username_is_not_in_database_enemy=(st)=>{
 		return (st === name_opponent[i])
 	}
 }
-var secret; 
 
-//entrer le nom du player
-f.prompt=()=>{
-	//pour tester que c'est bien une chaine de caractères
-	let test = localStorage.getItem("username")
-	if(typeof test != "string"){
-
-		while (name_player !== "sesame") {
-			name_player = prompt("What is the secret password fghffhgfhfghgfhfghfghfghfghfgfhgfhgfhgfhgfhgfhfghfgfhgfhgfhgfhfgfhg?");
-		}
-	}
+//récupérer un valeur dans le localStorage
+//doit être associé à une variable;
+f.open=(value)=>{
+	let temp=localStorage.getItem(value)
+	return temp
+	//var temp;
+	//var variable;
+	//f.write("essai",variable)
+	//temp=f.open("essai")
 }
 
+//écrire dans le localStorage
+//value est une chaine de caractères => "string"
+f.write=(value,variable)=>{
+	// localStorage.setItem("value",variable)
+	localStorage.setItem(value,variable)
+}
+//entrer le nom du player
+f.prompt = ()=> {
+	//attention car cela boucle tant que name_player n'est pas enregistré dans le localStorage
+	//pour tester que c'est bien une chaine de caractères
+	name_player = f.open("username")
+	if (typeof test != "string") {
+		//enter name si pas de valeur on boucle
+		while (name_player === null){
+			name_player = prompt("please enter your name");
+		}
+		//si la valeur n'est pas supérieur à 8 on boucle
+		while (name_player.length > 8 ) {
+			name_player = prompt("name must be 4 character maximum");
+		}
 
+		while (f.check_if_username_is_not_in_database_enemy(name_player) == true ) {
+			name_player = prompt("name already exist");
+		}
 
+		f.write("username",name_player)
+	}
 
-///		name_player = prompt("Please enter your name", "Anonymous")
-///		if(name_player) {
-///			if (name_player.length < 4) {
-///				name_player = prompt("Please enter min. 4 letters", "Anonymous")
-///			}
-///			if(f.check_if_username_is_not_in_database_enemy(name_player) == true && name_player.length > 4){
-///				name_player = prompt("Name already exist, please choose a different name", "Anonymous")
-///			}
-///			if(f.check_if_username_is_not_in_database_enemy(name_player) == false){
-///				localStorage.setItem("username", name_player)
-///				// pour récuper une valeur dans le localStorage
-///				alert(localStorage.getItem("username"))
-///			}
-///		}
-///	}
-///}
+}
 
 
 
@@ -169,35 +177,121 @@ f.stop_opponent_on_the_last = (obj) => {
 	}
 }
 
-//check la durée d'appui pour le pointer
-f.get_duration = (pointer, obj) => {
-	let lastDuration = pointer.duration;
-	if (lastDuration > t.pointer_duration && obj.flag_pre_sensor == true && obj.flag_test_duration == false && obj.flag == false) {
-		//wait(()=>{d.could_anim_score[1]=true},t.delay_to_anim_score)
-		f.show_points(o.paper[1])
-		localStorage.setItem("score", interface.points[1].text)
-		scroll.play()
-		obj.flag_test_duration = true // to lock the function
-		obj.flag_dont_move = true
-		wait(()=>{grow.play()},250)
-		co("long press",obj.name)
-		//f.test_behaviour(obj)
+//actions à réaliser lorsque longue pression
+f.actions_on_long_press=(obj)=>{
+
+	//TODO : mettre un flash lumineux
+
+
+
+
+
+	co("actions_on_long_press");
+	//montre le score pour le player, l'enemi a une autre logique voir last
+	f.show_points(obj)
+	//enregistre le score
+	f.write("score", interface.points[1].text)
+	//son du click validant l'arrêt 
+	scroll.play()
+	obj.flag_test_duration = true // to lock the function
+	obj.flag_dont_move = true
+	// joue le son de grossissement
+	wait(()=>{grow.play()},250)
+}
+
+
+
+
+
+
+
+
+
+//grossit le pointer
+f.pointer_big=(obj,speed)=>{
+	if (obj.scale.x < 3) {
+		obj.scale.setTo(obj.scale.x + speed)
+
+	}
+	if(obj.scale.x > 2.9){
+		obj.visible=false
+		//ici lancer la fonction avec f.lock 
+		f.lock(o.paper[1].fil,()=>{f.actions_on_long_press(o.paper[1])})
+
 	}
 }
 
-// anim le pointer
-f.anim_scale_pointer = () => {
-	if (o.paper[1].flag_dont_move) {
-		tw_click.pause();
-		if (o.click.scale.x < 3) {
-			o.click.scale.x = o.click.scale.x + .08
-			o.click.scale.y = o.click.scale.y + .08
-		}
-		if (o.click.scale.x > 2.5) {
-			o.click.visible = false
-		}
+//reduit le pointer
+f.pointer_little=(obj,speed)=>{
+	if(obj.scale.x > .2 ){
+		obj.scale.setTo(obj.scale.x-speed)
 	}
 }
+
+
+//lorsqu'on clic 
+//stop tw du curseur
+//lance augmente la taille du curseur après un certain délai (pointer.duration)
+f.get_duration = (condition,pointer,flag,anim) => {
+	if (condition){
+		// pour agrandir
+		flag.scale=true
+		//pour stopper la tween
+		anim.pause()
+	}
+}
+//anim le pointer en l'augmentant ou en le retrecissant et relance l'animation de pulsion 
+f.anim_pointer=(obj,anim)=>{
+	if(obj.scale.x < .1){
+		// on la bloque pour la debloquer il faut remettre obj sur false
+		f.lock(obj,()=>{anim.resume()})
+	}
+	// automatic avec update grossit ou agrandit suivant le flag
+	if(d.scale == true){
+		//grossit
+		f.pointer_big(obj,.2)
+		// pour debloquer la tween
+		obj.flag=false
+	}else{
+		//retrecit
+		f.pointer_little(obj,2)
+	}
+
+	//lorsqu'on relache le clic, rétrecit 
+	game.input.onUp.add(function() {
+		//drapeau qui rétrecit via update
+		d.scale=false
+	});
+
+	// ne sert plus à rien
+	game.input.onDown.add(function() {
+		//rien à faire ici
+	});
+}
+
+
+
+
+
+
+
+
+
+
+//TODO : peut être à supprimer
+// anim le pointer
+//f.anim_scale_pointer = () => {
+//	if (o.paper[1].flag_dont_move) {
+//		tw_click.pause();
+//		//if (o.click.scale.x < 3) {
+//		o.click.scale.x = o.click.scale.x + .09
+//		o.click.scale.y = o.click.scale.y + .09
+//		//}
+//		if (o.click.scale.x > 2.5) {
+//			o.click.visible = false
+//		}
+//	}
+//}
 
 //test la distance numA=joueur numB=autre
 f.test_distance=(numA,numB)=>{
@@ -253,6 +347,14 @@ f.test_behaviour = (obj) => {
 		}
 	}
 }
+//animation des points => counter
+// vérifie si le score est inférieur à la valeur stockée dans create.js
+f.anim_score=(num)=>{
+	let condition = parseInt(o.score[num])+100
+	if(interface.points[num].text < condition){
+		interface.points[num].text = parseInt(interface.points[num].text) +1
+	}
+}
 
 
 //animation des coeurs pour montrer que l'on gagne des points
@@ -293,15 +395,6 @@ f.anim_heart_on_winner = (side)=>{
 			anim_winner(1)
 			wait( ()=> {d[1]=true},time)
 
-			//animation des points => counter
-			// vérifie si le score est inférieur à la valeur stockée dans create.js
-			f.anim_score=(num)=>{
-				let condition = parseInt(o.score[num])+100
-				if(interface.points[num].text < condition){
-					co(condition,interface.points[num].text)
-					interface.points[num].text = parseInt(interface.points[num].text) +1
-				}
-			}
 		}
 	}
 }
@@ -333,10 +426,11 @@ f.follow_pointer = (obj) => {
 	obj.y = game.input.activePointer.y;
 }
 
+//regit les interactions souris
 f.input = () => {
 	game.input.onDown.add(f.stop_body, this);
 	game.input.onUp.add(f.move_body, this);
-	game.input.onUp.add(f.get_duration, this);
+	//game.input.onUp.add(f.get_duration, this);
 }
 
 //pour debugger un body

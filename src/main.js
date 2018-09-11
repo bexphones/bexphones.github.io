@@ -9,7 +9,6 @@ var boot = {
 		//	this.game.load.image("loading_back","assets/loading_back.png");
 	},
 	create: function () {
-
 		//to scale the game
 		this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.game.scale.pageAlignHorizontally = true;
@@ -101,7 +100,8 @@ var preloader = {
 var game_first_screen = {
 	create: function () {
 		music=game.add.audio('music');
-		music.play()
+		// si nomusic est true la musique ne se joue pas
+		!d.nomusic && music.play()
 		pop=game.add.audio('pop');
 		clic=game.add.audio('clic');
 		grow = game.add.audio("grow")
@@ -233,31 +233,44 @@ var game_main = {
 		o.looser[1].scale.y = game.height/2270 
 		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
 		wait(() => { e.arrow(game) }, 3000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	},
 
 	update: function () {
 
 
+
+
+
+
+
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
 		if(flag.start_game){
 			if (o.paper[0].flag) { o.paper[0].body.moves = true }
+			//anim le score en fonction du drapeau
 			d[0] &&	f.anim_score(0)
 			d[1] && f.anim_score(1)
-
-
-
 
 			//anime le mask signifiant la fin proche de la limite du gameover
 			f.mask_scale(o.paper[0],o.distance[0])
 			f.mask_scale(o.paper[1],o.distance[1])
 
-
 			// collision entre le texte et le papier puis décision
 			f.collide(o.paper[0], o.paper[0].fil, f.decision)
 			f.collide(o.paper[1], o.paper[1].fil, f.decision)
-
-			// vérifie la durée de pression du pointer
-			f.get_duration(game.input.activePointer, o.paper[1])
 
 			//f.collide(o.paper[1], o.sensor)
 
@@ -286,14 +299,23 @@ var game_main = {
 				f.follow_text(o.paper[1])
 			}
 
-			// animation du pointer
-			f.anim_scale_pointer()
-
 			// ombre qui suit le papier lors de sa chute
 			f.shadow_follow(o.paper[0],o.shadow_0)
 			f.shadow_follow(o.paper[1],o.shadow_1)
+
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width
 			interface.progress[0].anim(150)
+
+
+			let cond = game.input.activePointer.duration > 500 && o.paper[1].flag_pre_sensor == true && o.paper[1].flag_test_duration == false && o.paper[1].flag == false
+			co(cond)
+			f.get_duration(cond,game.input.activePointer,d,tw_click)
+			f.anim_pointer(o.click,tw_click)
+
+
+
+
+
 
 		}
 	},

@@ -56,9 +56,12 @@ var ap={};
 var s = {
 
 }
+
 //drapeau
 var d={
-	debug : false, // pour déplacer les objets
+	debug : false, // pour déplacer les objets  	
+	nomusic:true, //rendre muet le son
+	scale : "undefined", // pour agrandir ou pas le pointer dépend d'une fonction f.lock
 	scroll:{
 		0:false,
 		1:false,

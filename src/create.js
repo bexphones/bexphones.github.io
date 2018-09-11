@@ -325,6 +325,7 @@ f.create_main = () => {
 	o.paper[1].flag_pre_sensor = false
 	o.paper[0].flag_dont_move = false
 	o.paper[1].flag_dont_move = false
+	// pour lancer long press seulement une fois
 	o.paper[0].flag_test_duration = false
 	o.paper[1].flag_test_duration = false
 
@@ -373,8 +374,9 @@ f.create_main = () => {
 		x: w2 * 1.5,
 		y: h2,
 		a: 1,
-		flag: true,
+		flag: false,
 		g: game,
+		v:false,
 	}
 	o.click = new _obj(o.click_p)
 
@@ -436,7 +438,8 @@ f.create_main = () => {
 		x: w2 * 1.5,
 		y: -200,
 		a: 1,
-		flag: true,
+		//on s'en sert pour valider long_press
+		flag: false,
 		g: game,
 		physics: true,
 		gravity: true,

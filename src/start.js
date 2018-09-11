@@ -116,9 +116,12 @@ f.start_game = () => {
 		wait(() => { _tr(tw_appears_puissance) }, o.cloud_tw[0].d)
 
 		wait(() => { interface.progress[0].visible = true }, o.cloud_tw[0].d)
+		//pour que le pointer apparaisse en même temps que l'enemy
+		wait(() => { o.click.visible = true }, o.cloud_tw[0].d)
 		//progress bar de l'enemy
 		wait(() => { _tr(tw_appears_progress_bg) }, o.cloud_tw[0].d)
 		wait(() => { _tr(tw_appears_progress_main) }, o.cloud_tw[0].d)
+
 
 	}
 
