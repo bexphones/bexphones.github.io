@@ -1,9 +1,6 @@
 
 f.start_game = () => {
 
-
-
-
 	f.prompt();
 	f.create_main()
 	//camera() // to zoom th game with keyboard up and down
@@ -20,7 +17,7 @@ f.start_game = () => {
 			t.cloud + o.cloud_tw[0].d,
 			900,
 			8000,
-
+			500,
 		]
 	}
 	//all events are sum to the previous
@@ -166,7 +163,8 @@ f.start_game = () => {
 	//wait(f.stop_opponent, t.start_game + t.start_opponent)
 	//wait(() => { o.paper[0].body.moves = false; o.paper[0].flag_dont_move = true }, t.start_opponent)
 	wait(f.check_distance, ev.tc[3])
-	wait(()=>{interface.restart.visible=true}, ev.tc[3])
+	// pour que le button restart apparaisse après check_distance => ev.tc[4]
+	//wait(()=>{interface.restart.visible=true}, ev.tc[4])
 	//wait(() => { f.show_looser(o.looser_tw_1) }, ev.tc[3])
 	flag.start_game=true
 

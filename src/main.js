@@ -1,3 +1,18 @@
+//  	le boutton restart apparait trop vite, il doit apparaître après un certain délai + son roulement de tambour pour désigner le vainqueur
+
+// 	papiers sur écran scores
+
+// 	faire un spritesheet des papiers suivant le rang
+
+// 	empêcher les flash suites aux pression de clic
+
+// 	animer la progress bar lorsqu'on marque des points
+
+//  	répartir les papiers gagnés dans le rank
+
+
+
+
 var stars;
 
 var boot = {
@@ -69,6 +84,9 @@ var preloader = {
 		this.game.load.image("background_start", "assets/background_start.png");
 		this.game.load.image("title_game", "assets/title_game.png");
 		this.game.load.image("background_button_play", "assets/background_button_play.png");
+		this.game.load.image("flash_blanc_0", "assets/flash_blanc_0.png");
+		this.game.load.image("flash_blanc_1", "assets/flash_blanc_1.png");
+		this.game.load.image("heart_particle", "assets/heart_particle.png");
 		//spritesheet
 		this.game.load.spritesheet("level0", "assets/level0.png",100,100);
 		this.game.load.spritesheet("level1", "assets/level1.png",100,100);
@@ -156,6 +174,7 @@ var rank_screen = {
 		{
 			//in op config
 			op.rolls={
+				//ici définir le type de roll en fonction de la collection du joueur
 				image: "roll_bondissant",
 				x: random(400,w),
 				y: random(0,h),

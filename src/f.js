@@ -167,6 +167,8 @@ f.stop_opponent_on_the_last = (obj) => {
 	if (f.checkOverlap(obj, o.paper[0])) {
 		if (obj.flag == false && o.paper[0].gameover == false) {
 			//wait(()=>{d.could_anim_score[0]=true},t.delay_to_anim_score)
+			// fait apparaître flash lumineux blanc 
+			_a(ap.flash_blanc[0])	
 			co("stop_opponent_on_the_last :");
 			f.show_points(o.paper[0])
 			obj.flag = true
@@ -180,7 +182,8 @@ f.stop_opponent_on_the_last = (obj) => {
 //actions à réaliser lorsque longue pression
 f.actions_on_long_press=(obj)=>{
 
-	//TODO : mettre un flash lumineux
+	// fait apparaître flash lumineux blanc 
+	_a(ap.flash_blanc[1])	
 
 
 
@@ -269,44 +272,27 @@ f.anim_pointer=(obj,anim)=>{
 	});
 }
 
-
-
-
-
-
-
-
-
-
-//TODO : peut être à supprimer
-// anim le pointer
-//f.anim_scale_pointer = () => {
-//	if (o.paper[1].flag_dont_move) {
-//		tw_click.pause();
-//		//if (o.click.scale.x < 3) {
-//		o.click.scale.x = o.click.scale.x + .09
-//		o.click.scale.y = o.click.scale.y + .09
-//		//}
-//		if (o.click.scale.x > 2.5) {
-//			o.click.visible = false
-//		}
-//	}
-//}
+//montre le button restart
+//doit apparaître après t.show_heart puisque qu'après anim_heart_on_winner
+f.show_button_restart=()=>{
+	wait(()=>{interface.restart.visible=true}, t.show_heart+1000)
+}
 
 //test la distance numA=joueur numB=autre
 f.test_distance=(numA,numB)=>{
 	if(o.paper[numA].y > o.paper[numB].y){
+		// pour que le button restart apparaisse après check_distance => ev.tc[4]
+		f.show_button_restart()
 		f.show_looser(o.looser_tw[numB])
 		f.show_looser(o.looser_tw_text[numB])
 		wait(()=>{f.anim_heart_on_winner(numA)},t.show_heart)
 	}else{
+		f.show_button_restart()
 		f.show_looser(o.looser_tw[numA])
 		f.show_looser(o.looser_tw_text[numA])
 		wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
 	}
 }
-
-
 
 /* lorsque button pressé 
 // calcul de distances et annonces du perdant et gagnant
@@ -319,7 +305,7 @@ f.test_behaviour = (obj) => {
 	if(obj.name == 0){
 		if(o.paper[1].flag == false && o.paper[1].flag_dont_move == false){
 			co("on attend le comportement de paper1","o.paper[1].flag:",o.paper[1].flag,"o.paper[1].flag:",o.paper[1].flag)
-			//on vérifier après un laps de temps pour désigner le gagnant
+			//on vérifie après un laps de temps pour désigner le gagnant
 			wait(()=>{if(o.paper[1].flag){f.anim_heart_on_winner(0)}},t.wait_end_game)
 		}
 		if(o.paper[1].flag){
@@ -332,7 +318,6 @@ f.test_behaviour = (obj) => {
 	}
 
 	if(obj.name == 1){
-		//f.show_points(o.paper[1])
 		if(o.paper[0].flag == false && o.paper[0].flag_dont_move == false){
 			co("on attend le comportement de paper0","o.paper[0].flag:",o.paper[0].flag,"o.paper[0].flag:",o.paper[0].flag)
 			//on vérifier après un laps de temps pour désigner le gagnant

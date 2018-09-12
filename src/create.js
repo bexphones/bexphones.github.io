@@ -157,6 +157,40 @@ f.create_game_first_screen = () => {
 		sy:1.2,
 	}
 	_a(ap.button_play)	
+	//objects particles
+	pp.heart={
+		image: "heart_particle",
+		//x: game.rnd.integerInRange(0,w),
+		//y: game.rnd.integerInRange(0,h),
+		x: w2,
+		y: h2,
+		lifetime: 1000,
+		repeat : 100,
+		particle_per_frame : 8,
+		g: game,
+		alpha : [.3,.8],
+		number : 100,
+	}
+
+	p.heart=_p(pp.heart)
+	pp.heart.start()
+	pp.heart.loop()
+
+
+
+
+
+	//this.particle = game.add.emitter(this._x,this._y);
+	//this.particle.makeParticles("particle_character");
+	//this.particle.minParticleSpeed.setTo(-600,-600);
+	//this.particle.maxParticleSpeed.setTo(800,800);
+	//this.particle.setAlpha(0.5,0.2);
+	//this.particle.minParticleScale = 0.2;
+	//this.particle.maxParticleScale = 0.5;
+	//this.particle.minRotation = 0;
+	//this.particle.maxRotation = 0;
+	//this.particle.on=false;
+	//this.particle.start(true,3900,null,8);
 }
 f.create_rank=()=>{
 
@@ -962,19 +996,6 @@ f.create_main = () => {
 		o.sensor_opponent[i] = new _obj(o.sensor_opponent_p[i])
 	}
 
-	var restart =()=>{game.state.start("game_main");interface.restart.visible=false}
-
-	interface.restart_p = {
-		g: game,
-		image:"restart",
-		x: w2*1.5,
-		y: h2+400,
-		v:false,
-		callback : restart,
-	}
-
-	interface.restart = new _b(interface.restart_p)
-	game.add.tween(interface.restart.scale).to({x:1.2,y:1.2},800,Phaser.Easing.Linear.None,true,0,-1,true);
 
 	o.cloud = []
 	o.cloud_p = {
@@ -1063,5 +1084,80 @@ f.create_main = () => {
 	}
 
 	t.debug = new _t(tp.debug)
+
+	//in op config
+	op.flash_blanc={
+		0:{
+			image: "flash_blanc_0",
+			x: w2,
+			y: h2,
+			a: 0,
+			flag: true,
+			g: game,
+		},
+		1:{
+			image: "flash_blanc_1",
+			x: w2,
+			y: h2,
+			a: 0,
+			flag: true,
+			g: game,
+		},
+	}
+
+	o.flash_blanc =[]
+	o.flash_blanc[0]= new _obj(op.flash_blanc[0])
+	o.flash_blanc[1]= new _obj(op.flash_blanc[1])
+
+	//in ap config
+	ap.flash_blanc={
+
+		0:{
+			o: o.flash_blanc[0],
+			//e: Phaser.Easing.Bounce.In,
+			i: 0, //number repeat
+			y: true, //yoyo
+			a: 1, // alpha
+			t: 250, //time
+			d:0, // delay
+			//r: 45, //rotation
+			//dx:100, //distance
+			//dy:200,
+			//sx:1, //scale
+			//sy:1,
+		},
+		1:{
+
+			o: o.flash_blanc[1],
+			//e: Phaser.Easing.Bounce.In,
+			i: 0, //number repeat
+			y: true, //yoyo
+			a: 1, // alpha
+			t: 250, //time
+			d:0, // delay
+			//r: 45, //rotation
+			//dx:100, //distance
+			//dy:200,
+			//sx:1, //scale
+			//sy:1,
+		},
+
+	}
+
+	var restart =()=>{game.state.start("game_main");interface.restart.visible=false}
+
+	interface.restart_p = {
+		g: game,
+		image:"restart",
+		x: w2*1.5,
+		y: h2+400,
+		v:false,
+		callback : restart,
+	}
+
+	interface.restart = new _b(interface.restart_p)
+	game.add.tween(interface.restart.scale).to({x:1.2,y:1.2},800,Phaser.Easing.Linear.None,true,0,-1,true);
+
+
 
 }

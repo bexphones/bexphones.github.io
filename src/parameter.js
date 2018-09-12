@@ -51,6 +51,11 @@ var e = {//effects
 // animation config
 var ap={};
 
+//particle 
+var p={};
+
+//particle config 
+var pp={};
 
 //sounds
 var s = {
