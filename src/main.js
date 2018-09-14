@@ -309,7 +309,7 @@ var game_main = {
 			// pointer qui suit le mouvement
 			f.follow_pointer(o.click)
 
-			//pour permettre au point de descendre
+			//pour permettre aux points de descendre
 			if (o.paper[0].flag == false) {
 				f.follow_text(o.paper[0])
 			}

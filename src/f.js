@@ -398,10 +398,21 @@ f.move_body = function () {
 f.stop_body = function () {
 	if (o.paper[1].flag == false) {
 		o.paper[1].body.moves = false
-		//TODO : 
-		//f.lock(o.flash[1], ()=> {f.show_flash(o.flash_tw_p1)})
+		co("stop")
 
-		f.lock(o.flash[1], ()=> {f.anim_flash(o.flash[1],o.flash_tw_p1)})
+
+
+
+
+
+
+		//TODO : à rétablir peut être si on veut le flash
+
+		//f.lock(o.flash[1], ()=> {f.anim_flash(o.flash[1],o.flash_tw_p1)})
+
+
+
+
 
 	}
 }
