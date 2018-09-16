@@ -251,6 +251,8 @@ var game_main = {
 		o.looser[0].scale.y = game.height/2270 
 		o.looser[1].scale.y = game.height/2270 
 		o.pre_sensor.y = o.pre_sensor.y + game.height/2270
+		o.flash_blanc[0].scale.y = game.height/2270
+		o.flash_blanc[1].scale.y = game.height/2270
 		wait(() => { e.arrow(game) }, 3000)
 
 
