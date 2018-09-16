@@ -759,6 +759,7 @@ f.create_main = () => {
 		v:true,
 	}
 
+	// papier en desous des points du joueur
 	interface.player_roll_p = {
 		image: "roll",
 		x: w2 * 1.1,
@@ -767,6 +768,7 @@ f.create_main = () => {
 		flag: true,
 		g: game,
 		v:true,
+		frame:0,
 	}
 
 	interface.player_points_p = {
@@ -812,6 +814,7 @@ f.create_main = () => {
 		v:true,
 	}
 
+	// papier en desous des points du joueur
 	interface.enemy_roll_p = {
 		image: "roll",
 		x: w2 * .145,
@@ -897,6 +900,12 @@ f.create_main = () => {
 	interface.progress[0].main.scale.y = 0
 	interface.progress[0].bg.scale.y = 0
 	interface.puissance[0].scale.y = 0
+	//ici on spécifie la puissance de l'enemy
+	interface.roll[0].frame=3
+
+
+	//définition des scores respectifs
+	//TODO : mettre le score pour le joeur
 
 	o.score={
 		0:"50",		

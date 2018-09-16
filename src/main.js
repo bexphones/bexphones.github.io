@@ -52,7 +52,6 @@ var preloader = {
 		this.game.load.image("background_main", "assets/background_main.png");
 		this.game.load.image("background_top", "assets/background_top.png");
 		this.game.load.image("progress", "assets/progress.png");
-		this.game.load.image("roll", "assets/roll.png");
 		this.game.load.image("gray_filter", "assets/gray_filter.png");
 		this.game.load.image("paper_pink", "assets/paper_pink.png");
 		this.game.load.image("paper", "assets/paper.png");
@@ -88,6 +87,7 @@ var preloader = {
 		this.game.load.image("flash_blanc_1", "assets/flash_blanc_1.png");
 		this.game.load.image("heart_particle", "assets/heart_particle.png");
 		//spritesheet
+		this.game.load.spritesheet("roll", "assets/roll.png",60,60);
 		this.game.load.spritesheet("level0", "assets/level0.png",100,100);
 		this.game.load.spritesheet("level1", "assets/level1.png",100,100);
 		//this.game.load.spritesheet("puissance", "assets/puissance.png",75,90);
@@ -256,8 +256,32 @@ var game_main = {
 		wait(() => { e.arrow(game) }, 3000)
 
 
+		// pour éviter de mettre ceci dans update et gagner de la ressource
+		f.pseudo_update=()=>{
+			if(flag.start_game){
+				//anim le score en fonction du drapeau
+				d[0] &&	f.anim_score(0)
+				d[1] && f.anim_score(1)
 
+				// pointer qui suit le mouvement
+				f.follow_pointer(o.click)
+				//pour permettre aux points de descendre
+				if (o.paper[0].flag == false) {
+					f.follow_text(o.paper[0])
+				}
+				//pour permettre au point de descendre
+				if (o.paper[1].flag == false) {
+					f.follow_text(o.paper[1])
+				}
 
+				// ombre qui suit le papier lors de sa chute
+				f.shadow_follow(o.paper[0],o.shadow_0)
+				f.shadow_follow(o.paper[1],o.shadow_1)
+
+			}
+		}
+		// pour éviter de mettre ceci dans update et gagner de la ressource
+		f.loop(20,f.pseudo_update)
 
 
 
@@ -277,13 +301,9 @@ var game_main = {
 
 
 
-
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
 		if(flag.start_game){
 			if (o.paper[0].flag) { o.paper[0].body.moves = true }
-			//anim le score en fonction du drapeau
-			d[0] &&	f.anim_score(0)
-			d[1] && f.anim_score(1)
 
 			//anime le mask signifiant la fin proche de la limite du gameover
 			f.mask_scale(o.paper[0],o.distance[0])
@@ -308,28 +328,13 @@ var game_main = {
 			// vérifie si on peut cliquer pour arrêter le papier
 			f.check_pre_sensor()
 
-			// pointer qui suit le mouvement
-			f.follow_pointer(o.click)
 
-			//pour permettre aux points de descendre
-			if (o.paper[0].flag == false) {
-				f.follow_text(o.paper[0])
-			}
-			//pour permettre au point de descendre
-			if (o.paper[1].flag == false) {
-				f.follow_text(o.paper[1])
-			}
-
-			// ombre qui suit le papier lors de sa chute
-			f.shadow_follow(o.paper[0],o.shadow_0)
-			f.shadow_follow(o.paper[1],o.shadow_1)
 
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width
 			interface.progress[0].anim(150)
 
 
 			let cond = game.input.activePointer.duration > 500 && o.paper[1].flag_pre_sensor == true && o.paper[1].flag_test_duration == false && o.paper[1].flag == false
-			co(cond)
 			f.get_duration(cond,game.input.activePointer,d,tw_click)
 			f.anim_pointer(o.click,tw_click)
 

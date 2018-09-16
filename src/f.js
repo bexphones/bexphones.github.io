@@ -45,6 +45,10 @@ f.prompt = ()=> {
 
 }
 
+//loop an function avec un timer spécifique
+f.loop=(timer,callback)=>{
+	game.time.events.loop( timer,callback );
+}
 
 
 //démmarer la chute des joueurs
@@ -280,6 +284,7 @@ f.show_button_restart=()=>{
 
 //test la distance numA=joueur numB=autre
 f.test_distance=(numA,numB)=>{
+	co("test_distance")
 	if(o.paper[numA].y > o.paper[numB].y){
 		// pour que le button restart apparaisse après check_distance => ev.tc[4]
 		f.show_button_restart()
@@ -373,11 +378,13 @@ f.anim_heart_on_winner = (side)=>{
 		if (side == 0){
 			co("anim winner 0")
 			anim_winner(0)
+			f.show_button_restart()
 			wait( ()=> {d[0]=true},time)
 		}
 		if (side == 1){
 			co("anim winner 1")
 			anim_winner(1)
+			f.show_button_restart()
 			wait( ()=> {d[1]=true},time)
 
 		}

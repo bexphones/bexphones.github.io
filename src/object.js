@@ -1,6 +1,7 @@
 _obj = function (p) {
 	p.flag != null ? this.flag = p.flag : this.flag = "undefined"
 	Phaser.Sprite.call(this, p.g, p.x, p.y, p.image);
+	p.frame != null ? this.frame = 0 : console.log()
 	p.a != null ? this.alpha = p.a : this.alpha = 1
 	p.v != null ? this.visible = p.v : this.visible = true
 	p.name != null ? this.name = p.name : this.name = "undefined"
@@ -32,13 +33,13 @@ _obj = function (p) {
 	}
 	this.inputEnabled=true
 	if(d.debug == true){
-	this.input.enableDrag(true)
-	this.input.enableSnap(20,20,true,true)
-	this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
-	this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
-	
+		this.input.enableDrag(true)
+		this.input.enableSnap(20,20,true,true)
+		this.events.onDragStop.add(()=>{f.debug_pos(this)},this)
+		this.events.onDragStart.add(()=>{f.debug_pos(this)},this)	
+
 	}
-		
+
 
 	p.g.add.existing(this)
 }
@@ -98,10 +99,10 @@ _graph.prototype.anim = function(points){
 	let progress_length = this.width*this.decimal
 	if(progress_length < this.width){
 		if(progress_length < points){
-		this.main.clear()
-		this.main.drawRoundedRect(0,0,progress_length,this.height,this.round);
-		
-		
+			this.main.clear()
+			this.main.drawRoundedRect(0,0,progress_length,this.height,this.round);
+
+
 		}
 	}
 }
