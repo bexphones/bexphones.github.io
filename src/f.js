@@ -290,12 +290,27 @@ f.test_distance=(numA,numB)=>{
 		f.show_button_restart()
 		f.show_looser(o.looser_tw[numB])
 		f.show_looser(o.looser_tw_text[numB])
-		wait(()=>{f.anim_heart_on_winner(numA)},t.show_heart)
+
+
+
+
+
+
+		//TODO : rétablir test pour voir si cela prends moins de temps
+
+		//wait(()=>{f.anim_heart_on_winner(numA)},t.show_heart)
 	}else{
 		f.show_button_restart()
 		f.show_looser(o.looser_tw[numA])
 		f.show_looser(o.looser_tw_text[numA])
-		wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
+
+
+
+
+
+
+		//TODO : rétablir test pour voir si cela prends moins de temps
+		//wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
 	}
 }
 
@@ -495,6 +510,7 @@ f.anim_paper_winner = (pos)=>{
 //decide lorsque le score du joueur touche le papier
 f.decision = (obj1,obj2)=>{
 	if(obj1.flag_dont_move && obj1.flag_press_engaged == false){
+		co("decision")
 		obj1.flag_press_engaged = true
 		f.test_behaviour(obj1)
 		co("touch")
