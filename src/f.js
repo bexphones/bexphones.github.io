@@ -195,7 +195,30 @@ f.actions_on_long_press=(obj)=>{
 
 	co("actions_on_long_press");
 	//montre le score pour le player, l'enemi a une autre logique voir last
-	f.show_points(obj)
+
+
+
+
+
+	//TODO : à rétablir test pour voir si mieux
+
+	//f.show_points(obj)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	//enregistre le score
 	f.write("score", interface.points[1].text)
 	//son du click validant l'arrêt 
