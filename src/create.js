@@ -712,8 +712,31 @@ f.create_main = () => {
 			_transition(o.searching_opponent_tw[i])
 		}
 	}
-	loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
-	t.appear_opponent=(ts*2+ds+7*rs)*2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//TODO : à rétablir
+
+	//loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
+	//t.appear_opponent=(ts*2+ds+7*rs)*2
 
 	o.searching_opponent.number = random(0, 5)
 
