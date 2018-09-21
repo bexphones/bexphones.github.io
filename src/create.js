@@ -192,6 +192,7 @@ f.create_game_first_screen = () => {
 	//this.particle.on=false;
 	//this.particle.start(true,3900,null,8);
 }
+//creer les papiers gagnés dans la collection
 f.create_rank=()=>{
 
 	//in op config
@@ -693,6 +694,8 @@ f.create_main = () => {
 		o.searching_opponent[i].anchor.x = .5  
 		o.searching_opponent[i].anchor.y = 0  
 		o.searching_opponent[i].angle = i*45  
+		o.searching_opponent[i].alpha = 1  
+
 	}
 
 
@@ -852,7 +855,7 @@ si et seulement si le nombre de transition est atteint
 		g: game,
 		x: w2 * 1.1,
 		y: h*.085,
-		message: localStorage.getItem("score") != null ? localStorage.getItem("score") :  "50",
+		message: localStorage.getItem("score_1") != null ? localStorage.getItem("score_1") :  "50",
 		taille: 40,
 		police: 'police_red',
 		v:true,
@@ -985,8 +988,8 @@ si et seulement si le nombre de transition est atteint
 	//TODO : mettre le score pour le joeur
 
 	o.score={
-		0:"50",		
-		1:localStorage.getItem("score") != null ? localStorage.getItem("score") :  "50",
+		0:localStorage.getItem("score_0") != null ? localStorage.getItem("score_0") :  "50",
+		1:localStorage.getItem("score_1") != null ? localStorage.getItem("score_1") :  "50",
 
 	}
 

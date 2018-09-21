@@ -42,7 +42,7 @@ f.start_game = () => {
 
 
 
-			//o.searching_opponent[i].visible = false
+			o.searching_opponent[i].visible = false
 
 
 

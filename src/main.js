@@ -142,6 +142,7 @@ var game_first_screen = {
 
 		//progress update
 		o.decimal = o.decimal + 0.01
+
 		let progress_length = 300*o.decimal
 		if(progress_length < 300){
 			o.progress.drawRoundedRect(0,0,progress_length,27,10);
@@ -151,8 +152,6 @@ var game_first_screen = {
 
 var rank_screen = {
 	create: function () {
-
-		//game.physics.startSystem(Phaser.Physics.ARCADE);
 		game.physics.arcade.gravity.y = 1000;
 		this.game.stage.backgroundColor = '#ffe063';
 		pop=game.add.audio('pop');
@@ -160,12 +159,14 @@ var rank_screen = {
 		grow = game.add.audio("grow")
 		scroll = game.add.audio("scroll")
 		score = game.add.audio("score")
+
+		//creer les papiers gagnés dans la collection
 		f.create_rank()
 
+		//défini des limites pour que les papiers rebondissent
 		game.world.setBounds(0,0,1400,2200)
 
-
-
+		//pool pour augmenter les performances
 		o.lot_of_roll = game.add.spriteBatch();
 
 		stars = [];
@@ -196,10 +197,7 @@ var rank_screen = {
 			o.rolls.body.gravity.y = 800;
 			o.rolls.body.allowGravity = true;
 			o.lot_of_roll.addChild(o.rolls);
-
 			stars.push(o.rolls);
-
-
 
 			//in op config
 			op.collision={
@@ -281,29 +279,19 @@ var game_main = {
 			}
 		}
 		// pour éviter de mettre ceci dans update et gagner de la ressource
-		f.loop(20,f.pseudo_update)
-
-
-
-
-
-
-
+		f.loop(40,f.pseudo_update)
 
 
 
 	},
 
 	update: function () {
-
-
-
-
-
-
 		// distance à partir de laquelle le mask s'affiche pour signifier au joueur que la fin est proche
 		if(flag.start_game){
-			if (o.paper[0].flag) { o.paper[0].body.moves = true }
+			//TODO : 
+
+			//pas nécessaire
+			//if (o.paper[0].flag) { o.paper[0].body.moves = true }
 
 			//anime le mask signifiant la fin proche de la limite du gameover
 			f.mask_scale(o.paper[0],o.distance[0])
@@ -328,21 +316,14 @@ var game_main = {
 			// vérifie si on peut cliquer pour arrêter le papier
 			f.check_pre_sensor()
 
-
-
 			//pour animer la progress bar avec 200 points soit 200 de 300 de width
-			interface.progress[0].anim(150)
+			interface.progress[0].anim(50)
 
 
 			let cond = game.input.activePointer.duration > 500 && o.paper[1].flag_pre_sensor == true && o.paper[1].flag_test_duration == false && o.paper[1].flag == false
+			//en fonction de la durée anime le score ou pas
 			f.get_duration(cond,game.input.activePointer,d,tw_click)
 			f.anim_pointer(o.click,tw_click)
-
-
-
-
-
-
 		}
 	},
 	render: function () {

@@ -147,10 +147,8 @@ f.follow_text = (obj) => {
 }
 
 //animation du flash lorsque le joueur clic
-f.anim_flash=(obj,p)=>{
+f.click=()=>{
 	clic.play()
-	obj.tw =game.add.tween(p.o).to({ alpha: p.a }, p.t, p.e, true, p.d, p.i, p.y);
-	obj.tw.onComplete.add( ()=> {o.flash[1].flag=false},this)
 }
 
 // stop le papier 
@@ -200,9 +198,8 @@ f.actions_on_long_press=(obj)=>{
 
 
 
-	//TODO : à rétablir test pour voir si mieux
 
-	//f.show_points(obj)
+	f.show_points(obj)
 
 
 
@@ -220,7 +217,8 @@ f.actions_on_long_press=(obj)=>{
 
 
 	//enregistre le score
-	f.write("score", interface.points[1].text)
+	f.write("score_0", interface.points[0].text)
+	f.write("score_1", interface.points[1].text)
 	//son du click validant l'arrêt 
 	scroll.play()
 	obj.flag_test_duration = true // to lock the function
@@ -319,9 +317,8 @@ f.test_distance=(numA,numB)=>{
 
 
 
-		//TODO : rétablir test pour voir si cela prends moins de temps
 
-		//wait(()=>{f.anim_heart_on_winner(numA)},t.show_heart)
+		wait(()=>{f.anim_heart_on_winner(numA)},t.show_heart)
 	}else{
 		f.show_button_restart()
 		f.show_looser(o.looser_tw[numA])
@@ -332,8 +329,7 @@ f.test_distance=(numA,numB)=>{
 
 
 
-		//TODO : rétablir test pour voir si cela prends moins de temps
-		//wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
+		wait(()=>{f.anim_heart_on_winner(numB)},t.show_heart)
 	}
 }
 
@@ -378,6 +374,7 @@ f.test_behaviour = (obj) => {
 //animation des points => counter
 // vérifie si le score est inférieur à la valeur stockée dans create.js
 f.anim_score=(num)=>{
+	//converti le score en string
 	let condition = parseInt(o.score[num])+100
 	if(interface.points[num].text < condition){
 		interface.points[num].text = parseInt(interface.points[num].text) +1
@@ -445,20 +442,8 @@ f.stop_body = function () {
 		o.paper[1].body.moves = false
 		co("stop")
 
-
-
-
-
-
-
-		//TODO : à rétablir peut être si on veut le flash
-
-		//f.lock(o.flash[1], ()=> {f.anim_flash(o.flash[1],o.flash_tw_p1)})
-
-
-
-
-
+		//son lorsqu'on clic
+		f.click()
 	}
 }
 
@@ -485,8 +470,8 @@ f.show_flash = (p) => {
 	clic.play()
 	// animation 
 	//TODO : 
-
-	tw.flash = _tr(p)
+	//retirer
+	//tw.flash = _tr(p)
 }
 
 //faire trembler la camera
