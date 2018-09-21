@@ -696,6 +696,60 @@ f.create_main = () => {
 	}
 
 
+
+
+	/*
+transition pour le cercle pour montrer l'attente d'un enemy
+première transition
+ensuite on chaine avec les transitions suivantes et la dernière renvoie à la fonction de départ
+si et seulement si le nombre de transition est atteint
+*/
+	//nombre aléatoire définissant le nombre de fois l'animation va se jouer
+	o.searching_opponent.number = random(4, 9)
+	//paramètre des transitions
+
+
+	ap.searching_opponent={
+		// pas d'objet car impossible à incrementer dans un paramètre
+		e: Phaser.Easing.Linear.None,
+		i: 0, //number repeat
+		y: true, //yoyo
+		a: 0, // alpha
+		t: t.animate_timer, //time
+		d:0, // delay
+	}
+	//pour démarrer le tableau
+	a.searching_opponent=[]
+	//
+	f.launch_animation_searching_opponent=(p,n)=>{
+		n = n -1
+		//démarrage de la première transition
+		a.searching_opponent[0]=game.add.tween(o.searching_opponent[0]).to({alpha: p.a}, p.t, p.e,false,p.d,p.i,p.y)
+		for (var i = 1; i < 8 ; i++){
+			//transitions de 1 à 8 qui vont être chainées
+			a.searching_opponent[i]=game.add.tween(o.searching_opponent[i]).to({alpha: p.a}, p.t, p.e,false,p.d,p.i,p.y)
+		}
+
+		// on retire 1 de 8 car le dernier = 7+1
+		for (var i = 0; i < 7; i++){
+			//chainer les transitions 0 avec 1 , 1 avec 2 etc...
+			a.searching_opponent[i].chain(a.searching_opponent[i+1])
+		}
+		a.searching_opponent[7].onComplete.add(()=>{f.restart_if_number(p,n)})
+		a.searching_opponent[0].start();
+
+	}
+	f.restart_if_number=(p,n)=>{
+		if(n >1){
+			co("restart_if_number")
+			f.launch_animation_searching_opponent(p,n)
+		}
+	}
+	f.launch_animation_searching_opponent(ap.searching_opponent,o.searching_opponent.number)
+
+
+
+	// normalement plus nécessaire
 	o.searching_opponent_tw=[]
 	let ts=200
 	let ds=200
@@ -734,11 +788,11 @@ f.create_main = () => {
 
 
 	//TODO : à rétablir
+	////var loop = function (callback, duration,number) {
+	////loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
+	//loop(f.start_timer_search_opponent,ts*2+ds+8*rs,10)
+	////t.appear_opponent=(ts*2+ds+7*rs)*2
 
-	//loop(f.start_timer_search_opponent,ts*2+ds+7*rs,10)
-	//t.appear_opponent=(ts*2+ds+7*rs)*2
-
-	o.searching_opponent.number = random(0, 5)
 
 	o.text_searching_opponent_p = {
 		image: "searching_opponent",

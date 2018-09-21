@@ -90,7 +90,8 @@ var click_tw;
 //TODO : changer en time
 
 var t = {
-	searching_opponent: 500,
+	searching_opponent: 500,// temps pour faire apparaitre/disparaitre "search opponent"
+	animate_timer: 70,// temps pour faire apparaitre/disparaitre "search opponent"
 	pointer_duration: 500,
 	start_opponent: 3000,
 	show_looser: 2000, //temps du délai de l'animation du looser

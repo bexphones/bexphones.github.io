@@ -35,7 +35,25 @@ f.start_game = () => {
 	//animation pour faire apparaitre le nom de l'enemi
 	f.start_cloud = () => {
 		for (var i = 0; i < o.searching_opponent.length; i++){
-			o.searching_opponent[i].visible = false
+			// faire disparaitre le timer de recherche de l'enemi
+
+
+
+
+
+
+			//o.searching_opponent[i].visible = false
+
+
+
+
+
+
+
+
+
+
+
 
 		}
 		//o.circle_search_opponent.alpha = 0
